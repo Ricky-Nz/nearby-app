@@ -1,6 +1,6 @@
-export const selectHomeTab from './selectHomeTab';
-export const loadAccountDetail from './loadAccountDetail';
-export const loadMerchantDetail from './loadMerchantDetail';
-export const loadMerchantList from './loadMerchantList';
-export const loadOrderDetail from './loadOrderDetail';
-export const loadOrderList from './loadOrderList';
+export { selectHomeTab } from './selectHomeTab';
+export { loadAccountDetail } from './loadAccountDetail';
+export { loadMerchantDetail } from './loadMerchantDetail';
+export { loadMerchantList } from './loadMerchantList';
+export { loadOrderDetail } from './loadOrderDetail';
+export { loadOrderList } from './loadOrderList';

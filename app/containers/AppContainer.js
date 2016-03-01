@@ -7,12 +7,12 @@ const appStateSelector = state => state.appState;
 
 const mapStateToProps = createSelector(
 	appStateSelector,
-	(appState) => ({appState})
+	(appState) => ({...appState, mainStack: [{type: 'order'}, {type: 'merchant'}, {type: 'account'}]})
 );
 
 const mapDispatchToProps = dispatch => ({
-	selectTab: (selectTab) => {
-		selectHomeTab(dispatch, selectTab);
+	selectTab: (selectIndex) => {
+		dispatch(selectHomeTab(selectIndex));
 	}
 });
 

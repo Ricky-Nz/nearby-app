@@ -1,6 +1,6 @@
 const API_ROOT = 'http://www.apiroot.com';
 
-export default function (actionType, urlPath) {
+export function asyncLoad (actionType, urlPath) {
 	return dispatch => {
 		dispatch({
 			type: actionType,

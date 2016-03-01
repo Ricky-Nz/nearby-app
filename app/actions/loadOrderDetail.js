@@ -1,6 +1,6 @@
 import { LOAD_ORDER_DETAIL } from './actionTypes';
 import asyncLoad from './asyncLoad';
 
-export default function (orderId) {
+export function loadOrderDetail (orderId) {
 	return asyncLoad(LOAD_ORDER_DETAIL, `TODO?id=${orderId}`);
 }
