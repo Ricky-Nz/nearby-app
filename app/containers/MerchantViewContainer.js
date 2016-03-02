@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import MerchantDetailBoard from '../components/MerchantDetailBoard';
+import MerchantView from '../components/MerchantView';
 
-const merchantDetailSelector = state => state.merchantDetail;
+const merchantDetailSelector = state => state.merchant;
 
 const mapStateToProps = createSelector(
 	merchantDetailSelector,
-	(merchantDetail) => ({merchantDetail})
+	(merchant) => ({merchant})
 );
 
 const mapDispatchToProps = dispatch => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(MerchantDetailBoard);
+)(MerchantView);

@@ -2,11 +2,9 @@ import React, { Component, PropTypes, Text, StyleSheet } from 'react-native';
 import Clickable from './Clickable';
 
 let ToggleTextButton = ({active, onText, offText}) => (
-	return (
-		<Clickable style={[styles.baseStyle, active ? styles.styleOn : styles.styleOff]}>
-			<Text style={active ? styles.textOn : styles.textOff}>{active ? onText : offText}</Text>
-		</Clickable>
-	);
+	<Clickable style={[styles.baseStyle, active ? styles.styleOn : styles.styleOff]}>
+		<Text numberOfLines={1} style={active ? styles.textOn : styles.textOff}>{active ? onText : offText}</Text>
+	</Clickable>
 );
 
 ToggleTextButton.propTypes = {
@@ -17,11 +15,11 @@ ToggleTextButton.propTypes = {
 
 const styles = StyleSheet.create({
 	baseStyle: {
-		height: 40,
-		width: 100,
 		alignItems: 'center',
 		justifyContent: 'center',
-		borderRadius: 10
+		borderRadius: 20,
+		paddingVertical: 8,
+		paddingHorizontal: 50
 	},
 	styleOn: {
 		backgroundColor: 'darkturquoise'
@@ -31,11 +29,11 @@ const styles = StyleSheet.create({
 		borderColor: 'darkturquoise'
 	},
 	textOn: {
-		fontSize: 16,
+		fontSize: 14,
 		color: 'white'
 	},
 	textOff: {
-		fontSize: 16,
+		fontSize: 14,
 		color: 'darkturquoise'
 	}
 });

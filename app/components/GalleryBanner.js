@@ -21,8 +21,10 @@ class GalleryBanner extends Component {
 				<ViewPagerAndroid style={styles.banner} initialPage={this.state.position}
 					onPageSelected={this.onSelectedPage.bind(this)}>
 					{
-						this.props.images.map(image => (
-							<Image style={styles.banner} source={{uri: image}}/>
+						this.props.images.map((image, index) => (
+							<View key={index}>
+								<Image style={styles.banner} source={{uri: image}}/>
+							</View>
 						))
 					}
 				</ViewPagerAndroid>

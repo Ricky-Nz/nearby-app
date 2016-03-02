@@ -2,7 +2,7 @@ import React, { Component, StyleSheet, View, Text } from 'react-native';
 import UnderlineTabs from './UnderlineTabs';
 import OrderListContainer from '../containers/OrderListContainer';
 
-class OrderPage extends Component {
+class OrderListPage extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default OrderPage;
+export default OrderListPage;

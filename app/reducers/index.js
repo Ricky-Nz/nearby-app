@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 import appState from './appState';
 import orderList from './orderList';
-import orderDetail from './orderDetail';
+import order from './order';
 import merchantList from './merchantList';
-import merchantDetail from './merchantDetail';
+import merchant from './merchant';
 
 const rootReducer = combineReducers({
 	appState,
 	orderList,
-	orderDetail,
+	order,
 	merchantList,
-	merchantDetail
+	merchant
 });
 
 export default rootReducer;

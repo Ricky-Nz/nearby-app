@@ -1,20 +1,24 @@
-import React, { Component, StyleSheet } from 'react-native';
-import MerchantListContainer from '../containers/MerchantListContainer';
+import React, { Component, PropTypes, StyleSheet, View } from 'react-native';
+import MerchantViewContainer from '../containers/MerchantViewContainer';
 
 class MerchantPage extends Component {
 	render() {
 		return (
-			<MerchantListContainer
-				onItemClicked={(data) => this.props.navigator.push({type: 'merchantDetail', data})} style={styles.container}/>
+			<View style={styles.container}>
+				<MerchantViewContainer/>
+			</View>
 		);
 	}
 }
 
+MerchantPage.propTypes = {
+
+};
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'gainsboro',
-  }
+	container: {
+		flex: 1
+	}
 });
 
 export default MerchantPage;
