@@ -2,7 +2,7 @@ import React, { Component, Navigator } from 'react-native';
 import TitleBar from './TitleBar';
 import IconTabs from './IconTabs';
 import OrderListPage from './OrderListPage';
-import MerchantListPage from './MerchantListPage';
+import ShopListPage from './ShopListPage';
 import AccountPage from './AccountPage';
 import MerchantPage from './MerchantPage';
 
@@ -20,8 +20,8 @@ class App extends Component {
   }
   appRouter(route, navigator) {
     switch(route.type) {
-      case 'order': return <MerchantPage navigator={navigator}/>;
-      case 'merchant': return <MerchantListPage navigator={navigator}/>;
+      case 'order': return <ShopListPage navigator={navigator}/>;
+      case 'merchant': return <ShopListPage navigator={navigator}/>;
       case 'account': return <AccountPage/>;
       case 'merchantDetail': return null;
     }

@@ -1,37 +1,46 @@
 import React, { PropTypes, StyleSheet, View, Image, Text } from 'react-native';
 import Clickable from './Clickable';
 
-let MerchantListItem = (props) => (
-	<Clickable onPress={props.onPress}>
+let ShopListItem = ({id, name, address, category, description, location,
+		photos, popularity, postal_code, price_tier}) => (
+	<Clickable>
 		<View style={styles.container}>
 			<View style={styles.imageContainer}>
-				<Image style={styles.bannerImage} source={{uri: props.merchantImage}}/>
+				{photos&&<Image style={styles.bannerImage} source={{uri: photos[0].url}}/>}
 			</View>
 			<View style={styles.textBar}>
 				<View style={styles.merchantInfoContainer}>
-					<Text style={styles.nameText}>{props.merchantName}</Text>
+					<Text style={styles.nameText}>{name}</Text>
 					<View style={styles.merchantDetailContainer}>
-						<Text style={styles.detailText}>{props.distance}</Text>
+						<Text style={styles.detailText}>100m</Text>
 						<Text style={styles.middlePoint}>·</Text>
-						<Text style={styles.detailText}>{props.merchantType}</Text>
+						<Text style={styles.detailText}>{category}</Text>
 						<Text style={styles.middlePoint}>·</Text>
-						<Text style={styles.detailText}>{props.everagePrice}</Text>
+						<Text style={styles.detailText}>{price_tier}</Text>
 					</View>
 				</View>
-				<Text>{props.watching ? 'Watching' : 'Watch'}</Text>
+				<Text>{false ? 'Watching' : 'Watch'}</Text>
 			</View>
 		</View>
 	</Clickable>
 );
 
-MerchantListItem.propTypes = {
-	merchantImage: PropTypes.string.isRequired,
-	merchantName: PropTypes.string.isRequired,
-	distance: PropTypes.string.isRequired,
-	merchantType: PropTypes.string.isRequired,
-	everagePrice: PropTypes.string.isRequired,
-	watching: PropTypes.bool.isRequired,
-	delivering: PropTypes.bool.isRequired
+ShopListItem.propTypes = {
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	address: PropTypes.string,
+	category: PropTypes.string,
+	description: PropTypes.string,
+	location: PropTypes.shape({
+		latitude: PropTypes.number,
+		longitude: PropTypes.number
+	}),
+	photos: PropTypes.arrayOf(PropTypes.shape({
+		url: PropTypes.string.isRequired
+	})),
+	popularity: PropTypes.number,
+	postal_code: PropTypes.string,
+	price_tier: PropTypes.number
 };
 
 const styles = StyleSheet.create({
@@ -72,4 +81,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default MerchantListItem;
+export default ShopListItem;

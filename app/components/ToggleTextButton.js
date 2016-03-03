@@ -1,8 +1,8 @@
 import React, { Component, PropTypes, Text, StyleSheet } from 'react-native';
 import Clickable from './Clickable';
 
-let ToggleTextButton = ({active, onText, offText}) => (
-	<Clickable style={[styles.baseStyle, active ? styles.styleOn : styles.styleOff]}>
+let ToggleTextButton = ({active, onText, offText, style, ...props}) => (
+	<Clickable style={[styles.baseStyle, active ? styles.styleOn : styles.styleOff, style]} {...props}>
 		<Text numberOfLines={1} style={active ? styles.textOn : styles.textOff}>{active ? onText : offText}</Text>
 	</Clickable>
 );
