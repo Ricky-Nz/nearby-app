@@ -11,7 +11,7 @@ const mapStateToProps = createSelector(
 );
 
 const mapDispatchToProps = dispatch => ({
-	loadShops: (offset, size, distance) => {
+	onLoadShops: (offset, size, distance) => {
 		dispatch(loadMerchantList(offset, size, distance));
 	},
 	onShopClicked: (merchantId) => {
