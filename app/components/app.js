@@ -9,27 +9,13 @@ import MerchantPage from './MerchantPage';
 // navigationBar={<IconTabs tabs={['order', 'merchant', 'account']} onSelect={this.onTabSelected.bind(this)}/>}
 
 class App extends Component {
+  componentDidMount() {
+
+  }
   render() {
     return (
-      <Navigator ref={navigator => this._navigator = navigator}
-        initialRoute={this.props.mainStack[0]}
-        initialRouteStack={this.props.mainStack}
-        configureScene={() => Navigator.SceneConfigs.FloatFromRight}
-        renderScene={this.appRouter}/>
+      <ShopListPage navigator={navigator}/>
     );
-  }
-  appRouter(route, navigator) {
-    switch(route.type) {
-      case 'order': return <ShopListPage navigator={navigator}/>;
-      case 'merchant': return <ShopListPage navigator={navigator}/>;
-      case 'account': return <AccountPage/>;
-      case 'merchantDetail': return null;
-    }
-  }
-  onTabSelected(index) {
-    const route = this._navigator.getCurrentRoutes()[index];
-    this.props.selectTab(index);
-    this._navigator.jumpTo(route);
   }
 }
 

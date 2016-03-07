@@ -1,8 +1,8 @@
 import React, { TouchableHighlight } from 'react-native';
 
-let Clickable = (props) => (
-	<TouchableHighlight underlayColor='aliceblue' style={props.style} onPress={props.onPress}>
-		{props.children}
+let Clickable = ({children, ...props}) => (
+	<TouchableHighlight {...props} activeOpacity={0.8} underlayColor='aquamarine'>
+		{children}
 	</TouchableHighlight>
 );
 

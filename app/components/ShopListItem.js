@@ -1,28 +1,30 @@
-import React, { PropTypes, StyleSheet, View, Image, Text } from 'react-native';
+import React, { PropTypes, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import Clickable from './Clickable';
 
 let ShopListItem = ({id, name, address, category, description, location,
 		photos, popularity, postal_code, price_tier}) => (
-	<Clickable>
-		<View style={styles.container}>
-			<View style={styles.imageContainer}>
-				{photos&&<Image style={styles.bannerImage} source={{uri: photos[0].url}}/>}
-			</View>
-			<View style={styles.textBar}>
-				<View style={styles.merchantInfoContainer}>
-					<Text style={styles.nameText}>{name}</Text>
-					<View style={styles.merchantDetailContainer}>
-						<Text style={styles.detailText}>100m</Text>
-						<Text style={styles.middlePoint}>·</Text>
-						<Text style={styles.detailText}>{category}</Text>
-						<Text style={styles.middlePoint}>·</Text>
-						<Text style={styles.detailText}>{price_tier}</Text>
-					</View>
+	<View style={styles.container}>
+		<Clickable onPress={() => console.log(1)}>
+			<View style={styles.clickableContainer}>
+				<View>
+					{photos&&<Image style={styles.bannerImage} source={{uri: photos[0].url}}/>}
 				</View>
-				<Text>{false ? 'Watching' : 'Watch'}</Text>
+				<View style={styles.textBar}>
+					<View style={styles.merchantInfoContainer}>
+						<Text style={styles.nameText}>{name}</Text>
+						<View style={styles.merchantDetailContainer}>
+							<Text style={styles.detailText}>100m</Text>
+							<Text style={styles.middlePoint}>·</Text>
+							<Text style={styles.detailText}>{category}</Text>
+							<Text style={styles.middlePoint}>·</Text>
+							<Text style={styles.detailText}>{price_tier}</Text>
+						</View>
+					</View>
+					<Text>{false ? 'Watching' : 'Watch'}</Text>
+				</View>
 			</View>
-		</View>
-	</Clickable>
+		</Clickable>
+	</View>
 );
 
 ShopListItem.propTypes = {
@@ -45,11 +47,10 @@ ShopListItem.propTypes = {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: 'white',
-		marginTop: 10
+		paddingBottom: 10
 	},
-	imageContainer: {
-		
+	clickableContainer: {
+		backgroundColor: 'white'
 	},
 	bannerImage: {
 		height: 120

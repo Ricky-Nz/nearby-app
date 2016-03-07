@@ -19,7 +19,8 @@ class RefreshMoreList extends Component {
 		return (
 			<PullToRefreshViewAndroid style={styles.container} refreshing={loading}>
 				<ListView dataSource={this.state.dataSource}
-					onEndReached={() => hasMore&&onLoadListData()}
+					onEndReached={() => console.log(`end ${loading}`)}
+					onEndReachedThreshold={10}
 					renderFooter={() => <ListLoadingItem/>}
 					renderRow={renderRow}/>
 			</PullToRefreshViewAndroid>

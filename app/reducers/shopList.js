@@ -1,6 +1,6 @@
 import { LOAD_MERCHANT_LIST } from '../actions/actionTypes';
 
-export default function (shopList = {data: [], offset: 0, size: 10, distance: 1000, loading: false, error: null}, action) {
+export default function (shopList = {data: [], offset: 0, size: 5, distance: 1000, loading: false, error: null}, action) {
 	switch(action.type) {
 		case LOAD_MERCHANT_LIST:
 			if (action.loading) {
