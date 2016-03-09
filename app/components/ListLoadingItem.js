@@ -2,8 +2,8 @@ import React, { View, Text, PropTypes, StyleSheet, ProgressBarAndroid } from 're
 
 let ListLoadingItem = ({active, style}) => (
 	<View style={[styles.container, style]}>
-		{active&&<ProgressBarAndroid styleAttr='Small' Indeterminate/>}
-		<Text style={styles.text}>{active ? 'Loading...' : 'Load'}</Text>
+		<ProgressBarAndroid styleAttr='Small' indeterminate/>
+		<Text style={styles.text}>Loading...</Text>
 	</View>
 );
 
@@ -13,15 +13,16 @@ ListLoadingItem.propTypes = {
 
 const styles = StyleSheet.create({
 	container: {
-		height: 100,
+		height: 60,
 		flexDirection: 'row',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		backgroundColor: 'white'
 	},
 	text: {
-		fontSize: 14,
+		fontSize: 16,
 		color: 'darkgray',
-		padding: 5
+		marginLeft: 5
 	}
 });
 

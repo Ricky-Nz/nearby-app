@@ -5,7 +5,7 @@ export function refreshShops (size, distance) {
 	return (dispatch) => {
 		dispatch({
 			type: REFRESH_SHOPS,
-			refershing: true
+			refreshing: true
 		});
 
 		doFetch('shops', {

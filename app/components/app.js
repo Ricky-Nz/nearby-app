@@ -1,22 +1,42 @@
-import React, { Component, Navigator } from 'react-native';
-import TitleBar from './TitleBar';
-import IconTabs from './IconTabs';
-import OrderListPage from './OrderListPage';
+import React, { Component, NavigationExperimental } from 'react-native';
 import ShopListPage from './ShopListPage';
-import AccountPage from './AccountPage';
-import MerchantPage from './MerchantPage';
+import ShopPage from './ShopPage';
 
-// navigationBar={<IconTabs tabs={['order', 'merchant', 'account']} onSelect={this.onTabSelected.bind(this)}/>}
+const {
+  RootContainer: NavigationRootContainer,
+  Reducer: NavigationReducer,
+} = NavigationExperimental;
+const StackReducer = NavigationReducer.StackReducer;
+
+const NavigationBasicReducer = StackReducer({
+  initialStates: [{key: 'first_page'}],
+  matchAction: action => true,
+  actionStateMap: action => action,
+});
 
 class App extends Component {
-  componentDidMount() {
+	render() {
+		return (
+      <NavigationRootContainer
+        reducer={NavigationBasicReducer}
+        persistenceKey="NavigationBasicExampleState"
+        ref={navRootContainer => { this.navRootContainer = navRootContainer; }}
+        renderNavigation={this.renderNavigation.bind(this)}/>
+		);
+	}
+	renderNavigation(navState, onNavigate) {
+    if (!navState) return null;
 
-  }
-  render() {
-    return (
-      <ShopListPage navigator={navigator}/>
-    );
-  }
+    const currentPage = navState.children[navState.index];
+    switch(currentPage.key) {
+    	case 'first_page':
+    		return (<ShopListPage onNavigate={onNavigate}/>);
+    	case 'shop_detail':
+    		return (<ShopPage shop={currentPage.data} onNavigate={onNavigate}/>);
+    	default:
+    		return null;
+    }
+	}
 }
 
 export default App;

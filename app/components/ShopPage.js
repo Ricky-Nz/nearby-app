@@ -3,7 +3,7 @@ import GalleryBanner from './GalleryBanner';
 import PageBackButton from './PageBackButton';
 import ToggleTextButton from './ToggleTextButton';
 
-class MerchantView extends Component {
+class ShopPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {showBanner: false};
@@ -96,6 +96,10 @@ class MerchantView extends Component {
 	}
 }
 
+ShopPage.propTypes = {
+	shop: PropTypes.object.isRequired
+};
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -121,6 +125,6 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default MerchantView;
+export default ShopPage;
 
 

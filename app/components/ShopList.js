@@ -2,16 +2,23 @@ import React, { Component, PropTypes, View, ListView, ProgressBarAndroid } from 
 import RefreshMoreList from './RefreshMoreList';
 import ShopListItem from './ShopListItem';
 
-let ShopList = ({shopList, onLoadShops}) => (
-	<RefreshMoreList datas={shopList.data} loading={shopList.loading}
-		renderRow={shop => <ShopListItem {...shop}/>}
-		onLoadListData={refersh => onLoadShops(shopList.offset, shopList.size, shopList.distance)}/>
+let ShopList = ({shopList, onRefreshShops, onLoadMoreShops, onItemClicked}) => (
+	<RefreshMoreList
+		datas={shopList.data}
+		size={shopList.size}
+		offset={shopList.offset}
+		loading={shopList.loading}
+		refreshing={shopList.refreshing}
+		renderRow={shop => <ShopListItem {...shop} onPress={() => onItemClicked(shop)}/>}
+		onRefreshData={() => onRefreshShops(shopList.size, shopList.distance)}
+		onLoadMoreData={() => onLoadMoreShops(shopList.offset, shopList.size, shopList.distance)}/>
 );
 
 ShopList.propTypes = {
 	shopList: PropTypes.object.isRequired,
-	onLoadShops: PropTypes.func.isRequired,
-	onShopClicked: PropTypes.func.isRequired
+	onRefreshShops: PropTypes.func.isRequired,
+	onLoadMoreShops: PropTypes.func.isRequired,
+	onItemClicked: PropTypes.func.isRequired
 };
 
 export default ShopList;

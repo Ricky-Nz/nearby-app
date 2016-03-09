@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { loadShopList } from '../actions';
+import { loadMoreShops, refreshShops } from '../actions';
 import ShopList from '../components/ShopList';
 
 const shopListSelector = state => state.shopList;
@@ -11,11 +11,11 @@ const mapStateToProps = createSelector(
 );
 
 const mapDispatchToProps = dispatch => ({
-	onLoadShops: (offset, size, distance) => {
-		dispatch(loadShopList(offset, size, distance));
+	onRefreshShops: (size, distance) => {
+		dispatch(refreshShops(size, distance))
 	},
-	onShopClicked: (merchantId) => {
-		
+	onLoadMoreShops: (offset, size, distance) => {
+		dispatch(loadMoreShops(offset, size, distance));
 	}
 });
 

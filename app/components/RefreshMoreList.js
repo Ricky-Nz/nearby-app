@@ -7,7 +7,7 @@ class RefreshMoreList extends Component {
 		this.state = this.onListDataChanged(props.datas);
 	}
 	componentDidMount() {
-		this.props.onLoadListData(true);
+		this.props.onRefreshData();
 	}
 	componentWillReceiveProps(nextProps) {
 			if (this.props.datas !== nextProps.datas) {
@@ -15,13 +15,15 @@ class RefreshMoreList extends Component {
 			}
 	}
 	render() {
-		const {hasMore, refreshing, loading, onLoadListData, renderRow} = this.props;
+		const {refreshing, loading, renderRow, onLoadMoreData, onRefreshData} = this.props;
 		return (
-			<PullToRefreshViewAndroid style={styles.container} refreshing={loading}>
+			<PullToRefreshViewAndroid style={styles.container} refreshing={refreshing}
+				onRefresh={onRefreshData} colors={['#ff0000', '#00ff00', '#0000ff']}
+        progressBackgroundColor={'#ffff00'}>
 				<ListView dataSource={this.state.dataSource}
-					onEndReached={() => console.log(`end ${loading}`)}
-					onEndReachedThreshold={10}
-					renderFooter={() => <ListLoadingItem/>}
+					onEndReached={() => !loading&&onLoadMoreData()}
+					onEndReachedThreshold={50}
+					renderFooter={() => loading&&<ListLoadingItem/>}
 					renderRow={renderRow}/>
 			</PullToRefreshViewAndroid>
 		);
@@ -36,9 +38,9 @@ class RefreshMoreList extends Component {
 
 RefreshMoreList.propTypes = {
 	renderRow: PropTypes.func.isRequired,
-	onLoadListData: PropTypes.func.isRequired,
+	onLoadMoreData: PropTypes.func,
+	onRefreshData: PropTypes.func,
 	datas: PropTypes.arrayOf(PropTypes.object),
-	hasMore: PropTypes.bool,
 	refreshing: PropTypes.bool,
 	loading: PropTypes.bool
 };

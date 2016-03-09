@@ -1,17 +1,16 @@
-import React, { Component, StyleSheet, View } from 'react-native';
+import React, { StyleSheet, PropTypes, View } from 'react-native';
 import ShopListContainer from '../containers/ShopListContainer';
-import ToggleTextButton from './ToggleTextButton';
 
-class ShopListPage extends Component {
-	render() {
-		return (
-			<View style={styles.container}>
-				<ShopListContainer
-					onItemClicked={(data) => this.props.navigator.push({type: 'merchantDetail', data})} style={styles.container}/>
-			</View>
-		);
-	}
-}
+const ShopListPage = ({onNavigate}) => (
+	<View style={styles.container}>
+		<ShopListContainer
+			onItemClicked={(data) => onNavigate({key: 'shop_detail', data})}/>
+	</View>
+);
+
+ShopListPage.propTypes = {
+	onNavigate: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {

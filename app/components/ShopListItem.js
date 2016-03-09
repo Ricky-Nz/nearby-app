@@ -2,9 +2,9 @@ import React, { PropTypes, StyleSheet, View, Image, Text, TouchableOpacity } fro
 import Clickable from './Clickable';
 
 let ShopListItem = ({id, name, address, category, description, location,
-		photos, popularity, postal_code, price_tier}) => (
+		photos, popularity, postal_code, price_tier, ...props}) => (
 	<View style={styles.container}>
-		<Clickable onPress={() => console.log(1)}>
+		<Clickable {...props}>
 			<View style={styles.clickableContainer}>
 				<View>
 					{photos&&<Image style={styles.bannerImage} source={{uri: photos[0].url}}/>}
