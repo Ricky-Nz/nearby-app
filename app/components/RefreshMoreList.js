@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, StyleSheet, View, ListView, ScrollView, PullToRefreshViewAndroid } from 'react-native';
+import React, { Component, PropTypes, StyleSheet, View, ListView, ScrollView, RefreshControl } from 'react-native';
 import ListLoadingItem from './ListLoadingItem';
 
 class RefreshMoreList extends Component {
@@ -17,7 +17,7 @@ class RefreshMoreList extends Component {
 	render() {
 		const {refreshing, loading, renderRow, onLoadMoreData, onRefreshData} = this.props;
 		return (
-			<PullToRefreshViewAndroid style={styles.container} refreshing={refreshing}
+			<RefreshControl style={styles.container} refreshing={refreshing}
 				onRefresh={onRefreshData} colors={['#ff0000', '#00ff00', '#0000ff']}
         progressBackgroundColor={'#ffff00'}>
 				<ListView dataSource={this.state.dataSource}
@@ -25,7 +25,7 @@ class RefreshMoreList extends Component {
 					onEndReachedThreshold={50}
 					renderFooter={() => loading&&<ListLoadingItem/>}
 					renderRow={renderRow}/>
-			</PullToRefreshViewAndroid>
+			</RefreshControl>
 		);
 	}
 	onListDataChanged(datas = []) {

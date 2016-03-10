@@ -8,18 +8,30 @@ const {
 } = NavigationExperimental;
 const StackReducer = NavigationReducer.StackReducer;
 
-const NavigationBasicReducer = StackReducer({
-  initialStates: [{key: 'first_page'}],
-  matchAction: action => true,
-  actionStateMap: action => action,
+const NavigationBasicReducer = NavigationReducer.StackReducer({
+  getPushedReducerForAction: (action) => {
+    if (action.type === 'push') {
+      return (state) => state || {key: action.key};
+    }
+    return null;
+  },
+  getReducerForState: (initialState) => (state) => state || initialState,
+  initialState: {
+    key: 'BasicExampleStackKey',
+    index: 0,
+    children: [
+      {key: 'first_page'},
+    ],
+  },
 });
+
 
 class App extends Component {
 	render() {
 		return (
       <NavigationRootContainer
         reducer={NavigationBasicReducer}
-        persistenceKey="NavigationBasicExampleState"
+        persistenceKey='NavigationBasicExampleState'
         ref={navRootContainer => { this.navRootContainer = navRootContainer; }}
         renderNavigation={this.renderNavigation.bind(this)}/>
 		);
@@ -40,3 +52,4 @@ class App extends Component {
 }
 
 export default App;
+
