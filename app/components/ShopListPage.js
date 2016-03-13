@@ -1,15 +1,15 @@
-import React, { StyleSheet, PropTypes, View } from 'react-native';
+import React, { StyleSheet, PropTypes, View, StatusBar } from 'react-native';
 import ShopListContainer from '../containers/ShopListContainer';
 
-const ShopListPage = ({onNavigate}) => (
+const ShopListPage = ({onShopClicked}) => (
 	<View style={styles.container}>
-		<ShopListContainer
-			onItemClicked={(data) => onNavigate({key: 'shop_detail', data})}/>
+		<StatusBar translucent={true} backgroundColor='transparent'/>
+		<ShopListContainer onItemClicked={onShopClicked}/>
 	</View>
 );
 
 ShopListPage.propTypes = {
-	onNavigate: PropTypes.func.isRequired
+	onShopClicked: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

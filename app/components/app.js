@@ -1,55 +1,40 @@
-import React, { Component, NavigationExperimental } from 'react-native';
+import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
 import ShopListPage from './ShopListPage';
 import ShopPage from './ShopPage';
 
-const {
-  RootContainer: NavigationRootContainer,
-  Reducer: NavigationReducer,
-} = NavigationExperimental;
-const StackReducer = NavigationReducer.StackReducer;
-
-const NavigationBasicReducer = NavigationReducer.StackReducer({
-  getPushedReducerForAction: (action) => {
-    if (action.type === 'push') {
-      return (state) => state || {key: action.key};
-    }
-    return null;
-  },
-  getReducerForState: (initialState) => (state) => state || initialState,
-  initialState: {
-    key: 'BasicExampleStackKey',
-    index: 0,
-    children: [
-      {key: 'first_page'},
-    ],
-  },
-});
-
-
 class App extends Component {
+  componentDidMount() {
+    BackAndroid.addEventListener('hardwareBackPress', this.onBackPassed.bind(this));
+  }
+  componentWillUnmount() {
+    BackAndroid.removeEventListener('hardwareBackPress', this.onBackPassed);
+  }
+  onBackPassed() {
+    this.refs.navigator.pop();
+    return true;
+  }
 	render() {
 		return (
-      <NavigationRootContainer
-        reducer={NavigationBasicReducer}
-        persistenceKey='NavigationBasicExampleState'
-        ref={navRootContainer => { this.navRootContainer = navRootContainer; }}
-        renderNavigation={this.renderNavigation.bind(this)}/>
+      <Navigator ref='navigator' initialRoute={{name: 'home_page'}}
+        renderScene={this.renderScene.bind(this)}
+        style={styles.container}/>
 		);
 	}
-	renderNavigation(navState, onNavigate) {
-    if (!navState) return null;
-
-    const currentPage = navState.children[navState.index];
-    switch(currentPage.key) {
-    	case 'first_page':
-    		return (<ShopListPage onNavigate={onNavigate}/>);
-    	case 'shop_detail':
-    		return (<ShopPage shop={currentPage.data} onNavigate={onNavigate}/>);
-    	default:
-    		return null;
+  renderScene(route, navigator) {
+    switch(route.name) {
+      case 'home_page':
+        return <ShopListPage onShopClicked={(data) => navigator.push({name: 'shop_page', data})}/>;
+      case 'shop_page':
+        return <ShopPage shop={route.data} onBackPressed={() => navigator.pop()}/>;
     }
-	}
+  }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
 
 export default App;
 
