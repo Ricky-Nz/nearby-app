@@ -16,8 +16,6 @@ class App extends Component {
 	render() {
 		return (
       <View style={styles.container}>
-        <StatusBar translucent={true} backgroundColor='transparent'/>
-        <View style={styles.statusBar}/>
         <Navigator ref='navigator' style={styles.container} initialRoute={{name: 'home_page'}}
           renderScene={this.renderScene.bind(this)}/>
       </View>
@@ -36,10 +34,6 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  statusBar: {
-    height: 20,
-    backgroundColor: 'darkturquoise'
   }
 });
 
