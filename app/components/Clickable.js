@@ -1,8 +1,10 @@
-import React, { TouchableHighlight } from 'react-native';
+import React, { TouchableHighlight, View } from 'react-native';
 
 let Clickable = ({children, ...props}) => (
 	<TouchableHighlight {...props} activeOpacity={0.7} underlayColor='aquamarine'>
-		{children}
+		<View>
+			{children}
+		</View>
 	</TouchableHighlight>
 );
 

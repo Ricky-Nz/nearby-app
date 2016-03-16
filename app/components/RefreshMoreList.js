@@ -15,16 +15,16 @@ class RefreshMoreList extends Component {
 			}
 	}
 	render() {
-		const {refreshing, loading, renderRow, onLoadMoreData, onRefreshData} = this.props;
+		const {refreshing, loading, renderRow, onLoadMoreData, onRefreshData, ...otherProps} = this.props;
 		return (
 			<RefreshControl style={styles.container} refreshing={refreshing}
-				onRefresh={onRefreshData} colors={['#ff0000', '#00ff00', '#0000ff']}
-        progressBackgroundColor={'#ffff00'}>
+				onRefresh={onRefreshData} colors={['white', 'white', 'white']}
+        progressBackgroundColor={'aquamarine'}>
 				<ListView dataSource={this.state.dataSource}
 					onEndReached={() => !loading&&onLoadMoreData()}
 					onEndReachedThreshold={50}
 					renderFooter={() => loading&&<ListLoadingItem/>}
-					renderRow={renderRow}/>
+					renderRow={renderRow} {...otherProps}/>
 			</RefreshControl>
 		);
 	}

@@ -2,8 +2,8 @@ import React, { Component, PropTypes, View, ListView, ProgressBarAndroid } from 
 import RefreshMoreList from './RefreshMoreList';
 import ShopListItem from './ShopListItem';
 
-let ShopList = ({shopList, onRefreshShops, onLoadMoreShops, onItemClicked}) => (
-	<RefreshMoreList
+let ShopList = ({shopList, onRefreshShops, onLoadMoreShops, onItemClicked, ...otherProps}) => (
+	<RefreshMoreList {...otherProps}
 		datas={shopList.data}
 		size={shopList.size}
 		offset={shopList.offset}

@@ -1,6 +1,6 @@
-import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
-import ShopListPage from './ShopListPage';
+import React, { Component, StyleSheet, View, StatusBar, Navigator, BackAndroid } from 'react-native';
 import ShopPage from './ShopPage';
+import HomePageContainer from '../containers/HomePageContainer';
 
 class App extends Component {
   componentDidMount() {
@@ -15,15 +15,18 @@ class App extends Component {
   }
 	render() {
 		return (
-      <Navigator ref='navigator' initialRoute={{name: 'home_page'}}
-        renderScene={this.renderScene.bind(this)}
-        style={styles.container}/>
+      <View style={styles.container}>
+        <StatusBar translucent={true} backgroundColor='transparent'/>
+        <View style={styles.statusBar}/>
+        <Navigator ref='navigator' style={styles.container} initialRoute={{name: 'home_page'}}
+          renderScene={this.renderScene.bind(this)}/>
+      </View>
 		);
 	}
   renderScene(route, navigator) {
     switch(route.name) {
       case 'home_page':
-        return <ShopListPage onShopClicked={(data) => navigator.push({name: 'shop_page', data})}/>;
+        return <HomePageContainer navigator={navigator}/>;
       case 'shop_page':
         return <ShopPage shop={route.data} onBackPressed={() => navigator.pop()}/>;
     }
@@ -33,6 +36,10 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  statusBar: {
+    height: 20,
+    backgroundColor: 'darkturquoise'
   }
 });
 
