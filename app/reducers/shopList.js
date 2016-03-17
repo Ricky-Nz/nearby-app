@@ -1,4 +1,4 @@
-import { REFRESH_SHOPS, LOAD_MORE_SHOPS } from '../actions/actionTypes';
+import { SHOP_COLLECTION_REFRESH, SHOP_COLLECTION_LOAD } from '../actions';
 
 const configData = {
 	size: 5,
@@ -7,7 +7,7 @@ const configData = {
 
 export default function (shopList = {data: [], offset: 0, ...configData}, action) {
 	switch(action.type) {
-		case REFRESH_SHOPS:
+		case SHOP_COLLECTION_REFRESH:
 			if (action.refreshing) {
 				return {...shopList, refreshing: true, error: null};
 			} else if (action.error) {
@@ -15,7 +15,7 @@ export default function (shopList = {data: [], offset: 0, ...configData}, action
 			} else {
 				return {data: action.payload, offset: action.payload.length, ...configData};
 			}
-		case LOAD_MORE_SHOPS:
+		case SHOP_COLLECTION_LOAD:
 			if (action.loading) {
 				return {...shopList, loading: true, error: null};
 			} else if (action.error) {

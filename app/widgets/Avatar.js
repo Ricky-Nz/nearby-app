@@ -10,24 +10,24 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-	size: 'normal'
+	size: 'small'
 };
 
 const styles = StyleSheet.create({
 	small: {
-		width: 30,
-		height: 30,
-		borderRadius: 15
-	},
-	normal: {
 		width: 40,
 		height: 40,
 		borderRadius: 20
 	},
-	large: {
+	normal: {
 		width: 60,
 		height: 60,
 		borderRadius: 30
+	},
+	large: {
+		width: 100,
+		height: 100,
+		borderRadius: 50
 	}
 });
 

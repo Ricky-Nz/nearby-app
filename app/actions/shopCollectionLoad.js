@@ -1,10 +1,10 @@
-import doFetch from './doFetch';
+import runAction from './runAction';
 
 export const SHOP_COLLECTION_LOAD = 'SHOP_COLLECTION_LOAD';
 
 export function shopCollectionLoad({token, longitude, latitude, distance, offset, size}) {
 	return (dispatch) => {
-		doFetch({
+		runAction({
 			urlPath: 'shops',
 			params: {
 				offset,

@@ -1,10 +1,10 @@
-import doFetch from './doFetch';
+import runAction from './runAction';
 
 export const ORDER_COLLECTION_REFRESH = 'ORDER_COLLECTION_REFRESH';
 
 export function orderCollectionRefresh({token, size}) {
 	return (dispatch) => {
-		doFetch({
+		runAction({
 			urlPath: 'users/orders',
 			params: {
 				offset: 0,

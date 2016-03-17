@@ -1,10 +1,10 @@
-import doFetch from './doFetch';
+import runAction from './runAction';
 
 export const SHOP_DELIVERERS_LOAD = 'SHOP_DELIVERERS_LOAD';
 
 export function shopDeliverersLoad({token, shopId, offset, size}) {
 	return (dispatch) => {
-		doFetch({
+		runAction({
 			urlPath: `shops/${shopId}/deliverers`,
 			params: {
 				offset,
