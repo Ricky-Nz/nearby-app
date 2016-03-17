@@ -1,9 +1,7 @@
-import React, { Component, StyleSheet, View, StatusBar, Navigator, BackAndroid } from 'react-native';
-// import ShopPage from './ShopPage';
-// import HomePageContainer from '../containers/HomePageContainer';
+import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
 import WidgetsDemo from '../widgets/WidgetsDemo';
 
-class App extends Component {
+class AppNavigator extends Component {
   componentDidMount() {
     BackAndroid.addEventListener('hardwareBackPress', this.onBackPassed.bind(this));
   }
@@ -24,10 +22,6 @@ class App extends Component {
 	}
   renderScene(route, navigator) {
     switch(route.name) {
-      // case 'home_page':
-      //   return <HomePageContainer navigator={navigator}/>;
-      // case 'shop_page':
-      //   return <ShopPage shop={route.data} onBackPressed={() => navigator.pop()}/>;
       default:
         return <WidgetsDemo/>
     }
@@ -40,5 +34,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default AppNavigator;
 

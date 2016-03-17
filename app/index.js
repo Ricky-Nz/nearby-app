@@ -1,7 +1,7 @@
 import React, { Component } from 'react-native';
 import { Provider } from 'react-redux';
-import AppContainer from './containers/AppContainer';
 import createStore from './store';
+import AppNavigator from './components/AppNavigator';
 
 const store = createStore();
 
@@ -9,7 +9,7 @@ class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer/>
+        <AppNavigator/>
       </Provider>
     );
   }

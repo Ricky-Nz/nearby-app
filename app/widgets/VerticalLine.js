@@ -1,14 +1,14 @@
 import React, { StyleSheet, View } from 'react-native';
 
-const DelimiterLine = (props) => (
-	<View style={styles.delimiter}/>
+const VerticalLine = ({style}) => (
+	<View style={[styles.delimiter, style]}/>
 );
 
 const styles = StyleSheet.create({
 	delimiter: {
-		height: 1,
+		width: 1,
 		backgroundColor: 'lightgrey'
 	}
 });
 
-export default DelimiterLine;
+export default VerticalLine;

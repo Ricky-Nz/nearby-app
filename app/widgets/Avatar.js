@@ -1,8 +1,14 @@
 import React, { PropTypes, StyleSheet, Image } from 'react-native';
+import RoundClickable from './RoundClickable';
 
-let Avatar = ({size, src, style}) => (
-	<Image style={[styles[size], style]} source={{uri: src}}/>
-);
+let Avatar = ({size, src, style, onPress}) => onPress ?
+	(
+		<RoundClickable onPress={onPress} size={size} style={style}>
+			<Image style={styles[size]} source={{uri: src}}/>
+		</RoundClickable>
+	) : (
+		<Image style={[styles[size], style]} source={{uri: src}}/>
+	);
 
 Avatar.propTypes = {
 	src: PropTypes.string.isRequired,

@@ -1,5 +1,4 @@
 import React, { PropTypes, StyleSheet, View } from 'react-native';
-import Clickable from './Clickable';
 import Avatar from './Avatar';
 import IconButton from './IconButton';
 
@@ -8,9 +7,7 @@ let AvatarSelectBar = ({avatars, onSelect}) => (
 		<View style={styles.avatarContainer}>
 			{
 				avatars.map((avatar, index) => (
-					<Clickable key={index} onPress={() => onSelect(avatar.id)} style={styles.avatar}>
-						<Avatar src={avatar.src} size='small'/>
-					</Clickable>
+					<Avatar style={styles.avatar} src={avatar.src} size='small' onPress={() => onSelect(avatar.id)}/>
 				))
 			}
 		</View>
@@ -38,7 +35,7 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	avatar: {
-		marginRight: 10
+		marginRight: 6
 	}
 });
 

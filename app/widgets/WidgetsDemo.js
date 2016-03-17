@@ -13,13 +13,18 @@ import SlideTabViewPager from './SlideTabViewPager';
 import AvatarSelectBar from './AvatarSelectBar';
 import StarMarkingBar from './StarMarkingBar';
 import Button from './Button';
+import IconMenu from './IconMenu';
 
 const IMAGE_URL = 'http://facebook.github.io/origami/public/images/birds.jpg';
 
 const TestPage = (props) => (
 	<ScrollView style={styles.container}>
 		<StatusBar/>
-		<ActionBar title='Test Title' back='close' menus={['search', 'search']}/>
+		<ActionBar title='Test Title' menus={[
+			{ key: '1', src: 'close', active: true, position: 'left' },
+			{ key: '2', src: 'home', active: true, position: 'right' },
+			{ key: '3', src: 'search', active: true, position: 'right' }
+		]}/>
 		<AvatarSelectBar avatars={[
 			{src: IMAGE_URL, id: '1'}, {src: IMAGE_URL, id: '2'}, {src: IMAGE_URL, id: '3'}]}
 			onSelect={(id) => console.log(id)}/>
@@ -29,6 +34,8 @@ const TestPage = (props) => (
 		<View style={styles.buttonContainer}>
 			<Button onPress={() => console.log('CLICK')}>Button</Button>
 		</View>
+		<IconMenu src='home' active/>
+		<IconMenu src='home'/>
 		<StarMarkingBar mark={10}/>
 		<StarMarkingBar mark={9}/>
 		<StarMarkingBar mark={8}/>
