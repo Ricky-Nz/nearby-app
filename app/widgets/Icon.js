@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const sizes = {
+	tiny: 15,
 	small: 30,
 	normal: 40,
 	large: 50

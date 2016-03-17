@@ -1,25 +1,45 @@
-import React, { StyleSheet, View, Text } from 'react-native';
+import React, { StyleSheet, ScrollView, View, Text } from 'react-native';
 import StatusBar from './StatusBar';
 import ActionBar from './ActionBar';
 import IconButton from './IconButton';
 import Icon from './Icon';
 import Avatar from './Avatar';
+import Star from './Star';
 import TitleText from './TitleText';
 import MainText from './MainText';
 import SubText from './SubText';
 import SlideTabBar from './SlideTabBar';
 import SlideTabViewPager from './SlideTabViewPager';
 import AvatarSelectBar from './AvatarSelectBar';
+import StarMarkingBar from './StarMarkingBar';
+import Button from './Button';
 
 const IMAGE_URL = 'http://facebook.github.io/origami/public/images/birds.jpg';
 
 const TestPage = (props) => (
-	<View style={styles.container}>
+	<ScrollView style={styles.container}>
 		<StatusBar/>
 		<ActionBar title='Test Title' back='close' menus={['search', 'search']}/>
 		<AvatarSelectBar avatars={[
 			{src: IMAGE_URL, id: '1'}, {src: IMAGE_URL, id: '2'}, {src: IMAGE_URL, id: '3'}]}
 			onSelect={(id) => console.log(id)}/>
+		<Star fill='full'/>
+		<Star fill='half'/>
+		<Star/>
+		<View style={styles.buttonContainer}>
+			<Button onPress={() => console.log('CLICK')}>Button</Button>
+		</View>
+		<StarMarkingBar mark={10}/>
+		<StarMarkingBar mark={9}/>
+		<StarMarkingBar mark={8}/>
+		<StarMarkingBar mark={7}/>
+		<StarMarkingBar mark={6}/>
+		<StarMarkingBar mark={5}/>
+		<StarMarkingBar mark={4}/>
+		<StarMarkingBar mark={3}/>
+		<StarMarkingBar mark={2}/>
+		<StarMarkingBar mark={1}/>
+		<StarMarkingBar mark={0}/>
 		<Icon src='search'/>
 		<Icon src='search' size='normal'/>
 		<Icon src='search' size='large'/>
@@ -35,13 +55,16 @@ const TestPage = (props) => (
 		<SubText>This is just an example</SubText>
 		<SlideTabViewPager tabs={['home', 'home', 'home']}
 			onBindPager={(position) => <Text>{position}</Text>}/>
-	</View>
+	</ScrollView>
 );
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: 'antiquewhite'
+	},
+	buttonContainer: {
+		flexDirection: 'row'
 	}
 });
 

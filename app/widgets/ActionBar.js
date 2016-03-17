@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
 		padding: 10,
 		flexDirection: 'row',
 		alignItems: 'center',
-		backgroundColor: 'darkturquoise'
+		backgroundColor: 'darkturquoise',
+		elevation: 4
 	},
 	title: {
 		color: 'white',
