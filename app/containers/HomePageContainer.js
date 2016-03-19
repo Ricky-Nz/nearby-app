@@ -1,20 +1,22 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import { navigate } from '../actions';
 import HomePage from '../components/HomePage';
 
-const appStateSelector = state => null;
+const appStateSelector = state => state.navigator;
 
 const mapStateToProps = createSelector(
 	appStateSelector,
-	() => ({
-		pages: [
-			{icon: 'local-shipping', title: 'Order List'},
-			{icon: 'store-mall-directory', title: 'Shop List'},
-			{icon: 'person', title: 'My Account'}
-		]
+	(navigator) => ({
+		select: navigator.select
 	})
 );
 
+const mapActionToProps = (dispatch) => ({
+	navigate: (index) => dispatch(navigate(index))
+});
+
 export default connect(
-	mapStateToProps
+	mapStateToProps,
+	mapActionToProps
 )(HomePage);

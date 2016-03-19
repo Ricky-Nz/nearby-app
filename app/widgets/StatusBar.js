@@ -1,4 +1,5 @@
 import React, { StyleSheet, PropTypes, View, StatusBar } from 'react-native';
+import { THEME_COLOR } from './theme';
 
 let StatusBarWrapper = ({backgroundColor}) => (
 	<View style={styles.container}>
@@ -11,7 +12,7 @@ StatusBarWrapper.propTypes = {
 };
 
 StatusBarWrapper.defaultProps = {
-	backgroundColor: 'darkturquoise'
+	backgroundColor: THEME_COLOR
 };
 
 const styles = StyleSheet.create({

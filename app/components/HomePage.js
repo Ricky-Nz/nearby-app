@@ -1,50 +1,28 @@
-import React, { Component, PropTypes, StyleSheet, View, StatusBar } from 'react-native';
-import ActionBar from './ActionBar';
-import SlideViewPager from './SlideViewPager';
-import ShopListContainer from '../containers/ShopListContainer';
+import React, { StyleSheet, View } from 'react-native';
+import { Page, ActionBar, IconSelectBar, IconButton } from '../widgets';
+import SettingFragment from './SettingFragment';
 
-class HomePage extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {offset: 0};
+let HomePage = ({select, navigate}) => {
+	let fragment;
+	switch(select) {
+		case 0: fragment = <SettingFragment/>; break;
+		case 1:
+		case 2:
 	}
-	render() {
-		return (
-			<View style={styles.container}>
-				<StatusBar translucent={true} backgroundColor='transparent'/>
-				<View style={styles.statusBar}/>
-				<ActionBar title={this.state&&this.state.title}/>
-				<SlideViewPager pages={this.props.pages} onSelectPage={this.onSelectPage.bind(this)}
-					offset={this.state.offset}/>
-			</View>
-		);
-	}
-	onSelectPage(position, view, title) {
-		this.setState({title});
 
-		if (!view) {
-			switch(position) {
-				case 1: return <ShopListContainer onItemClicked={data =>
-					this.props.navigator.push({name: 'shop_page', data})}/>;
-				default:
-					return null;
-			}
-		}
-	}
-}
-
-HomePage.propTypes = {
-	navigator: PropTypes.object.isRequired
+	return (
+		<Page>
+			<ActionBar leftNode={
+				<IconSelectBar icons={['assignment', 'shopping-basket', 'account-circle']}
+					select={select} onSelect={(index) => navigate(index)}/>
+			} rightNode={<IconButton src='power-settings-new'/>}/>
+			{fragment}
+		</Page>
+	);
 };
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	},
-  statusBar: {
-    height: 20,
-    backgroundColor: 'darkturquoise'
-  }
+
 });
 
 export default HomePage;

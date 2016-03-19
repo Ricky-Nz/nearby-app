@@ -7,7 +7,7 @@ const SubText = ({style, children}) => (
 const styles = StyleSheet.create({
 	text: {
 		color: 'darkgray',
-		fontSize: 16
+		fontSize: 14
 	}
 });
 

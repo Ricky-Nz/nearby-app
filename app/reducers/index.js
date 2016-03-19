@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import appState from './appState';
+import navigator from './navigator';
 import orderList from './orderList';
 import order from './order';
 import shopList from './shopList';
 import merchant from './merchant';
 
 const rootReducer = combineReducers({
-	appState,
+	navigator,
 	orderList,
 	order,
 	shopList,

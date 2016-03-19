@@ -1,4 +1,5 @@
 import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
+import { HomePageContainer } from '../containers';
 import WidgetsDemo from '../widgets/WidgetsDemo';
 
 class AppNavigator extends Component {
@@ -14,14 +15,14 @@ class AppNavigator extends Component {
   }
 	render() {
 		return (
-      <View style={styles.container}>
-        <Navigator ref='navigator' style={styles.container} initialRoute={{name: 'test'}}
-          renderScene={this.renderScene.bind(this)}/>
-      </View>
+      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'home'}}
+        renderScene={this.renderScene.bind(this)}/>
 		);
 	}
   renderScene(route, navigator) {
     switch(route.name) {
+      case 'home':
+        return <HomePageContainer/>
       default:
         return <WidgetsDemo/>
     }

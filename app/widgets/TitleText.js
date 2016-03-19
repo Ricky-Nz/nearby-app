@@ -6,7 +6,7 @@ const TitleText = ({style, children}) => (
 
 const styles = StyleSheet.create({
 	text: {
-		color: 'black',
+		color: 'white',
 		fontSize: 22
 	}
 });
