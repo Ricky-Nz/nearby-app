@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, View, ListView, ProgressBarAndroid } from 'react-native';
-import RefreshMoreList from './RefreshMoreList';
+import { RefreshMoreList } from '../widgets';
 import ShopListItem from './ShopListItem';
 
 let ShopList = ({shopList, onRefreshShops, onLoadMoreShops, onItemClicked, ...otherProps}) => (

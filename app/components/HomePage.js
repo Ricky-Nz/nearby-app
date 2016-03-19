@@ -1,13 +1,15 @@
 import React, { StyleSheet, View } from 'react-native';
 import { Page, ActionBar, IconSelectBar, IconButton } from '../widgets';
+import OrdersFragment from './OrdersFragment';
+import ShopsFragment from './ShopsFragment';
 import SettingFragment from './SettingFragment';
 
 let HomePage = ({select, navigate}) => {
 	let fragment;
 	switch(select) {
-		case 0: fragment = <SettingFragment/>; break;
-		case 1:
-		case 2:
+		case 0: fragment = <OrdersFragment/>; break;
+		case 1: fragment = <ShopsFragment/>; break;
+		case 2: fragment = <SettingFragment/>; break;
 	}
 
 	return (

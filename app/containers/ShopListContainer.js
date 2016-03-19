@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { loadMoreShops, refreshShops } from '../actions';
+import { shopCollectionLoad, shopCollectionRefresh, TOKEN } from '../actions';
 import ShopList from '../components/ShopList';
 
 const shopListSelector = state => state.shopList;
@@ -12,10 +12,23 @@ const mapStateToProps = createSelector(
 
 const mapDispatchToProps = dispatch => ({
 	onRefreshShops: (size, distance) => {
-		dispatch(refreshShops(size, distance))
+		dispatch(shopCollectionRefresh({
+			token: TOKEN,
+			longitude: '103.868601',
+			latitude: '1.3202973',
+			size,
+			distance
+		}))
 	},
 	onLoadMoreShops: (offset, size, distance) => {
-		dispatch(loadMoreShops(offset, size, distance));
+		dispatch(shopCollectionLoad({
+			token: TOKEN,
+			longitude: '103.868601',
+			latitude: '1.3202973',
+			size,
+			distance,
+			offset
+		}));
 	}
 });
 

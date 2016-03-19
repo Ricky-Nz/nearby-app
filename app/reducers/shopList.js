@@ -8,21 +8,21 @@ const configData = {
 export default function (shopList = {data: [], offset: 0, ...configData}, action) {
 	switch(action.type) {
 		case SHOP_COLLECTION_REFRESH:
-			if (action.refreshing) {
+			if (action.running) {
 				return {...shopList, refreshing: true, error: null};
 			} else if (action.error) {
 				return {...shopList, refreshing: false, error: action.error};
 			} else {
-				return {data: action.payload, offset: action.payload.length, ...configData};
+				return {data: action.data.shops, offset: action.data.shops.length, ...configData};
 			}
 		case SHOP_COLLECTION_LOAD:
-			if (action.loading) {
+			if (action.running) {
 				return {...shopList, loading: true, error: null};
 			} else if (action.error) {
 				return {...shopList, loading: false, error: action.error};
 			} else {
 				return {...shopList, loading: false, error: null,
-					data: [...shopList.data, ...action.payload], offset: shopList.offset + action.payload.length}
+					data: [...shopList.data, ...action.data.shops], offset: shopList.offset + action.data.shops.length}
 			}
 		default:
 			return shopList;

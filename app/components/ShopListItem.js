@@ -1,5 +1,5 @@
 import React, { PropTypes, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-import Clickable from './Clickable';
+import { Clickable } from '../widgets';
 
 let ShopListItem = ({id, name, address, category, description, location,
 		photos, popularity, postal_code, price_tier, ...props}) => (

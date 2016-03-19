@@ -39,7 +39,7 @@ class SlideTabViewPager extends Component {
 		}
 	}
 	render() {
-		const { defaultPosition, tabs } = this.props;
+		const { defaultPosition, tabs, mode } = this.props;
 		const slidePages = tabs.map((tab, index) => (
 			<View key={index} style={styles.container}>
 				{this.state[index]}
@@ -48,7 +48,7 @@ class SlideTabViewPager extends Component {
 
 		return (
 			<View style={styles.container}>
-				<SlideTabBar tabs={tabs} {...this.state} onSelect={this.onSelectTab.bind(this)}/>
+				<SlideTabBar mode={mode} tabs={tabs} {...this.state} onSelect={this.onSelectTab.bind(this)}/>
         <ViewPagerAndroid ref='viewPager' style={styles.container} initialPage={defaultPosition}
           onPageScroll={this.onPageScroll.bind(this)} onPageSelected={this.onPageSelected.bind(this)}
           onPageScrollStateChanged={this.onPageScrollStateChanged.bind(this)}>
