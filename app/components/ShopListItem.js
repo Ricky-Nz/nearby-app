@@ -1,30 +1,20 @@
-import React, { PropTypes, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-import { Clickable } from '../widgets';
+import React, { PropTypes, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Clickable, Card, SimpleListItem, Image, SubText, MainText } from '../widgets';
+import ShopQuickInfoBar from './ShopQuickInfoBar';
 
 let ShopListItem = ({id, name, address, category, description, location,
 		photos, popularity, postal_code, price_tier, ...props}) => (
-	<View style={styles.container}>
-		<Clickable {...props}>
-			<View style={styles.clickableContainer}>
-				<View>
-					{photos&&<Image style={styles.bannerImage} source={{uri: photos[0].url}}/>}
-				</View>
-				<View style={styles.textBar}>
-					<View style={styles.merchantInfoContainer}>
-						<Text style={styles.nameText}>{name}</Text>
-						<View style={styles.merchantDetailContainer}>
-							<Text style={styles.detailText}>100m</Text>
-							<Text style={styles.middlePoint}>·</Text>
-							<Text style={styles.detailText}>{category}</Text>
-							<Text style={styles.middlePoint}>·</Text>
-							<Text style={styles.detailText}>{price_tier}</Text>
-						</View>
+		<View style={styles.container}>
+			<Card elevation={1}>
+				<Clickable {...props}>
+					<View>
+						{photos&&<Image style={styles.bannerImage} src={photos[0].url}/>}
+						<SimpleListItem title={name} description={<ShopQuickInfoBar distance={'100m'} category={category} price_tier={price_tier}/>}
+							rightNode={<SubText>{false ? 'Watching' : 'Watch'}</SubText>}/>
 					</View>
-					<Text>{false ? 'Watching' : 'Watch'}</Text>
-				</View>
-			</View>
-		</Clickable>
-	</View>
+				</Clickable>
+			</Card>
+		</View>
 );
 
 ShopListItem.propTypes = {
@@ -49,37 +39,9 @@ const styles = StyleSheet.create({
 	container: {
 		paddingBottom: 10
 	},
-	clickableContainer: {
-		backgroundColor: 'white'
-	},
 	bannerImage: {
 		height: 120
-	},
-	textBar: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		padding: 10
-	},
-	merchantInfoContainer: {
-		flex: 1
-	},
-	merchantDetailContainer: {
-		flexDirection: 'row',
-		alignItems: 'center'
-	},
-	middlePoint: {
-		color: 'lightseagreen',
-		marginHorizontal: 5,
-		fontSize: 22
-	},
-	nameText: {
-		fontSize: 14,
-		color: 'black'
-	},
-	detailText: {
-		fontSize: 14,
-		color: 'darkgrey'
-	},
+	}
 });
 
 export default ShopListItem;

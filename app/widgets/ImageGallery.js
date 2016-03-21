@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, StyleSheet, View, Image, Text, ViewPagerAndroid } from 'react-native';
+import React, { Component, PropTypes, StyleSheet, View, Text, ViewPagerAndroid } from 'react-native';
+import Image from './Image';
 
 class ImageGallery extends Component {
 	constructor(props) {
@@ -6,15 +7,15 @@ class ImageGallery extends Component {
 		this.state = { position: props.defaultPosition };
 	}
 	render() {
-		const { style, images, defaultPosition } = this.props;
+		const { style, images, height, defaultPosition } = this.props;
 		const imageViews = images.map((image, index) => (
 			<View key={index}>
-				<Image source={{uri: image}}/>
+				<Image src={image} height={height}/>
 			</View>
 		));
 
 		return (
-			<View style={[styles.container, style]}>
+			<View style={[styles.container, style, {height}]}>
 				<ViewPagerAndroid style={styles.gallery} initialPage={defaultPosition}
 					onPageSelected={this.onSelectedPage.bind(this)}>
 					{imageViews}
@@ -30,17 +31,18 @@ class ImageGallery extends Component {
 
 ImageGallery.propTypes = {
 	images: PropTypes.arrayOf(PropTypes.string).isRequired,
-	defaultPosition: PropTypes.number
+	defaultPosition: PropTypes.number,
+	height: PropTypes.number
 };
 
 ImageGallery.defaultProps = {
-	defaultPosition: 0
+	defaultPosition: 0,
+	height: 200
 };
 
 const styles = StyleSheet.create({
 	container: {
-		position: 'relative',
-		height: 220
+		position: 'relative'
 	},
 	gallery: {
 		position: 'absolute',

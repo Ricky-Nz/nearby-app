@@ -4,7 +4,14 @@ import { SlideTabViewPager } from '../widgets';
 let OrdersFragment = (props) => (
 	<View style={styles.container}>
 		<SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
-			onBindPager={(index) => <Text>{index}</Text>}/>
+			onBindPager={(index) => {
+				if (index === 0) {
+
+				} else {
+					
+				}
+				return <Text>{index}</Text>;
+			}}/>
 	</View>
 );
 

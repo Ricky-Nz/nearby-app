@@ -7,7 +7,9 @@ class RefreshMoreList extends Component {
 		this.state = this.onListDataChanged(props.datas);
 	}
 	componentDidMount() {
-		this.props.onRefreshData();
+		if (this.props.datas.length === 0) {
+			this.props.onRefreshData();
+		}
 	}
 	componentWillReceiveProps(nextProps) {
 			if (this.props.datas !== nextProps.datas) {
@@ -37,10 +39,10 @@ class RefreshMoreList extends Component {
 }
 
 RefreshMoreList.propTypes = {
+	datas: PropTypes.arrayOf(PropTypes.object).isRequired,
 	renderRow: PropTypes.func.isRequired,
 	onLoadMoreData: PropTypes.func,
 	onRefreshData: PropTypes.func,
-	datas: PropTypes.arrayOf(PropTypes.object),
 	refreshing: PropTypes.bool,
 	loading: PropTypes.bool
 };

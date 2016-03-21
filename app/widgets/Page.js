@@ -1,9 +1,9 @@
 import React, { StyleSheet, View } from 'react-native';
 import StatusBar from './StatusBar';
 
-const Page = ({style, children}) => (
+const Page = ({style, translucent, children}) => (
 	<View style={[styles.container, style]}>
-		<StatusBar/>
+		<StatusBar translucent={translucent}/>
 		{children}
 	</View>
 );

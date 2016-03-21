@@ -5,7 +5,7 @@ import Card from './Card';
 import { THEME_COLOR, BAR_HEIGHT, PADDING, HALF_PADDING } from './theme';
 
 let ActionBar = ({title, leftNode, rightNode, style}) => (
-	<Card style={[styles.container, style]}>
+	<Card elevation={4} style={[styles.container, style]} backgroundColor={THEME_COLOR}>
 		{leftNode}
 		<TitleText style={styles.title}>{title}</TitleText>
 		{rightNode}
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		backgroundColor: THEME_COLOR,
 		height: BAR_HEIGHT,
 		padding: PADDING,
 	},

@@ -1,32 +1,25 @@
-import React, { Component, PropTypes, ListView } from 'react-native';
+import React, { PropTypes } from 'react-native';
+import { RefreshMoreList } from '../widgets';
 import OrderListItem from './OrderListItem';
 
-class OrderList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = this.onOrderChanges(props.orders);
-	}
-	componentWillReceiveProps(nextProps) {
-			if (this.props.orders !== nextProps.orders) {
-				this.setState(this.onOrderChanges(nextProps.orders));
-			}
-	}
-	onOrderChanges(newOrders) {
-		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-		return {
-			dataSource: ds.cloneWithRows(newOrders)
-		};
-	}
-	render() {
-		return (
-			<ListView dataSource={this.state.dataSource}
-				renderRow={(data) => <OrderListItem {...data}/>}/>
-		);
-	}
-}
+let ShopList = ({shopList, onRefreshShops, onLoadMoreShops, onItemClicked, ...otherProps}) => (
+	<RefreshMoreList {...otherProps}
+		datas={shopList.data}
+		size={shopList.size}
+		offset={shopList.offset}
+		loading={shopList.loading}
+		refreshing={shopList.refreshing}
+		renderRow={shop => <OrderListItem {...shop} onPress={() => onItemClicked(shop)}/>}
+		onRefreshData={() => onRefreshShops(shopList.size, shopList.distance)}
+		onLoadMoreData={() => onLoadMoreShops(shopList.offset, shopList.size, shopList.distance)}/>
+);
 
-OrderList.propTypes = {
-	orders: PropTypes.arrayOf(OrderListItem.propTypes).isRequired
+ShopList.propTypes = {
+	shopList: PropTypes.object.isRequired,
+	onRefreshShops: PropTypes.func.isRequired,
+	onLoadMoreShops: PropTypes.func.isRequired,
+	onItemClicked: PropTypes.func.isRequired
 };
 
-export default OrderList;
+export default ShopList;
+

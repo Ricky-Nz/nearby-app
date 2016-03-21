@@ -5,30 +5,37 @@ import SubText from './SubText';
 let SimpleListItem = ({title, description, rightNode}) => (
 	<View style={styles.container}>
 		<View style={styles.textContainer}>
-			<MainText style={styles.title}>{title}</MainText>
-			{description&&<SubText>{description}</SubText>}
+			{typeof title === 'object' ? title : <MainText style={styles.title}>{title}</MainText>}
+			{typeof description === 'object' ? description : <SubText>{description}</SubText>}
 		</View>
 		{rightNode}
 	</View>
 );
 
 SimpleListItem.propTypes = {
-	title: PropTypes.string.isRequired,
-	description: PropTypes.string,
+	title: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.string
+	]).isRequired,
+	description: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.string
+	]).isRequired,
 	rightNode: PropTypes.element
 };
 
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
-		padding: 20
+		alignItems: 'center',
+		padding: 10
 	},
 	textContainer: {
 		flex: 1,
-		paddingRight: 20
+		paddingRight: 10
 	},
 	title: {
-		marginBottom: 10
+		marginBottom: 4
 	}
 })
 

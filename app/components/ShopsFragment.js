@@ -1,16 +1,11 @@
-import React, { PropTypes, StyleSheet, View, Text } from 'react-native';
+import React, { PropTypes } from 'react-native';
 import { ShopListContainer } from '../containers';
+import { Fragment } from '../widgets';
 
-let ShopsFragment = (props) => (
-	<View style={styles.container}>
-		<ShopListContainer/>
-	</View>
+let ShopsFragment = ({loading, ...props}) => (
+	<Fragment loading={loading}>
+		<ShopListContainer {...props}/>
+	</Fragment>
 );
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	}
-});
 
 export default ShopsFragment;

@@ -1,15 +1,19 @@
-import React, { View, StyleSheet } from 'react-native';
+import React, { View, StyleSheet, PropTypes } from 'react-native';
 
-const Card = ({children, style, ...props}) => (
-	<View style={[styles.container, style]} {...props}>
+let Card = ({children, style, elevation, backgroundColor, ...props}) => (
+	<View style={[style, {elevation, backgroundColor}]} {...props}>
 		{children}
 	</View>
 );
 
-const styles = StyleSheet.create({
-	container: {
-		elevation: 4
-	}
-});
+Card.propTypes = {
+	backgroundColor: PropTypes.string,
+	elevation: PropTypes.number
+};
+
+Card.defaultProps = {
+	backgroundColor: 'white',
+	elevation: 1
+}
 
 export default Card;

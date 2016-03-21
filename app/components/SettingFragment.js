@@ -5,7 +5,7 @@ import { SimpleListItem } from '../widgets';
 let SettingFragment = () => (
 	<View style={styles.container}>
 		<AccountCardContainer/>
-		<ScrollView>
+		<ScrollView style={styles.settingContainer}>
 			<SimpleListItem title='Notifications' description='Enable notification to get informed when someone is delivering to the shops you watched'/>
 			<SimpleListItem title='Location' description='Enable location to discover shops nearby wherever you go'/>
 			<SimpleListItem title='Feedback'/>
@@ -18,6 +18,9 @@ let SettingFragment = () => (
 const styles = StyleSheet.create({
 	container: {
 		flex: 1
+	},
+	settingContainer: {
+		backgroundColor: 'white'
 	}
 });
 
