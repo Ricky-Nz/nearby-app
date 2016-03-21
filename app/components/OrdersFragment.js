@@ -1,24 +1,25 @@
-import React, { PropTypes, StyleSheet, View, Text } from 'react-native';
-import { SlideTabViewPager } from '../widgets';
+import React, { PropTypes, View, Text } from 'react-native';
+import { SlideTabViewPager, Fragment } from '../widgets';
+import OrderListItem from './OrderListItem';
+import { ORDERS, DELIVERS } from '../actions';
 
-let OrdersFragment = (props) => (
-	<View style={styles.container}>
+let OrdersFragment = ({loading, ...props}) => (
+	<Fragment loading={loading}>
 		<SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
 			onBindPager={(index) => {
 				if (index === 0) {
-
+					return (
+						<ListDataContainer listName={ORDERS} {...props}
+							renderRow={order => <OrderListItem {...order} onPress={() => onItemClicked(shop)}/>}/>
+					);
 				} else {
-					
+					return (
+						<ListDataContainer listName={DELIVERS} {...props}
+							renderRow={order => <OrderListItem {...order} onPress={() => onItemClicked(shop)}/>}/>
+					);
 				}
-				return <Text>{index}</Text>;
 			}}/>
-	</View>
+	</Fragment>
 );
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1
-	}
-});
 
 export default OrdersFragment;

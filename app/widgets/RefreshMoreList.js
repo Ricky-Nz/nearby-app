@@ -40,11 +40,11 @@ class RefreshMoreList extends Component {
 
 RefreshMoreList.propTypes = {
 	datas: PropTypes.arrayOf(PropTypes.object).isRequired,
+	refreshing: PropTypes.bool,
+	loading: PropTypes.bool,
 	renderRow: PropTypes.func.isRequired,
 	onLoadMore: PropTypes.func,
-	onRefresh: PropTypes.func,
-	refreshing: PropTypes.bool,
-	loading: PropTypes.bool
+	onRefresh: PropTypes.func
 };
 
 const styles = StyleSheet.create({

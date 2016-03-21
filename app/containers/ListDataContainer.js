@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { shopCollectionLoad, shopCollectionRefresh, orderCollectionLoad, orderCollectionRefresh } from '../actions';
+import { loadCollectionData } from '../actions';
 import { RefreshMoreList } from '../widgets';
 
-const datasSelector = (state, {listName}) => state[listName].datas;
+const datasSelector = (state, {arrayName}) => state[arrayName].datas;
 
-const loadingStatusSelector = (state, {listName}) => state[listName].loading;
+const loadingStatusSelector = (state, {arrayName}) => state[arrayName].loading;
 
-const refreshingStatusSelector = (state, {listName}) => state[listName].refreshing;
+const refreshingStatusSelector = (state, {arrayName}) => state[arrayName].refreshing;
 
 const mapStateToProps = createSelector(
 	datasSelector,
@@ -16,35 +16,12 @@ const mapStateToProps = createSelector(
 	(datas, loading, refreshing) => ({datas, loading, refreshing})
 );
 
-const mapDispatchToProps = (dispatch, {listName, token, longitude, latitude, size, distance, offset}) => ({
+const mapDispatchToProps = (dispatch, {arrayName, token, params}) => ({
 	onRefresh: () => {
-		const params = {
-			token,
-			longitude,
-			latitude,
-			size,
-			distance
-		};
-		if (listName === 'shopList') {
-			dispatch(shopCollectionRefresh(params))
-		} else if (listName === 'orderList') {
-			dispatch(orderCollectionRefresh(params))
-		}
+		dispatch(loadCollectionData(arrayName, token, params, true));
 	},
 	onLoadMore: () => {
-		const params = {
-			token,
-			longitude,
-			latitude,
-			size,
-			distance,
-			offset
-		};
-		if (listName === 'shopList') {
-			dispatch(shopCollectionLoad(params))
-		} else if (listName === 'orderList') {
-			dispatch(orderCollectionLoad(params))
-		}
+		dispatch(loadCollectionData(arrayName, token, params));
 	}
 });
 

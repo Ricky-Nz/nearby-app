@@ -1,13 +1,12 @@
 import React, { StyleSheet, PropTypes } from 'react-native';
 import { Page, ActionBar, IconSelectBar, IconButton } from '../widgets';
-import OrdersFragment from './OrdersFragment';
-import { ShopsFragmentContainer } from '../containers';
+import { ShopsFragmentContainer, OrdersFragmentContainer } from '../containers';
 import SettingFragment from './SettingFragment';
 
 let HomePage = ({select, navigate, navigator}) => {
 	let fragment;
 	switch(select) {
-		case 0: fragment = <OrdersFragment/>; break;
+		case 0: fragment = <OrdersFragmentContainer/>; break;
 		case 1: fragment = <ShopsFragmentContainer
 			onItemClicked={(page) => navigator.push({name: 'shop', data: page})}/>; break;
 		case 2: fragment = <SettingFragment/>; break;

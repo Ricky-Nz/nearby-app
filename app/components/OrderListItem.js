@@ -11,7 +11,7 @@ let OrderListItem = ({time, status, shopName, delivererName}) => (
 			<Avatar src={avatar}/>
 			<View style={styles.textContainer}>
 				<SubText>{status === 'Pending' ? 'Waiting for deliverer to accept'
-					? `Deliverer ${delivererName}`}</MainText>
+					: `Deliverer ${delivererName}`}</SubText>
 				<View style={styles.bodyContainer}>
 					<SubText>'Shop '</SubText>
 					<SubText style={styles.blackText}>{shopName}</SubText>
