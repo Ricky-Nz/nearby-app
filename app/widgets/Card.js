@@ -13,7 +13,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
 	backgroundColor: 'white',
-	elevation: 1
+	elevation: 2
 }
 
 export default Card;

@@ -2,8 +2,8 @@ import React, { PropTypes, StyleSheet } from 'react-native';
 import RoundClickable from './RoundClickable';
 import Icon from './Icon';
 
-let IconButton = ({onPress, ...props}) => (
-	<RoundClickable size={props.size} onPress={onPress}>
+let IconButton = ({onPress, style, ...props}) => (
+	<RoundClickable style={style} size={props.size} onPress={onPress}>
 		<Icon {...props}/>
 	</RoundClickable>
 );

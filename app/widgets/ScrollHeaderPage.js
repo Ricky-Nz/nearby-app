@@ -1,6 +1,8 @@
 import React, { Component, PropTypes, StyleSheet, View, ScrollView } from 'react-native';
 import Card from './Card';
 import Page from './Page';
+import IconButton from './IconButton';
+import TitleText from './TitleText';
 import { THEME_COLOR } from './theme';
 
 class ScrollHeaderPage extends Component {
@@ -9,7 +11,7 @@ class ScrollHeaderPage extends Component {
 		this.state = { showHeader: false };
 	}
 	render() {
-		const { children, header, headerHeight } = this.props;
+		const { children, title, headerHeight, onBack } = this.props;
 		const { showHeader } = this.state;
 
 		return (
@@ -19,8 +21,13 @@ class ScrollHeaderPage extends Component {
 						onScroll={this.onScrollChange.bind(this)}>
 						{children}
 					</ScrollView>
-					{showHeader&&<Card style={[styles.headerBar, {height: headerHeight}]}
-						backgroundColor={THEME_COLOR}>{header}</Card>}
+					{showHeader ?
+						(<Card style={[styles.headerBar, {height: headerHeight}]}
+							backgroundColor={THEME_COLOR} elevation={4}>
+							<IconButton src='chevron-left' size='normal' onPress={onBack}/>
+							<TitleText>{title}</TitleText>
+						</Card>) : (<IconButton style={styles.backBtn} src='chevron-left' size='normal' onPress={onBack}/>)
+					}
 				</View>
 			</Page>
 		);
@@ -40,11 +47,12 @@ class ScrollHeaderPage extends Component {
 
 ScrollHeaderPage.propTypes = {
 	headerHeight: PropTypes.number,
-	header: PropTypes.element.isRequired
+	title: PropTypes.string,
+	onBack: PropTypes.func.isRequired
 };
 
 ScrollHeaderPage.defaultProps = {
-	headerHeight: 56
+	headerHeight: 80
 };
 
 const styles = StyleSheet.create({
@@ -59,7 +67,16 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		top: 0,
 		left: 0,
-		right: 0
+		right: 0,
+		paddingTop: 24,
+		flexDirection: 'row',
+		alignItems: 'center',
+		paddingHorizontal: 16
+	},
+	backBtn: {
+		position: 'absolute',
+		top: 24,
+		left: 16
 	}
 });
 

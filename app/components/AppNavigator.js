@@ -25,8 +25,7 @@ class AppNavigator extends Component {
       case 'home':
         return <HomePageContainer navigator={navigator}/>
       case 'shop':
-        console.log(route.data);
-        return <ShopPage {...route.data}/>;
+        return <ShopPage {...route.data} onBack={() => navigator.pop()}/>;
       default:
         return <WidgetsDemo/>
     }

@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react-native';
-import { ShopListContainer } from '../containers';
+import { ListDataContainer } from '../containers';
 import { Fragment } from '../widgets';
+import ShopListItem from './ShopListItem';
 
 let ShopsFragment = ({loading, ...props}) => (
 	<Fragment loading={loading}>
-		<ShopListContainer {...props}/>
+		<ListDataContainer listName='shopList' {...props}
+			renderRow={shop => <ShopListItem {...shop} onPress={() => onItemClicked(shop)}/>}/>
 	</Fragment>
 );
 

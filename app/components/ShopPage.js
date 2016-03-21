@@ -4,7 +4,7 @@ import ShopQuickInfoBar from './ShopQuickInfoBar';
 
 let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
 		category, tags, popularity, description, onBack}) => (
-	<ScrollHeaderPage header={<Text>Test Header</Text>}>
+	<ScrollHeaderPage title={name} onBack={onBack}>
 		<Card>
 			<ImageGallery images={photos.map(photo => photo.url)}/>
 		</Card>
@@ -12,6 +12,12 @@ let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
 		<Card>
 			<SimpleListItem title={name} description={<ShopQuickInfoBar distance={'100m'} category={category} price_tier={price_tier}/>}
 				rightNode={<SubText>{'Watching'}</SubText>}/>
+			<IconContent icon='place' iconColor='gray'>{address}</IconContent>
+			<IconContent icon='info-outline' iconColor='gray'>{description}</IconContent>
+			<IconContent icon='label' iconColor='gray'>{tags&&tags.join(', ')}</IconContent>
+			<IconContent icon='place' iconColor='gray'>{address}</IconContent>
+			<IconContent icon='info-outline' iconColor='gray'>{description}</IconContent>
+			<IconContent icon='label' iconColor='gray'>{tags&&tags.join(', ')}</IconContent>
 			<IconContent icon='place' iconColor='gray'>{address}</IconContent>
 			<IconContent icon='info-outline' iconColor='gray'>{description}</IconContent>
 			<IconContent icon='label' iconColor='gray'>{tags&&tags.join(', ')}</IconContent>

@@ -8,7 +8,7 @@ class RefreshMoreList extends Component {
 	}
 	componentDidMount() {
 		if (this.props.datas.length === 0) {
-			this.props.onRefreshData();
+			this.props.onRefresh();
 		}
 	}
 	componentWillReceiveProps(nextProps) {
@@ -17,13 +17,13 @@ class RefreshMoreList extends Component {
 			}
 	}
 	render() {
-		const {refreshing, loading, renderRow, onLoadMoreData, onRefreshData, ...otherProps} = this.props;
+		const {refreshing, loading, renderRow, onLoadMore, onRefresh, ...otherProps} = this.props;
 		return (
 			<RefreshControl style={styles.container} refreshing={refreshing}
-				onRefresh={onRefreshData} colors={['white', 'white', 'white']}
+				onRefresh={onRefresh} colors={['white', 'white', 'white']}
         progressBackgroundColor={'aquamarine'}>
 				<ListView dataSource={this.state.dataSource}
-					onEndReached={() => !loading&&onLoadMoreData()}
+					onEndReached={() => !loading&&onLoadMore()}
 					onEndReachedThreshold={50}
 					renderFooter={() => loading&&<ListLoadingItem/>}
 					renderRow={renderRow} {...otherProps}/>
@@ -41,8 +41,8 @@ class RefreshMoreList extends Component {
 RefreshMoreList.propTypes = {
 	datas: PropTypes.arrayOf(PropTypes.object).isRequired,
 	renderRow: PropTypes.func.isRequired,
-	onLoadMoreData: PropTypes.func,
-	onRefreshData: PropTypes.func,
+	onLoadMore: PropTypes.func,
+	onRefresh: PropTypes.func,
 	refreshing: PropTypes.bool,
 	loading: PropTypes.bool
 };

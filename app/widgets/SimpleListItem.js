@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		padding: 10
+		padding: 16
 	},
 	textContainer: {
 		flex: 1,
-		paddingRight: 10
+		paddingRight: 16
 	},
 	title: {
 		marginBottom: 4

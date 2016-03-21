@@ -3,6 +3,7 @@ import Clickable from './Clickable';
 import Icon from './Icon';
 import TitleText from './TitleText';
 import Card from './Card';
+import { THEME_COLOR } from './theme';
 
 class SlideTabBar extends Component {
 	constructor(props) {
@@ -31,7 +32,7 @@ class SlideTabBar extends Component {
 		};
 
 		return (
-			<Card style={styles.container}>
+			<Card style={styles.container} backgroundColor={THEME_COLOR} elevation={4}>
 				<View style={styles.tabsContainer}>
 					{tabItems}
 				</View>

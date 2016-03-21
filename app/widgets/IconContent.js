@@ -1,11 +1,13 @@
-import React, { StyleSheet, View, PropTypes } from 'react-native';
+import React, { StyleSheet, PropTypes, View } from 'react-native';
 import Icon from './Icon';
 import MainText from './MainText';
 
 let IconContent = ({icon, iconColor, children}) => (
 	<View style={styles.container}>
 		<Icon src={icon} color={iconColor}/>
-		<MainText style={styles.text}>{children}</MainText>
+		<View style={styles.textContent}>
+			<MainText>{children}</MainText>
+		</View>
 	</View>
 );
 
@@ -16,11 +18,13 @@ IconContent.propTypes = {
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 12,
-		flexDirection: 'row' 
+		padding: 16,
+		flexDirection: 'row' ,
+		alignItems: 'center'
 	},
-	text: {
-		marginLeft: 12
+	textContent: {
+		paddingLeft: 16,
+		flex: 1
 	}
 });
 
