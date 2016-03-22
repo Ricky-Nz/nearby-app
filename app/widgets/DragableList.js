@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, StyleSheet, View, ListView, ScrollView, RefreshControl } from 'react-native';
 import ListLoadingItem from './ListLoadingItem';
 
-class RefreshMoreList extends Component {
+class DragableList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = this.onListDataChanged(props.datas);
@@ -38,7 +38,7 @@ class RefreshMoreList extends Component {
 	}
 }
 
-RefreshMoreList.propTypes = {
+DragableList.propTypes = {
 	datas: PropTypes.arrayOf(PropTypes.object).isRequired,
 	refreshing: PropTypes.bool,
 	loading: PropTypes.bool,
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default RefreshMoreList;
+export default DragableList;

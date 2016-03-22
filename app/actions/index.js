@@ -1,2 +1,2 @@
-export * from './collectionDataAction';;
+export * from './asyncGet';;
 export * from './navigate';

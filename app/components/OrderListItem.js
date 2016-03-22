@@ -1,7 +1,7 @@
 import React, { PropTypes, StyleSheet, View, Text } from 'react-native';
 import { SubText, MainText, Avatar } from '../widgets';
 
-let OrderListItem = ({time, status, shopName, delivererName}) => (
+let OrderListItem = ({time, status, shopName, avatar, delivererName}) => (
 	<View style={styles.container}>
 		<View style={styles.headerContainer}>
 			<SubText>{time}</SubText>

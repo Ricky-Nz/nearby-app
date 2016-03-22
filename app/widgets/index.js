@@ -18,14 +18,14 @@ export { default as HorizontalLine } from './HorizontalLine';
 export { default as VerticalLine } from './VerticalLine';
 export { default as ImageGallery } from './ImageGallery';
 export { default as Page } from './Page';
-export { default as Fragment } from './Fragment';
 export { default as IconSelectBar } from './IconSelectBar';
 export { default as Clickable } from './Clickable';
 export { default as MoreFooter } from './MoreFooter';
 export { default as SimpleListItem } from './SimpleListItem';
-export { default as RefreshMoreList } from './RefreshMoreList';
+export { default as DragableList } from './DragableList';
 export { default as ScrollHeaderPage } from './ScrollHeaderPage';
 export { default as ItemGap } from './ItemGap';
 export { default as IconContent } from './IconContent';
+export { default as LoadingView } from './LoadingView';
 
 export * from './theme';
