@@ -28,5 +28,6 @@ export { default as ScrollHeaderPage } from './ScrollHeaderPage';
 export { default as VerticalGap } from './VerticalGap';
 export { default as IconContent } from './IconContent';
 export { default as LoadingView } from './LoadingView';
+export { default as ListSeparator } from './ListSeparator';
 
 export * from './theme';

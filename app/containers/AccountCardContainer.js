@@ -1,23 +1,30 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import { getAccountInfo } from '../actions';
 import AccountCard from '../components/AccountCard';
+
+const tokenSelector = state => state.appState.token;
+
+const userIdSelector = state => state.appState.userId;
 
 const accountSelector = state => state.account;
 
 const mapStateToProps = createSelector(
+	tokenSelector,
+	userIdSelector,
 	accountSelector,
-	() => ({
-		avatar: 'http://facebook.github.io/react/img/logo_og.png',
-		name: 'Ricky Lee',
-		mark: '9',
-		reviewCount: 25
+	(token, userId, account) => ({
+		token,
+		userId,
+		account
 	})
 );
 
 const mapActionToProps = (dispatch) => ({
-	getAccount: () => {
-		
+	getAccount: (token, userId) => {
+		dispatch(getAccountInfo(token, null, userId))
 	}
 });
 
-export default connect(mapStateToProps)(AccountCard);
+export default connect(
+	mapStateToProps, mapActionToProps)(AccountCard);

@@ -1,16 +1,32 @@
-import React, { PropTypes, StyleSheet, View } from 'react-native';
-import { Card, Avatar, StarMarkingBar, TitleText, MoreFooter, THEME_COLOR } from '../widgets';
+import React, { Component, PropTypes, StyleSheet, View } from 'react-native';
+import { Avatar, StarMarkingBar, TitleText, MoreFooter, THEME_COLOR } from '../widgets';
+import { LoadingView } from '../widgets';
 
-let AccountCard = ({avatar, name, mark, reviewCount}) => (
-	<Card style={styles.container}>
-		<Avatar src={avatar} size='normal'/>
-		<View style={styles.centerContent}>
-			<TitleText>{name}</TitleText>
-			<StarMarkingBar mark={mark}/>
-		</View>
-		<MoreFooter style={styles.reivew}>{reviewCount > 0 ? `${reviewCount} Reviews` : 'Reviews'}</MoreFooter>
-	</Card>
-);
+class AccountCard extends Component {
+	componentDidMount() {
+		if (!this.props.account.id) {
+			this.props.getAccount(this.props.token, this.props.userId);
+		}
+	}
+	render() {
+		const { id, name, photo, gender, rating, loading } = this.props.account;
+
+		if (!id || loading) {
+			return <LoadingView style={styles.container} loading={true}/>;
+		} else {
+			return (
+				<View style={styles.container}>
+					<Avatar src={photo.url} size='normal'/>
+					<View style={styles.centerContent}>
+						<TitleText style={styles.nameText}>{name}</TitleText>
+						<StarMarkingBar mark={rating}/>
+					</View>
+					<MoreFooter style={styles.reivew}>'Reviews'</MoreFooter>
+				</View>
+			);
+		}
+	}
+}
 
 AccountCard.propTypes = {
 	avatar: PropTypes.string.isRequired,
@@ -21,7 +37,7 @@ AccountCard.propTypes = {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: THEME_COLOR,
+		backgroundColor: '#20b2aa33',
 		flexDirection: 'row',
 		alignItems: 'center',
 		padding: 20
@@ -31,6 +47,10 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		flex: 1,
 		paddingHorizontal: 20
+	},
+	nameText: {
+		fontSize: 18,
+		color: 'black'
 	},
 	reivew: {
 		alignSelf: 'flex-end'

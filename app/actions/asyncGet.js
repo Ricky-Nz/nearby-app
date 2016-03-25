@@ -1,4 +1,5 @@
-import doFetch from './mockFetch';
+import fetchMock from './fetchMock';
+import fetchGet from './fetchGet';
 
 export default function ({urlPath, token, params, actionName}) {
 	return (dispatch) => {
@@ -6,6 +7,9 @@ export default function ({urlPath, token, params, actionName}) {
 			type: actionName,
 			running: true
 		});
+
+		const doFetch = ['SHOP_COLLECTION_REFRESH', 'SHOP_COLLECTION_LOAD', 'GET_ACCOUNT_INFO']
+			.indexOf(actionName) >= 0 ? fetchGet : fetchMock;
 
 		doFetch(urlPath, token, params)
 			.then(result => {

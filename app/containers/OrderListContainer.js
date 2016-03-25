@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { refreshOrdered, refreshDelivered, loadOrdered, loadDelivered } from '../actions';
 import OrderList from '../components/OrderList';
 
-const tokenSelector = state => state.navigator.token;
+const tokenSelector = state => state.appState.token;
 
 const sizeSelector = (state, {stateKey}) => state[stateKey].size;
 

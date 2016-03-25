@@ -1,6 +1,6 @@
-import React, { Component, StyleSheet, PropTypes, View, ScrollView } from 'react-native';
-import { Page, ActionBar, IconSelectBar, IconButton, SlideTabViewPager, SimpleListItem } from '../widgets';
-import { LoadingViewContainer, ShopListContainer, OrderListContainer, AccountCardContainer } from '../containers';
+import React, { Component, StyleSheet, PropTypes } from 'react-native';
+import { Page, ActionBar, IconSelectBar, Icon, IconButton, SlideTabViewPager } from '../widgets';
+import { LoadingViewContainer, ShopListContainer, OrderListContainer, AccountSettingContainer } from '../containers';
 
 class HomePage extends Component {
 	onSelectMenu(index) {
@@ -45,18 +45,7 @@ class HomePage extends Component {
 					</LoadingViewContainer>
 				);
 			case 2:
-				return (
-					<View style={styles.container}>
-						<AccountCardContainer/>
-						<ScrollView style={styles.settingContainer}>
-							<SimpleListItem title='Notifications' description='Enable notification to get informed when someone is delivering to the shops you watched'/>
-							<SimpleListItem title='Location' description='Enable location to discover shops nearby wherever you go'/>
-							<SimpleListItem title='Feedback'/>
-							<SimpleListItem title='Rate Us'/>
-							<SimpleListItem title='About'/>
-						</ScrollView>
-					</View>
-				);
+				return <AccountSettingContainer/>;
 		}
 	}
 }

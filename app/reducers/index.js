@@ -3,7 +3,8 @@ import { SHOP_COLLECTION_REFRESH, SHOP_COLLECTION_LOAD,
 	ORDERED_COLLECTION_REFRESH, ORDERED_COLLECTION_LOAD,
 	DELIVERED_COLLECTION_REFRESH, DELIVERED_COLLECTION_LOAD } from '../actions';
 import arrayDataReducer from './arrayDataReducer';
-import navigator from './navigator';
+import appState from './appState';
+import account from './account';
 
 const configData = {
 	size: 10,
@@ -13,7 +14,8 @@ const configData = {
 };
 
 const rootReducer = combineReducers({
-	navigator,
+	appState,
+	account,
 	shops: arrayDataReducer(SHOP_COLLECTION_REFRESH, SHOP_COLLECTION_LOAD, configData, 'shops'),
 	orders: arrayDataReducer(ORDERED_COLLECTION_REFRESH, ORDERED_COLLECTION_LOAD, {size: 10}),
 	delivers: arrayDataReducer(DELIVERED_COLLECTION_REFRESH, DELIVERED_COLLECTION_LOAD, {size: 10})

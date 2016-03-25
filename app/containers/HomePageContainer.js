@@ -3,13 +3,11 @@ import { createSelector } from 'reselect';
 import { navigate } from '../actions';
 import HomePage from '../components/HomePage';
 
-const appStateSelector = state => state.navigator;
+const appStateSelector = state => state.appState.select;
 
 const mapStateToProps = createSelector(
 	appStateSelector,
-	(navigator) => ({
-		select: navigator.select
-	})
+	(select) => ({ select })
 );
 
 const mapActionToProps = (dispatch) => ({
