@@ -4,6 +4,55 @@ export default function (urlPath, token, params) {
 	return new Promise((resolve, reject) => {
 		setTimeout(function () {
 			switch(urlPath) {
+				case 'users/ratings':
+					return resolve({
+						"data": [
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' },
+							{ name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rating: 4, time: '2016-03-21T15:49:24.872000+00:00' }
+						]
+					});
+				case 'users/notifications':
+					return resolve({
+						"data": [
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' },
+							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' }
+						]
+					});
 				case 'users/orders':
 				case 'users/orders/active':
 				case 'users/orders/delivered':

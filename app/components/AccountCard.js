@@ -21,7 +21,7 @@ class AccountCard extends Component {
 						<TitleText style={styles.nameText}>{name}</TitleText>
 						<StarMarkingBar mark={rating}/>
 					</View>
-					<MoreFooter style={styles.reivew}>'Reviews'</MoreFooter>
+					<MoreFooter style={styles.reivew} onPress={this.props.onOpenRating}>Reviews</MoreFooter>
 				</View>
 			);
 		}
@@ -32,7 +32,8 @@ AccountCard.propTypes = {
 	avatar: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	mark: PropTypes.number.isRequired,
-	reviewCount: PropTypes.number.isRequired
+	reviewCount: PropTypes.number.isRequired,
+	onOpenRating: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

@@ -1,25 +1,33 @@
-import React, { Component, StyleSheet, PropTypes } from 'react-native';
+import React, { Component, StyleSheet, PropTypes, Navigator } from 'react-native';
 import { Page, ActionBar, IconSelectBar, Icon, IconButton, SlideTabViewPager } from '../widgets';
 import { LoadingViewContainer, ShopListContainer, OrderListContainer, AccountSettingContainer } from '../containers';
 
 class HomePage extends Component {
-	onSelectMenu(index) {
-		this.props.navigate(index);
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentRoute: props.initialRoute
+		};
 	}
 	render() {
+		const { tabIcons, initialRouteStack, initialRoute } = this.props;
+		const selectPosition = initialRouteStack.indexOf(this.state.currentRoute);
+
 		return (
 			<Page>
-				<ActionBar leftNode={
-					<IconSelectBar icons={['assignment', 'shopping-basket', 'account-circle']}
-						select={this.props.select} onSelect={this.onSelectMenu.bind(this)}/>
-				} rightNode={<IconButton src='power-settings-new'/>}/>
-				{this.renderSection()}
+				<ActionBar
+					leftNode={<IconSelectBar icons={tabIcons} select={selectPosition}
+						onSelect={(index) => this.refs.navigator.jumpTo(initialRouteStack[index])}/>}
+					rightNode={<IconButton src='power-settings-new'/>}/>
+				<Navigator style={styles.container} ref='navigator'
+					initialRouteStack={initialRouteStack} initialRoute={initialRoute}
+        	renderScene={this.renderScene.bind(this)}/>
 			</Page>
 		);
 	}
-	renderSection() {
-		switch(this.props.select) {
-			case 0:
+	renderScene(route, navigator) {
+		switch(route.name) {
+			case 'orders':
 				return (
 					<SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
 						onBindPager={(index) => {
@@ -38,14 +46,17 @@ class HomePage extends Component {
 							}
 						}}/>
 				);
-			case 1:
+			case 'shops':
 				return (
 					<LoadingViewContainer stateKey='shops' loadingKey='refreshing'>
 						<ShopListContainer/>
 					</LoadingViewContainer>
 				);
-			case 2:
-				return <AccountSettingContainer/>;
+			case 'account':
+				return (
+					<AccountSettingContainer onOpenRating={() => this.props.navigator.push({name: 'rating'})}
+						onOpenNotification={() => this.props.navigator.push({name: 'notification'})}/>
+				);
 		}
 	}
 }
@@ -53,7 +64,8 @@ class HomePage extends Component {
 HomePage.propTypes = {
 	navigator: PropTypes.object.isRequired,
 	navigate: PropTypes.func.isRequired,
-	select: PropTypes.number.isRequired
+	initialRouteStack: PropTypes.array.isRequired,
+	initialRoute: PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({

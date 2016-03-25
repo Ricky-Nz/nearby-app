@@ -1,5 +1,5 @@
 import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
-import { HomePageContainer } from '../containers';
+import { HomePageContainer, RatingPageContainer, NotificationPageContainer } from '../containers';
 import ShopPage from './ShopPage';
 import WidgetsDemo from '../widgets/WidgetsDemo';
 
@@ -25,7 +25,11 @@ class AppNavigator extends Component {
       case 'home':
         return <HomePageContainer navigator={navigator}/>
       case 'shop':
-        return <ShopPage {...route.data} onBack={() => navigator.pop()}/>;
+        return <ShopPage {...route.data} onBack={this.onBackPassed.bind(this)}/>;
+      case 'rating':
+        return <RatingPageContainer title='My Ratings' onBack={this.onBackPassed.bind(this)}/>;
+      case 'notification':
+        return <NotificationPageContainer onBack={this.onBackPassed.bind(this)}/>
       default:
         return <WidgetsDemo/>
     }
