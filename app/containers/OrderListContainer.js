@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { asyncGet, ORDER_COLLECTION_LOAD, ORDER_COLLECTION_REFRESH,
-	DELIVER_COLLECTION_LOAD, DELIVER_COLLECTION_REFRESH } from '../actions';
+import { refreshOrdered, refreshDelivered, loadOrdered, loadDelivered } from '../actions';
 import OrderList from '../components/OrderList';
 
 const tokenSelector = state => state.navigator.token;
@@ -25,22 +24,18 @@ const mapStateToProps = createSelector(
 
 const mapActionToProps = (dispatch, {stateKey}) => ({
 	onLoadMore: (token, params) => {
-		dispatch(asyncGet({
-			token,
-			params,
-			actionName: stateKey === 'orders' ? ORDER_COLLECTION_LOAD : DELIVER_COLLECTION_LOAD,
-			urlPath: stateKey
-		}));
+		if (stateKey === 'orders') {
+			dispatch(loadOrdered(token, params));
+		} else {
+			dispatch(loadDelivered(token, params));
+		}
 	},
 	onRefresh: (token, params) => {
-		params.offset = 0;
-
-		dispatch(asyncGet({
-			token,
-			params,
-			actionName: stateKey === 'orders' ? ORDER_COLLECTION_REFRESH : DELIVER_COLLECTION_REFRESH,
-			urlPath: stateKey
-		}));
+		if (stateKey === 'orders') {
+			dispatch(refreshOrdered(token, params));
+		} else {
+			dispatch(refreshDelivered(token, params));
+		}
 	}
 });
 

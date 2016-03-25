@@ -1,5 +1,5 @@
 import React, { PropTypes, StyleSheet, View, Text } from 'react-native';
-import { ScrollHeaderPage, ImageGallery, Card, ItemGap, SimpleListItem, SubText, IconContent } from '../widgets';
+import { ScrollHeaderPage, ImageGallery, Card, VerticalGap, SimpleListItem, SubText, IconContent } from '../widgets';
 import ShopQuickInfoBar from './ShopQuickInfoBar';
 
 let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
@@ -8,7 +8,7 @@ let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
 		<Card>
 			<ImageGallery images={photos.map(photo => photo.url)}/>
 		</Card>
-		<ItemGap/>
+		<VerticalGap/>
 		<Card>
 			<SimpleListItem title={name} description={<ShopQuickInfoBar distance={'100m'} category={category} price_tier={price_tier}/>}
 				rightNode={<SubText>{'Watching'}</SubText>}/>
@@ -22,7 +22,7 @@ let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
 			<IconContent icon='info-outline' iconColor='gray'>{description}</IconContent>
 			<IconContent icon='label' iconColor='gray'>{tags&&tags.join(', ')}</IconContent>
 		</Card>
-		<ItemGap/>
+		<VerticalGap/>
 	</ScrollHeaderPage>
 );
 

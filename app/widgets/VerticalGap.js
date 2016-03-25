@@ -6,7 +6,7 @@ const ItemGap = (props) => (
 
 const styles = StyleSheet.create({
 	container: {
-		height: 20
+		height: 10
 	}
 });
 

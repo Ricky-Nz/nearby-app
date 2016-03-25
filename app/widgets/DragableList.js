@@ -7,7 +7,7 @@ class DragableList extends Component {
 		this.state = this.onListDataChanged(props.datas);
 	}
 	componentDidMount() {
-		if (this.props.datas.length === 0) {
+		if (!this.props.datas) {
 			this.props.onRefresh();
 		}
 	}

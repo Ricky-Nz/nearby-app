@@ -1,5 +1,6 @@
 import React, { StyleSheet, PropTypes, Text, Image, View } from 'react-native';
 import Clickable from './Clickable';
+import { THEME_COLOR } from './theme';
 
 let Button = ({children, onPress}) => (
 	<Clickable style={styles.container} onPress={onPress}>
@@ -12,13 +13,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		paddingVertical: 4,
-		paddingHorizontal: 20,
-		backgroundColor: 'darkturquoise',
+		paddingHorizontal: 16,
+		backgroundColor: THEME_COLOR,
 		elevation: 4
 	},
 	text: {
 		color: 'white',
-		fontSize: 16
+		fontSize: 14
 	}
 });
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { asyncGet, SHOP_COLLECTION_LOAD, SHOP_COLLECTION_REFRESH } from '../actions';
+import { refreshShops, loadShops } from '../actions';
 import ShopList from '../components/ShopList';
 
 const tokenSelector = state => state.navigator.token;
@@ -36,22 +36,10 @@ const mapStateToProps = createSelector(
 
 const mapActionToProps = (dispatch) => ({
 	onLoadMore: (token, params) => {
-		dispatch(asyncGet({
-			token,
-			params,
-			actionName: SHOP_COLLECTION_LOAD,
-			urlPath: 'shops'
-		}));
+		dispatch(loadShops(token, params));
 	},
 	onRefresh: (token, params) => {
-		params.offset = 0;
-
-		dispatch(asyncGet({
-			token,
-			params,
-			actionName: SHOP_COLLECTION_REFRESH,
-			urlPath: 'shops'
-		}));
+		dispatch(refreshShops(token, params));
 	}
 });
 

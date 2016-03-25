@@ -1,13 +1,6 @@
-import doFetch from './doFetch';
+import doFetch from './mockFetch';
 
-export const SHOP_COLLECTION_LOAD = 'SHOP_COLLECTION_LOAD';
-export const SHOP_COLLECTION_REFRESH = 'SHOP_COLLECTION_REFRESH';
-export const DELIVER_COLLECTION_LOAD = 'DELIVER_COLLECTION_LOAD';
-export const DELIVER_COLLECTION_REFRESH = 'DELIVER_COLLECTION_REFRESH';
-export const ORDER_COLLECTION_LOAD = 'ORDER_COLLECTION_LOAD';
-export const ORDER_COLLECTION_REFRESH = 'ORDER_COLLECTION_REFRESH';
-
-export function asyncGet({urlPath, token, params, actionName}) {
+export default function ({urlPath, token, params, actionName}) {
 	return (dispatch) => {
 		dispatch({
 			type: actionName,

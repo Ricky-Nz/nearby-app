@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, StyleSheet, View, ScrollView } from 'react-native';
+import React, { Component, PropTypes, StyleSheet, View, ScrollView, LayoutAnimation } from 'react-native';
 import Card from './Card';
 import Page from './Page';
 import IconButton from './IconButton';
@@ -8,7 +8,10 @@ import { THEME_COLOR } from './theme';
 class ScrollHeaderPage extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { showHeader: false };
+		this.state = { headerPos: -props.headerHeight };
+	}
+	componentWillMount() {
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
 	}
 	render() {
 		const { children, title, headerHeight, onBack } = this.props;
@@ -21,25 +24,25 @@ class ScrollHeaderPage extends Component {
 						onScroll={this.onScrollChange.bind(this)}>
 						{children}
 					</ScrollView>
-					{showHeader ?
-						(<Card style={[styles.headerBar, {height: headerHeight}]}
-							backgroundColor={THEME_COLOR} elevation={4}>
-							<IconButton src='chevron-left' size='normal' onPress={onBack}/>
-							<TitleText>{title}</TitleText>
-						</Card>) : (<IconButton style={styles.backBtn} src='chevron-left' size='normal' onPress={onBack}/>)
-					}
+					<Card style={[styles.headerBar, {height: headerHeight, top: this.state.headerPos}]}
+						backgroundColor={THEME_COLOR} elevation={4}>
+						<IconButton src='chevron-left' size='normal' onPress={onBack}/>
+						<TitleText>{title}</TitleText>
+					</Card>
 				</View>
 			</Page>
 		);
 	}
 	onScrollChange({nativeEvent}) {
 		if (nativeEvent.contentOffset.y > this.props.headerHeight) {
-			if (!this.state.showHeader) {
-				this.setState({showHeader: true});
+			if (this.state.headerPos === -this.props.headerHeight) {
+				LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    		this.setState({headerPos: 0});
 			}
 		} else {
-			if (this.state.showHeader) {
-				this.setState({showHeader: false});
+			if (this.state.headerPos === 0) {
+				LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    		this.setState({headerPos: -this.props.headerHeight});
 			}
 		}
 	}
@@ -65,7 +68,6 @@ const styles = StyleSheet.create({
 	},
 	headerBar: {
 		position: 'absolute',
-		top: 0,
 		left: 0,
 		right: 0,
 		paddingTop: 24,
@@ -81,5 +83,5 @@ const styles = StyleSheet.create({
 });
 
 export default ScrollHeaderPage;
-
+// <IconButton style={styles.backBtn} src='chevron-left' size='normal' onPress={onBack}/>
 

@@ -8,6 +8,7 @@ export { default as Star } from './Star';
 export { default as TitleText } from './TitleText';
 export { default as MainText } from './MainText';
 export { default as SubText } from './SubText';
+export { default as ThemeText } from './ThemeText';
 export { default as SlideTabBar } from './SlideTabBar';
 export { default as SlideTabViewPager } from './SlideTabViewPager';
 export { default as StarMarkingBar } from './StarMarkingBar';
@@ -24,7 +25,7 @@ export { default as MoreFooter } from './MoreFooter';
 export { default as SimpleListItem } from './SimpleListItem';
 export { default as DragableList } from './DragableList';
 export { default as ScrollHeaderPage } from './ScrollHeaderPage';
-export { default as ItemGap } from './ItemGap';
+export { default as VerticalGap } from './VerticalGap';
 export { default as IconContent } from './IconContent';
 export { default as LoadingView } from './LoadingView';
 

@@ -1,11 +1,11 @@
 import React, { PropTypes, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { Clickable, Card, SimpleListItem, Image, SubText, MainText } from '../widgets';
+import { Clickable, Card, SimpleListItem, Image, SubText, MainText, VerticalGap } from '../widgets';
 import ShopQuickInfoBar from './ShopQuickInfoBar';
 
 let ShopListItem = ({id, name, address, category, description, location,
 		photos, popularity, postal_code, price_tier, ...props}) => (
-		<View style={styles.container}>
-			<Card elevation={1}>
+		<View>
+			<Card>
 				<Clickable {...props}>
 					<View>
 						{photos&&<Image style={styles.bannerImage} src={photos[0].url}/>}
@@ -14,6 +14,7 @@ let ShopListItem = ({id, name, address, category, description, location,
 					</View>
 				</Clickable>
 			</Card>
+			<VerticalGap/>
 		</View>
 );
 
@@ -36,9 +37,6 @@ ShopListItem.propTypes = {
 };
 
 const styles = StyleSheet.create({
-	container: {
-		paddingBottom: 10
-	},
 	bannerImage: {
 		height: 120
 	}

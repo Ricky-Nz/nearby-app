@@ -5,13 +5,9 @@ import OrderListItem from './OrderListItem';
 class OrderList extends Component {
 	render() {
 		return (
-			<DragableListContainer stateKey='shops' renderRow={this.renderRow}
+			<DragableListContainer stateKey={this.props.stateKey}
+				renderRow={(order) => <OrderListItem {...order} onPress={() => console.log(order)}/>}
 				onRefresh={this.onRefresh.bind(this)} onLoadMore={this.onLoadMore.bind(this)}/>
-		);
-	}
-	renderRow(order) {
-		return (
-			<OrderListItem {...order} onPress={() => console.log(order)}/>
 		);
 	}
 	onRefresh() {

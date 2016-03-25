@@ -15,7 +15,9 @@ const mapStateToProps = createSelector(
 );
 
 const mapActionToProps = (dispatch) => ({
-
+	getAccount: () => {
+		
+	}
 });
 
 export default connect(mapStateToProps)(AccountCard);
