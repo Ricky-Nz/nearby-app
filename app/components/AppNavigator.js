@@ -1,6 +1,8 @@
 import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
-import { HomePageContainer, RatingPageContainer, NotificationPageContainer } from '../containers';
+import { HomePageContainer, RatingPageContainer, NotificationPageContainer,
+  WatchingPageContainer } from '../containers';
 import ShopPage from './ShopPage';
+import MakeOrderPage from './MakeOrderPage';
 import WidgetsDemo from '../widgets/WidgetsDemo';
 
 class AppNavigator extends Component {
@@ -16,7 +18,7 @@ class AppNavigator extends Component {
   }
 	render() {
 		return (
-      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'home'}}
+      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'home22'}}
         renderScene={this.renderScene.bind(this)}/>
 		);
 	}
@@ -29,7 +31,7 @@ class AppNavigator extends Component {
       case 'rating':
         return <RatingPageContainer title='My Ratings' onBack={this.onBackPassed.bind(this)}/>;
       case 'notification':
-        return <NotificationPageContainer onBack={this.onBackPassed.bind(this)}/>
+        return <MakeOrderPage onBack={this.onBackPassed.bind(this)}/>
       default:
         return <WidgetsDemo/>
     }

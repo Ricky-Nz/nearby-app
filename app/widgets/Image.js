@@ -1,7 +1,7 @@
 import React, { PropTypes, Image } from 'react-native';
 
-let ImageWrapper = ({src, height, width, ...props}) => (
-	<Image source={{uri: src}} style={{height, width}} {...props}/>
+let ImageWrapper = ({src, style, ...props}) => (
+	<Image source={{uri: src}} style={style} {...props}/>
 );
 
 ImageWrapper.propTypes = {

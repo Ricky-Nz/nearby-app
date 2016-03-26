@@ -5,7 +5,7 @@ import Card from './Card';
 import { THEME_COLOR, BAR_HEIGHT, PADDING, HALF_PADDING } from './theme';
 
 let ActionBar = ({title, leftNode, rightNode, style}) => (
-	<Card elevation={4} style={[styles.container, style]} backgroundColor={THEME_COLOR}>
+	<Card elevation={6} style={[styles.container, style]} backgroundColor={THEME_COLOR}>
 		{leftNode}
 		<TitleText style={styles.title}>{title}</TitleText>
 		{rightNode}

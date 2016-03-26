@@ -19,6 +19,7 @@ export { default as HorizontalLine } from './HorizontalLine';
 export { default as VerticalLine } from './VerticalLine';
 export { default as ImageGallery } from './ImageGallery';
 export { default as Page } from './Page';
+export { default as DialogPage } from './DialogPage';
 export { default as IconSelectBar } from './IconSelectBar';
 export { default as Clickable } from './Clickable';
 export { default as MoreFooter } from './MoreFooter';
@@ -29,5 +30,9 @@ export { default as VerticalGap } from './VerticalGap';
 export { default as IconContent } from './IconContent';
 export { default as LoadingView } from './LoadingView';
 export { default as ListSeparator } from './ListSeparator';
+export { default as TextInput } from './TextInput';
+export { default as StepsIndicator } from './StepsIndicator';
+export { default as Layout } from './Layout';
+export { default as NumberController } from './NumberController';
 
 export * from './theme';

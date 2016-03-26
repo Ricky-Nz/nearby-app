@@ -15,6 +15,8 @@ import StarMarkingBar from './StarMarkingBar';
 import Button from './Button';
 import IconMenu from './IconMenu';
 import IconSelectBar from './IconSelectBar';
+import StepsIndicator from './StepsIndicator';
+import NumberController from './NumberController';
 
 const IMAGE_URL = 'http://facebook.github.io/origami/public/images/birds.jpg';
 
@@ -25,6 +27,11 @@ const TestPage = (props) => (
 			<IconSelectBar icons={['home', 'home', 'home']} select={1}
 				onSelect={(index) => console.log(index)}/>
 		} rightNode={<IconMenu src='home'/>}/>
+
+		<StepsIndicator steps={['Step 1', 'Step 2', 'Step 3']} currentStep={1}/>
+
+		<NumberController value={33} description='SGD / Order'
+			onValueUpdate={newValue => console.log(newValue)}/>
 		
 		<AvatarSelectBar avatars={[
 			{src: IMAGE_URL, id: '1'}, {src: IMAGE_URL, id: '2'}, {src: IMAGE_URL, id: '3'}]}

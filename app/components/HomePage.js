@@ -9,6 +9,12 @@ class HomePage extends Component {
 			currentRoute: props.initialRoute
 		};
 	}
+	onMenuSelect(index) {
+		this.refs.navigator.jumpTo(this.props.initialRouteStack[index]);
+		this.setState({
+			currentRoute: this.props.initialRouteStack[index]
+		});
+	}
 	render() {
 		const { tabIcons, initialRouteStack, initialRoute } = this.props;
 		const selectPosition = initialRouteStack.indexOf(this.state.currentRoute);
@@ -17,7 +23,7 @@ class HomePage extends Component {
 			<Page>
 				<ActionBar
 					leftNode={<IconSelectBar icons={tabIcons} select={selectPosition}
-						onSelect={(index) => this.refs.navigator.jumpTo(initialRouteStack[index])}/>}
+						onSelect={this.onMenuSelect.bind(this)}/>}
 					rightNode={<IconButton src='power-settings-new'/>}/>
 				<Navigator style={styles.container} ref='navigator'
 					initialRouteStack={initialRouteStack} initialRoute={initialRoute}

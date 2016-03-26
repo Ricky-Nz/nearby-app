@@ -53,6 +53,29 @@ export default function (urlPath, token, params) {
 							{ message: 'Someone is delivering at satay world! Check ot out now!', type: 'message', time: '2016-03-21T15:49:24.872000+00:00' }
 						]
 					});
+				case 'users/watchings':
+					return resolve({
+						"data": [
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' },
+							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' }
+						]
+					})
 				case 'users/orders':
 				case 'users/orders/active':
 				case 'users/orders/delivered':

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes, StyleSheet, View, ListView, ScrollView, RefreshControl } from 'react-native';
 import ListLoadingItem from './ListLoadingItem';
+import ListSeparator from './ListSeparator';
 
 class DragableList extends Component {
 	constructor(props) {
@@ -26,7 +27,8 @@ class DragableList extends Component {
 					onEndReached={() => !loading&&onLoadMore()}
 					onEndReachedThreshold={50}
 					renderFooter={() => loading&&<ListLoadingItem/>}
-					renderRow={renderRow} {...otherProps}/>
+					renderRow={renderRow} {...otherProps}
+					renderSeparator={() => <ListSeparator/>}/>
 			</RefreshControl>
 		);
 	}
