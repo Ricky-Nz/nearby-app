@@ -1,6 +1,9 @@
 import React, { Component, StyleSheet, PropTypes, Navigator } from 'react-native';
 import { Page, ActionBar, IconSelectBar, Icon, IconButton, SlideTabViewPager } from '../widgets';
-import { LoadingViewContainer, ShopListContainer, OrderListContainer, AccountSettingContainer } from '../containers';
+import { AccountSettingContainer } from '../containers';
+import OrderList from './OrderList';
+import DeliverList from './DeliverList';
+import ShopList from './ShopList';
 
 class HomePage extends Component {
 	constructor(props) {
@@ -38,26 +41,14 @@ class HomePage extends Component {
 					<SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
 						onBindPager={(index) => {
 							if (index === 0) {
-								return (
-									<LoadingViewContainer stateKey='orders' loadingKey='refreshing'>
-										<OrderListContainer stateKey='orders'/>
-									</LoadingViewContainer>
-								);
+								return <OrderList/>;
 							} else {
-								return (
-									<LoadingViewContainer stateKey='delivers' loadingKey='refreshing'>
-										<OrderListContainer stateKey='delivers'/>
-									</LoadingViewContainer>
-								);
+								return <DeliverList/>;
 							}
 						}}/>
 				);
 			case 'shops':
-				return (
-					<LoadingViewContainer stateKey='shops' loadingKey='refreshing'>
-						<ShopListContainer/>
-					</LoadingViewContainer>
-				);
+				return <ShopList/>;
 			case 'account':
 				return (
 					<AccountSettingContainer onOpenRating={() => this.props.navigator.push({name: 'rating'})}

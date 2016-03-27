@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const DELIVERED_COLLECTION_REFRESH = 'DELIVERED_COLLECTION_REFRESH';
 
-export function refreshDelivered() {
+export function refreshDelivers() {
 	return (dispatch, getState) => {
 		const { appState, delivers } = getState();
 	

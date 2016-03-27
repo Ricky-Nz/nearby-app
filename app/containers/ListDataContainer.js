@@ -24,7 +24,7 @@ const mapStateToProps = createSelector(
 const mapActionToProps = (dispatch, {stateKey}) => ({
 	onLoadMore: () => {
 		switch(stateKey) {
-			case 'shops'
+			case 'shops':
 				return dispatch(loadShops());
 			case 'orders':
 				return dispatch(loadOrders());
@@ -40,7 +40,7 @@ const mapActionToProps = (dispatch, {stateKey}) => ({
 	},
 	onRefresh: (token, params) => {
 		switch(stateKey) {
-			case 'shops'
+			case 'shops':
 				return dispatch(refreshShops());
 			case 'orders':
 				return dispatch(refreshOrders());

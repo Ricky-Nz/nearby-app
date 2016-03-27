@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const DELIVERED_COLLECTION_LOAD = 'DELIVERED_COLLECTION_LOAD';
 
-export function loadDelivered() {
+export function loadDelivers() {
 	return (dispatch, getState) => {
 		const { appState, delivers } = getState();
 

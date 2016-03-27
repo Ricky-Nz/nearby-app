@@ -11,10 +11,10 @@ export function loadShops() {
 			token: appState.token,
 			params: {
 				size: appState.listFetchSize,
+				longitude: appState.longitude,
+				latitude: appState.latitude,
 				offset: shops.size,
-				distance: shops.distance,
-				longitude: shops.longitude,
-				latitude: shops.latitude
+				distance: shops.distance
 			},
 			actionName: SHOP_COLLECTION_LOAD,
 			urlPath: 'shops'

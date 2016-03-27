@@ -1,11 +1,9 @@
 import React, { PropTypes, StyleSheet, View, ScrollView, Switch } from 'react-native';
-import { AccountCardContainer } from '../containers';
 import { SimpleListItem, ListSeparator, Icon } from '../widgets';
 
 let AccountSetting = ({notification, location, toggleNotification, toggleLocation,
 		onOpenRating, onOpenNotification}) => (
 	<View style={styles.container}>
-		<AccountCardContainer onOpenRating={onOpenRating}/>
 		<ScrollView style={styles.settingContainer}>
 			<SimpleListItem title='Notifications' rightNode={<Switch value={notification} onValueChange={toggleNotification}/>}
 				description='Enable notification to get informed when someone is delivering to the shops you watched'

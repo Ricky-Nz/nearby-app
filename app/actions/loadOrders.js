@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const ORDERED_COLLECTION_LOAD = 'ORDERED_COLLECTION_LOAD';
 
-export function loadOrdered() {
+export function loadOrders() {
 	return (dispatch, getState) => {
 		const { appState, orders } = getState();
 

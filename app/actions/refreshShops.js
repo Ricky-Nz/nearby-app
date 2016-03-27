@@ -10,8 +10,11 @@ export function refreshShops() {
 			dispatch,
 			token: appState.token,
 			params: {
-				size: shops.listFetchSize,
-				offset: shops.offset
+				size: appState.listFetchSize,
+				longitude: appState.longitude,
+				latitude: appState.latitude,
+				offset: shops.offset,
+				distance: shops.distance
 			},
 			actionName: SHOP_COLLECTION_REFRESH,
 			urlPath: 'shops'

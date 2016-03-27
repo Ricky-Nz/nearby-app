@@ -1,9 +1,9 @@
 import React, { Component, PropTypes, View } from 'react-native';
-import { DataListContainer } from '../containers';
+import { ListDataContainer } from '../containers';
 import ShopListItem from './ShopListItem';
 
 let ShopList = (props) => (
-	<DataListContainer stateKey='shops'
+	<ListDataContainer stateKey='shops'
 		renderRow={shop => <ShopListItem {...shop} onPress={() => this.props.onItemClicked(shop)}/>}/>
 );
 

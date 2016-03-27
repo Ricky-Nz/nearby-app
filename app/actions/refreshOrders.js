@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const ORDERED_COLLECTION_REFRESH = 'ORDERED_COLLECTION_REFRESH';
 
-export function refreshOrdered() {
+export function refreshOrders() {
 	return (dispatch, getState) => {
 		const { appState, orders } = getState();
 	
