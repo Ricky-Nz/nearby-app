@@ -1,12 +1,16 @@
-import asyncGet from './asyncGet';
+import runAction from './runAction';
 
 export const GET_ACCOUNT_INFO = 'GET_ACCOUNT_INFO';
 
-export function getAccountInfo(token, params, userId) {
-	return asyncGet({
-		token,
-		params,
-		actionName: GET_ACCOUNT_INFO,
-		urlPath: `users/${userId}`
-	});
+export function getAccountInfo(userId) {
+	return (dispatch, getState) => {
+		const { appState } = getState();
+
+		runAction({
+			dispatch,
+			token: appState.token,
+			actionName: GET_ACCOUNT_INFO,
+			urlPath: `users/${userId||appState.userId}`
+		});
+	};
 }

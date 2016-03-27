@@ -1,14 +1,20 @@
-import asyncGet from './asyncGet';
+import runAction from './runAction';
 
 export const DELIVERED_COLLECTION_REFRESH = 'DELIVERED_COLLECTION_REFRESH';
 
-export function refreshDelivered(token, params) {
-	params.offset = 0;
+export function refreshDelivered() {
+	return (dispatch, getState) => {
+		const { appState, delivers } = getState();
 	
-	return asyncGet({
-		token,
-		params,
-		actionName: DELIVERED_COLLECTION_REFRESH,
-		urlPath: 'users/orders/delivered'
-	});
+		runAction({
+			dispatch,
+			token: appState.token,
+			params: {
+				size: appState.listFetchSize,
+				offset: delivers.offset
+			},
+			actionName: DELIVERED_COLLECTION_REFRESH,
+			urlPath: 'users/orders/delivered'
+		});
+	};
 }

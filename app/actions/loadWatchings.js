@@ -1,12 +1,20 @@
-import asyncGet from './asyncGet';
+import runAction from './runAction';
 
 export const WATCHINGS_COLLECTION_LOAD = 'WATCHINGS_COLLECTION_LOAD';
 
-export function loadWatchings(token, params) {
-	return asyncGet({
-		token,
-		params,
-		actionName: WATCHINGS_COLLECTION_LOAD,
-		urlPath: 'users/watchings'
-	});
+export function loadWatchings() {
+	return (dispatch, getState) => {
+		const { appState, watchings } = getState();
+
+		runAction({
+			dispatch,
+			token: appState.token,
+			params: {
+				size: appState.listFetchSize,
+				offset: watchings.offset
+			},
+			actionName: WATCHINGS_COLLECTION_LOAD,
+			urlPath: 'users/watchings'
+		});
+	};
 }

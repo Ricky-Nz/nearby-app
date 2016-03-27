@@ -1,8 +1,8 @@
 import React, { Component, PropTypes, StyleSheet, View } from 'react-native';
 import { Avatar, StarMarkingBar, TitleText, MoreFooter, THEME_COLOR } from '../widgets';
-import { LoadingView } from '../widgets';
+// import { LoadingView } from '../widgets';
 
-class AccountCard extends Component {
+class LoginAccountBanner extends Component {
 	componentDidMount() {
 		if (!this.props.account.id) {
 			this.props.getAccount(this.props.token, this.props.userId);
@@ -12,7 +12,7 @@ class AccountCard extends Component {
 		const { id, name, photo, gender, rating, loading } = this.props.account;
 
 		if (!id || loading) {
-			return <LoadingView style={styles.container} loading={true}/>;
+			return null; //<LoadingView style={styles.container} loading={true}/>;
 		} else {
 			return (
 				<View style={styles.container}>
@@ -28,7 +28,7 @@ class AccountCard extends Component {
 	}
 }
 
-AccountCard.propTypes = {
+LoginAccountBanner.propTypes = {
 	avatar: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	mark: PropTypes.number.isRequired,
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default AccountCard;
+export default LoginAccountBanner;

@@ -28,11 +28,13 @@ export { default as DragableList } from './DragableList';
 export { default as ScrollHeaderPage } from './ScrollHeaderPage';
 export { default as VerticalGap } from './VerticalGap';
 export { default as IconContent } from './IconContent';
-export { default as LoadingView } from './LoadingView';
+export { default as ProgressWrapper } from './ProgressWrapper';
 export { default as ListSeparator } from './ListSeparator';
 export { default as TextInput } from './TextInput';
 export { default as StepsIndicator } from './StepsIndicator';
 export { default as Layout } from './Layout';
 export { default as NumberController } from './NumberController';
+export { default as Dialog } from './Dialog';
+export { default as Link } from './Link';
 
 export * from './theme';

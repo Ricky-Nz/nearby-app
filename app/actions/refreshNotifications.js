@@ -1,12 +1,20 @@
-import asyncGet from './asyncGet';
+import runAction from './runAction';
 
 export const NOTIFICATIONS_COLLECTION_REFRESH = 'NOTIFICATIONS_COLLECTION_REFRESH';
 
-export function refreshNotifications(token, params) {
-	return asyncGet({
-		token,
-		params,
-		actionName: NOTIFICATIONS_COLLECTION_REFRESH,
-		urlPath: 'users/notifications'
-	});
+export function refreshNotifications() {
+	return (dispatch, getState) => {
+		const { appState, notifications } = getState();
+	
+		runAction({
+			dispatch,
+			token: appState.token,
+			params: {
+				size: appState.listFetchSize,
+				offset: notifications.offset
+			},
+			actionName: NOTIFICATIONS_COLLECTION_REFRESH,
+			urlPath: 'users/notifications'
+		});
+	};
 }

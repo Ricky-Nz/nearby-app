@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getAccountInfo } from '../actions';
-import AccountCard from '../components/AccountCard';
+import LoginAccountBanner from '../components/LoginAccountBanner';
 
 const tokenSelector = state => state.appState.token;
 
@@ -27,4 +27,4 @@ const mapActionToProps = (dispatch) => ({
 });
 
 export default connect(
-	mapStateToProps, mapActionToProps)(AccountCard);
+	mapStateToProps, mapActionToProps)(LoginAccountBanner);
