@@ -10,13 +10,15 @@ export default function (urlPath, token, params) {
 			}
 
 			fetch(url, {
-					method: 'GET',
-					headers: {
-						'Accept': 'application/json',
-						'Authorization': `Token ${token}`
-					}
+				method: 'GET',
+				headers: {
+					'Accept': 'application/json',
+					'Authorization': `Token ${token}`
+				}
 			}).then(response => {
-					resolve(response.json());
-			}).catch(error => reject(error));
+				resolve(response.json());
+			}).catch(error => {
+				reject(error);
+			});
 		});
 }

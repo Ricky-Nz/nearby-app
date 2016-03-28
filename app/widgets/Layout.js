@@ -37,6 +37,18 @@ const styles = StyleSheet.create({
 	padding: {
 		padding: 20
 	},
+	paddingTop: {
+		paddingTop: 20
+	},
+	paddingBottom: {
+		paddingBottom: 20
+	},
+	paddingLeft: {
+		paddingLeft: 20
+	},
+	paddingRight: {
+		paddingRight: 20
+	},
 	paddingVertical: {
 		paddingVertical: 20
 	},

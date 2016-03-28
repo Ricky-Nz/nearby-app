@@ -2,18 +2,21 @@ import React, { PropTypes, StyleSheet, View } from 'react-native';
 import IconMenu from './IconMenu';
 import { HALF_PADDING } from './theme';
 
-let IconSelectBar = ({icons, select, onSelect, style, ...props}) => (
-	<View style={[styles.container, style]}>
+let IconSelectBar = ({items, selectKey, onSelect, style, ...props}) => (
+	<View style={[styles.container, style]} {...props}>
 		{
-			icons.map((icon, index) => (<IconMenu key={index} src={icon} active={select === index}
-				onPress={() => onSelect(index)} style={styles.item} {...props}/>))
+			items.map((item, index) => (<IconMenu key={index} src={item.icon} active={item.key === selectKey}
+				onPress={() => onSelect(item.key)} style={styles.item}/>))
 		}
 	</View>
 );
 
 IconSelectBar.propTypes = {
-	icons: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-	select: PropTypes.number,
+	items: PropTypes.arrayOf(PropTypes.shape({
+		icon: PropTypes.string.isRequired,
+		key: PropTypes.string.isRequired
+	})).isRequired,
+	selectKey: PropTypes.number,
 	onSelect: PropTypes.func.isRequired
 };
 

@@ -7,10 +7,10 @@ export default function ({dispatch, urlPath, token, params, actionName}) {
 		running: true
 	});
 
-	const doFetch = ['SHOP_COLLECTION_REFRESH', 'SHOP_COLLECTION_LOAD', 'GET_ACCOUNT_INFO']
+	const doFetch = ['SHOP_COLLECTION_REFRESH', 'SHOP_COLLECTION_LOAD']
 		.indexOf(actionName) >= 0 ? fetchGet : fetchMock;
 
-	doFetch(urlPath, token, params)
+	doFetch(urlPath, token, params, actionName)
 		.then(result => {
 			dispatch({
 				type: actionName,

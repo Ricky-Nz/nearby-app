@@ -4,18 +4,15 @@ import ShopQuickInfoBar from './ShopQuickInfoBar';
 
 let ShopListItem = ({id, name, address, category, description, location,
 		photos, popularity, postal_code, price_tier, ...props}) => (
-		<View>
-			<Card>
-				<Clickable {...props}>
-					<View>
-						{photos&&<Image style={styles.bannerImage} src={photos[0].url}/>}
-						<SimpleListItem title={name} description={<ShopQuickInfoBar distance={'100m'} category={category} price_tier={price_tier}/>}
-							rightNode={<SubText>{false ? 'Watching' : 'Watch'}</SubText>}/>
-					</View>
-				</Clickable>
-			</Card>
-			<VerticalGap/>
-		</View>
+	<Card>
+		<Clickable {...props}>
+			<View>
+				{photos&&<Image style={styles.bannerImage} src={photos[0].url}/>}
+				<SimpleListItem title={name} description={<ShopQuickInfoBar distance={'100m'} category={category} price_tier={price_tier}/>}
+					rightNode={<SubText>{false ? 'Watching' : 'Watch'}</SubText>}/>
+			</View>
+		</Clickable>
+	</Card>
 );
 
 ShopListItem.propTypes = {

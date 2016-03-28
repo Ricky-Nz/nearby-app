@@ -3,19 +3,16 @@ import { createSelector } from 'reselect';
 import { getAccountInfo } from '../actions';
 import AccountDialog from '../components/AccountDialog';
 
-const tokenSelector = state => state.appState.token;
-
 const accountSelector = state => state.account;
 
 const mapSateToProps = createSelector(
-	tokenSelector,
 	accountSelector,
-	(token, account) => ({token, ...account})
+	(account) => ({...account})
 );
 
-const mapActionToProps = (dispatch) => ({
-	loadAccount(token, id) => {
-		dispatch(getAccountInfo(token, id));
+const mapActionToProps = (dispatch, {userId}) => ({
+	loadAccount: () => {
+		dispatch(getAccountInfo(userId));
 	}
 });
 

@@ -1,6 +1,6 @@
-import React, { Component, StyleSheet, PropTypes, Navigator } from 'react-native';
+import React, { Component, StyleSheet, PropTypes, Navigator, View } from 'react-native';
 import { Page, ActionBar, IconSelectBar, Icon, IconButton, SlideTabViewPager } from '../widgets';
-import { AccountSettingContainer } from '../containers';
+import { MainPageSelectMenu, AccountSettingContainer } from '../containers';
 import OrderList from './OrderList';
 import DeliverList from './DeliverList';
 import ShopList from './ShopList';
@@ -8,34 +8,26 @@ import ShopList from './ShopList';
 class HomePage extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			currentRoute: props.initialRoute
-		};
+		this.state = { selectKey: 'shops' };
 	}
-	onMenuSelect(index) {
-		this.refs.navigator.jumpTo(this.props.initialRouteStack[index]);
-		this.setState({
-			currentRoute: this.props.initialRouteStack[index]
-		});
+	onMenuSelect(selectKey) {
+		this.refs.navigator.jumpTo(selectKey);
+		this.setState({selectKey});
 	}
 	render() {
-		const { tabIcons, initialRouteStack, initialRoute } = this.props;
-		const selectPosition = initialRouteStack.indexOf(this.state.currentRoute);
-
 		return (
 			<Page>
 				<ActionBar
-					leftNode={<IconSelectBar icons={tabIcons} select={selectPosition}
+					leftNode={<MainPageSelectMenu selectKey={this.state.selectKey}
 						onSelect={this.onMenuSelect.bind(this)}/>}
 					rightNode={<IconButton src='power-settings-new'/>}/>
-				<Navigator style={styles.container} ref='navigator'
-					initialRouteStack={initialRouteStack} initialRoute={initialRoute}
-        	renderScene={this.renderScene.bind(this)}/>
+				<Navigator style={styles.container} ref='navigator' initialRouteStack={['orders', 'shops', 'account']}
+					initialRoute='shops' renderScene={this.renderScene.bind(this)}/>
 			</Page>
 		);
 	}
 	renderScene(route, navigator) {
-		switch(route.name) {
+		switch(route) {
 			case 'orders':
 				return (
 					<SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
@@ -59,18 +51,12 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-	navigator: PropTypes.object.isRequired,
-	navigate: PropTypes.func.isRequired,
-	initialRouteStack: PropTypes.array.isRequired,
-	initialRoute: PropTypes.object.isRequired
+	navigator: PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1
-	},
-	settingContainer: {
-		backgroundColor: 'white'
 	}
 });
 
