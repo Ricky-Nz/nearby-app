@@ -3,6 +3,7 @@ import {
 	RATINGS_COLLECTION_LOAD, RATINGS_COLLECTION_REFRESH,
 	NOTIFICATIONS_COLLECTION_LOAD, NOTIFICATIONS_COLLECTION_REFRESH,
 	DELIVERS_COLLECTION_LOAD, DELIVERS_COLLECTION_REFRESH,
+	DELIVERERS_COLLECTION_LOAD, DELIVERERS_COLLECTION_REFRESH,
 	ORDERS_COLLECTION_LOAD, ORDERS_COLLECTION_REFRESH,
 	WATCHINGS_COLLECTION_LOAD, WATCHINGS_COLLECTION_REFRESH,
 	GET_ACCOUNT_INFO
@@ -23,6 +24,26 @@ export default function (urlPath, token, params, actionName) {
 							ratingCount: 33
 						}
 					});
+				case DELIVERERS_COLLECTION_LOAD:
+				case DELIVERERS_COLLECTION_REFRESH:
+					return resolve({
+						"data": [
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
+							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 }
+						]
+					})
 				case RATINGS_COLLECTION_LOAD:
 				case RATINGS_COLLECTION_REFRESH:
 					return resolve({

@@ -36,5 +36,6 @@ export { default as Layout } from './Layout';
 export { default as NumberController } from './NumberController';
 export { default as Dialog } from './Dialog';
 export { default as Link } from './Link';
+export { default as AvatarSelectBar } from './AvatarSelectBar';
 
 export * from './theme';

@@ -1,11 +1,14 @@
 import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
 import { RatingPageContainer, NotificationPageContainer,
-  WatchingPageContainer, AccountDialogContainer } from '../containers';
+  WatchingPageContainer, AccountDialogContainer,
+  ShopDeliverersBarContainer } from '../containers';
 import { DialogPage } from '../widgets';
 import HomePage from './HomePage';
 import ShopPage from './ShopPage';
 import MakeOrderPage from './MakeOrderPage';
 import WidgetsDemo from '../widgets/WidgetsDemo';
+import RatingListDialog from './RatingListDialog';
+import RatingList from './RatingList';
 
 class AppNavigator extends Component {
   componentDidMount() {
@@ -27,7 +30,7 @@ class AppNavigator extends Component {
   renderScene(route, navigator) {
     switch(route.name) {
       case 'home':
-        return <HomePage navigator={navigator}/>;
+        return <HomePage openShopPage={shop => navigator.push({name: 'shop', data: shop})}/>;
       case 'shop':
         return <ShopPage {...route.data} onBack={this.onBackPassed.bind(this)}/>;
       case 'rating':
@@ -36,9 +39,7 @@ class AppNavigator extends Component {
         return <MakeOrderPage onBack={this.onBackPassed.bind(this)}/>;
       default:
         return (
-          <DialogPage>
-            <AccountDialogContainer/>
-          </DialogPage>
+          <ShopDeliverersBarContainer/>
         );
     }
   }

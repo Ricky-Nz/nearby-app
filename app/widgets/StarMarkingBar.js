@@ -1,13 +1,13 @@
 import React, { PropTypes, StyleSheet, View } from 'react-native';
 import Star from './Star';
 
-let StarMarkingBar = ({total, mark}) => (
+let StarMarkingBar = ({total, mark, size}) => (
 	<View style={styles.container}>
 	{
 		Array(Math.floor(total/2)).fill().map((node, index) => {
 			const realMark = mark / 2;
 			const gradeMark = index + 1;
-			return (<Star fill={realMark >= gradeMark ? 'full' : (gradeMark - realMark < 1 ? 'half' : 'empty')}/>);
+			return (<Star size={size} fill={realMark >= gradeMark ? 'full' : (gradeMark - realMark < 1 ? 'half' : 'empty')}/>);
 		})
 	}
 	</View>

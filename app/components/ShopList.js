@@ -5,7 +5,7 @@ import ShopListItem from './ShopListItem';
 
 let ShopList = (props) => (
 	<ListDataContainer stateKey='shops' renderSeparator={() => <VerticalGap/>}
-		renderRow={shop => <ShopListItem {...shop} onPress={() => this.props.onItemClicked(shop)}/>}/>
+		renderRow={shop => <ShopListItem {...shop} onPress={() => props.onItemClicked(shop)}/>}/>
 );
 
 ShopList.propTypes = {

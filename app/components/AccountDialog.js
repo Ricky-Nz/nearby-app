@@ -13,7 +13,7 @@ class AccountDialog extends Component {
 				<Layout alignCenter>
 					<Avatar src={avatarUrl} size='large'/>
 					<MainText>{name}</MainText>
-					<StarMarkingBar mark={marking}/>
+					<StarMarkingBar mark={marking} size='small'/>
 					<Layout padding>
 						<SubText>{`Delivered ${deliveredTimes} orders, ordered ${orderedTimes} times`}</SubText>
 					</Layout>

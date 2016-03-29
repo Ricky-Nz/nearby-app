@@ -40,7 +40,7 @@ class HomePage extends Component {
 						}}/>
 				);
 			case 'shops':
-				return <ShopList/>;
+				return <ShopList onItemClicked={shop => this.props.openShopPage(shop)}/>;
 			case 'account':
 				return (
 					<AccountSettingContainer onOpenRating={() => this.props.navigator.push({name: 'rating'})}
@@ -51,7 +51,7 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-	navigator: PropTypes.object.isRequired
+	openShopPage: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

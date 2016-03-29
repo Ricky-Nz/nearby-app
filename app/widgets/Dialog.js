@@ -5,20 +5,20 @@ import IconButton from './IconButton';
 import ProgressWrapper from './ProgressWrapper';
 import { THEME_COLOR } from './theme';
 
-let Dialog = ({loading, closeBtn, title, rightTitleNode, onClose, children}) => (
-	<Card elevation={6} style={styles.container}>
-		<ProgressWrapper style={styles.progressContainer} loading={loading}>
-			<View>
-				{(closeBtn||title)&&
-					<Layout row alignCenter spaceBetween>
-						{closeBtn?<IconButton src='close' color={THEME_COLOR} onPress={onClose}/>:<View/>}
-						{title}
-						{rightTitleNode?rightTitleNode:<View/>}
-					</Layout>
-				}
-				{children}
-			</View>
-		</ProgressWrapper>
+let Dialog = ({loading, closeBtn, title, rightTitleNode, onClose, children, style}) => (
+	<Card elevation={6} style={[styles.container, style]}>
+		{(closeBtn||title)&&
+			<Layout row alignCenter spaceBetween>
+				<View style={styles.titleButtonContainer}>
+					{closeBtn&&<IconButton src='close' color={THEME_COLOR} onPress={onClose}/>}
+				</View>
+				{title}
+				<View style={styles.titleButtonContainer}>
+					{rightTitleNode}
+				</View>
+			</Layout>
+		}
+		{children}
 	</Card>
 );
 
@@ -32,11 +32,13 @@ Dialog.propTypes = {
 
 const styles = StyleSheet.create({
 	container: {
-		borderRadius: 6,
-		padding: 20
+		borderRadius: 6
 	},
-	progressContainer: {
-		height: 200
+	titleButtonContainer: {
+		height: 60,
+		width: 60,
+		alignItems: 'center',
+		justifyContent: 'center'
 	}
 });
 

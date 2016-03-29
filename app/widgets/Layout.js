@@ -1,7 +1,7 @@
 import React, { StyleSheet, View } from 'react-native';
 
 let Layout = ({children, ...props}) => (
-	<View style={props&&Object.keys(props).map(key => styles[key])}>
+	<View style={props&&Object.keys(props).map(key => key === 'style'? props[key] : styles[key])}>
 		{children}
 	</View>
 );
