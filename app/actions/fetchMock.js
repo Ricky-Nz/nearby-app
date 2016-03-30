@@ -2,9 +2,9 @@ const API_ROOT = 'http://dev.api.togoapp.link/v1';
 import {
 	RATINGS_COLLECTION_LOAD, RATINGS_COLLECTION_REFRESH,
 	NOTIFICATIONS_COLLECTION_LOAD, NOTIFICATIONS_COLLECTION_REFRESH,
-	DELIVERS_COLLECTION_LOAD, DELIVERS_COLLECTION_REFRESH,
-	DELIVERERS_COLLECTION_LOAD, DELIVERERS_COLLECTION_REFRESH,
-	ORDERS_COLLECTION_LOAD, ORDERS_COLLECTION_REFRESH,
+	DELIVERED_COLLECTION_LOAD, DELIVERED_COLLECTION_REFRESH,
+	DELIVERER_COLLECTION_LOAD, DELIVERER_COLLECTION_REFRESH,
+	ORDERED_COLLECTION_LOAD, ORDERED_COLLECTION_REFRESH,
 	WATCHINGS_COLLECTION_LOAD, WATCHINGS_COLLECTION_REFRESH,
 	GET_ACCOUNT_INFO
 } from './';
@@ -16,7 +16,9 @@ export default function (urlPath, token, params, actionName) {
 				case GET_ACCOUNT_INFO:
 					return resolve({
 						data: {
-							avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg',
+							photo: {
+								url: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg',
+							},
 							name: 'Milk & Honey',
 							marking: 7,
 							deliveredTimes: 33,
@@ -24,8 +26,8 @@ export default function (urlPath, token, params, actionName) {
 							ratingCount: 33
 						}
 					});
-				case DELIVERERS_COLLECTION_LOAD:
-				case DELIVERERS_COLLECTION_REFRESH:
+				case DELIVERER_COLLECTION_LOAD:
+				case DELIVERER_COLLECTION_REFRESH:
 					return resolve({
 						"data": [
 							{ id: 'sdfsdf', name: 'Milk & Honey', avatarUrl: 'http://dev.static.togoapp.link/photos/1b/69/79/0d/fe/1e/4d/99/95/1a/f7/94/74/d9/c6/db.jpg', rates: 4, marking: 7 },
@@ -119,10 +121,10 @@ export default function (urlPath, token, params, actionName) {
 							{ name: 'Milk & Honey', distance: '100m', category: 'BBQ', price_tier: 2, imageUrl: 'http://dev.static.togoapp.link/photos/7c/6a/7a/23/37/68/46/41/95/fd/25/bd/23/2c/fd/62.jpg' }
 						]
 					});
-				case ORDERS_COLLECTION_LOAD:
-				case ORDERS_COLLECTION_REFRESH:
-				case DELIVERS_COLLECTION_LOAD:
-				case DELIVERS_COLLECTION_REFRESH:
+				case ORDERED_COLLECTION_LOAD:
+				case ORDERED_COLLECTION_REFRESH:
+				case DELIVERED_COLLECTION_LOAD:
+				case DELIVERED_COLLECTION_REFRESH:
 					return resolve({
 					  "data": [
 					    {
@@ -168,6 +170,6 @@ export default function (urlPath, token, params, actionName) {
 					  ]
 					});
 			}
-		}, 1000);
+		}, 2000);
 	});
 }

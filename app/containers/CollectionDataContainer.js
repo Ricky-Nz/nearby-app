@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { DragableList } from '../widgets';
+import { AsyncActionWrapper } from '../widgets';
 import { loadShops, refreshShops,
 	loadOrders, refreshOrders,
 	loadRatings, refreshRatings,
 	loadNotifications, refreshNotifications,
 	loadDelivers, refreshDelivers,
+	loadDeliverers, refreshDeliverers,
 	loadWatchings, refreshWatchings } from '../actions';
 
 const datasSelector = (state, {stateKey}) => state[stateKey].data;
@@ -18,7 +19,7 @@ const mapStateToProps = createSelector(
 	datasSelector,
 	loadingStatusSelector,
 	refreshingStatusSelector,
-	(datas, loading, refreshing) => ({datas, loading, refreshing})
+	(datas, loading, refreshing) => ({datas, loading, refreshing, running: refreshing&&!datas})
 );
 
 const mapActionToProps = (dispatch, {stateKey}) => ({
@@ -30,6 +31,8 @@ const mapActionToProps = (dispatch, {stateKey}) => ({
 				return dispatch(loadOrders());
 			case 'delivers':
 				return dispatch(loadDelivers());
+			case 'deliverers':
+				return dispatch(loadDeliverers());
 			case 'ratings':
 				return dispatch(loadRatings());
 			case 'watchings':
@@ -38,7 +41,7 @@ const mapActionToProps = (dispatch, {stateKey}) => ({
 				return dispatch(loadNotifications());
 		}
 	},
-	onRefresh: (token, params) => {
+	onRefresh: () => {
 		switch(stateKey) {
 			case 'shops':
 				return dispatch(refreshShops());
@@ -46,6 +49,8 @@ const mapActionToProps = (dispatch, {stateKey}) => ({
 				return dispatch(refreshOrders());
 			case 'delivers':
 				return dispatch(refreshDelivers());
+			case 'deliverers':
+				return dispatch(refreshDeliverers());
 			case 'ratings':
 				return dispatch(refreshRatings());
 			case 'watchings':
@@ -59,4 +64,4 @@ const mapActionToProps = (dispatch, {stateKey}) => ({
 export default connect(
 	mapStateToProps,
 	mapActionToProps
-)(DragableList);
+)(AsyncActionWrapper);

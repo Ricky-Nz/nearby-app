@@ -3,7 +3,7 @@ import { Icon, Clickable } from '../widgets';
 import ThemeText from './ThemeText';
 import { THEME_COLOR } from './theme';
 
-let MoreFooter = ({color, children, style, onPress}) => (
+let MoreFooter = ({children, style, onPress}) => (
 	<Clickable onPress={onPress} style={style}>
 		<View style={styles.container}>
 			<ThemeText>{children}</ThemeText>
@@ -11,14 +11,6 @@ let MoreFooter = ({color, children, style, onPress}) => (
 		</View>
 	</Clickable>
 );
-
-MoreFooter.propTypes = {
-	color: PropTypes.string
-};
-
-MoreFooter.defaultProps = {
-	color: 'whitesmoke'
-};
 
 const styles = StyleSheet.create({
 	container: {

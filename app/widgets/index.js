@@ -28,7 +28,7 @@ export { default as DragableList } from './DragableList';
 export { default as ScrollHeaderPage } from './ScrollHeaderPage';
 export { default as VerticalGap } from './VerticalGap';
 export { default as IconContent } from './IconContent';
-export { default as ProgressWrapper } from './ProgressWrapper';
+export { default as AsyncActionWrapper } from './AsyncActionWrapper';
 export { default as ListSeparator } from './ListSeparator';
 export { default as TextInput } from './TextInput';
 export { default as StepsIndicator } from './StepsIndicator';

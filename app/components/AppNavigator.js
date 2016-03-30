@@ -1,14 +1,8 @@
-import React, { Component, StyleSheet, View, Navigator, BackAndroid } from 'react-native';
-import { RatingPageContainer, NotificationPageContainer,
-  WatchingPageContainer, AccountDialogContainer,
-  ShopDeliverersBarContainer } from '../containers';
-import { DialogPage } from '../widgets';
+import React, { Component, StyleSheet, Navigator, BackAndroid } from 'react-native';
 import HomePage from './HomePage';
 import ShopPage from './ShopPage';
 import MakeOrderPage from './MakeOrderPage';
 import WidgetsDemo from '../widgets/WidgetsDemo';
-import RatingListDialog from './RatingListDialog';
-import RatingList from './RatingList';
 
 class AppNavigator extends Component {
   componentDidMount() {
@@ -23,7 +17,7 @@ class AppNavigator extends Component {
   }
 	render() {
 		return (
-      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'home11'}}
+      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'home'}}
         renderScene={this.renderScene.bind(this)}/>
 		);
 	}
@@ -34,13 +28,11 @@ class AppNavigator extends Component {
       case 'shop':
         return <ShopPage {...route.data} onBack={this.onBackPassed.bind(this)}/>;
       case 'rating':
-        return <RatingPageContainer title='My Ratings' onBack={this.onBackPassed.bind(this)}/>;
+        return null;
       case 'notification':
         return <MakeOrderPage onBack={this.onBackPassed.bind(this)}/>;
       default:
-        return (
-          <ShopDeliverersBarContainer/>
-        );
+        return <WidgetsDemo/>;
     }
   }
 }

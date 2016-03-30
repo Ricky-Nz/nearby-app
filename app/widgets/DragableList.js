@@ -1,6 +1,5 @@
 import React, { Component, PropTypes, StyleSheet, View, ListView, ScrollView, RefreshControl } from 'react-native';
 import ListLoadingItem from './ListLoadingItem';
-import ProgressWrapper from './ProgressWrapper';
 
 class DragableList extends Component {
 	constructor(props) {
@@ -21,17 +20,15 @@ class DragableList extends Component {
 		const {datas, refreshing, loading, onLoadMore, onRefresh, ...props} = this.props;
 
 		return (
-			<ProgressWrapper style={styles.progressContainer} loading={refreshing&&!datas}>
-				<RefreshControl style={styles.container} refreshing={refreshing}
-					onRefresh={onRefresh} colors={['white', 'white', 'white']}
-	        progressBackgroundColor={'aquamarine'}>
-					<ListView dataSource={this.state.dataSource}
-						onEndReached={() => !loading&&onLoadMore()}
-						onEndReachedThreshold={50}
-						renderFooter={() => loading&&<ListLoadingItem/>}
-						{...props}/>
-				</RefreshControl>
-			</ProgressWrapper>
+			<RefreshControl style={styles.container} refreshing={refreshing}
+				onRefresh={onRefresh} colors={['white', 'white', 'white']}
+        progressBackgroundColor={'aquamarine'}>
+				<ListView dataSource={this.state.dataSource}
+					onEndReached={() => !loading&&onLoadMore()}
+					onEndReachedThreshold={50}
+					renderFooter={() => loading&&<ListLoadingItem/>}
+					{...props}/>
+			</RefreshControl>
 		);
 	}
 	onListDataChanged(datas = []) {

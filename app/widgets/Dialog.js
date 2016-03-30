@@ -2,7 +2,6 @@ import React, { PropTypes, StyleSheet, View } from 'react-native';
 import Layout from './Layout';
 import Card from './Card';
 import IconButton from './IconButton';
-import ProgressWrapper from './ProgressWrapper';
 import { THEME_COLOR } from './theme';
 
 let Dialog = ({loading, closeBtn, title, rightTitleNode, onClose, children, style}) => (

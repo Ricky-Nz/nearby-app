@@ -8,7 +8,7 @@ export default function (account = {}, action) {
 			} else if (action.error) {
 				return {...account, loading: false, error: account.error};
 			} else {
-				return {...action.data};
+				return {...action.data, loading: false};
 			}
 		default:
 			return account;

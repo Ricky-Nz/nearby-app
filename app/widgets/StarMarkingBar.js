@@ -7,7 +7,7 @@ let StarMarkingBar = ({total, mark, size}) => (
 		Array(Math.floor(total/2)).fill().map((node, index) => {
 			const realMark = mark / 2;
 			const gradeMark = index + 1;
-			return (<Star size={size} fill={realMark >= gradeMark ? 'full' : (gradeMark - realMark < 1 ? 'half' : 'empty')}/>);
+			return (<Star key={index} size={size} fill={realMark >= gradeMark ? 'full' : (gradeMark - realMark < 1 ? 'half' : 'empty')}/>);
 		})
 	}
 	</View>

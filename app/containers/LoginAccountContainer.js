@@ -1,30 +1,19 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getAccountInfo } from '../actions';
-import LoginAccountBanner from '../components/LoginAccountBanner';
-
-const tokenSelector = state => state.appState.token;
-
-const userIdSelector = state => state.appState.userId;
+import { AsyncActionWrapper } from '../widgets';
 
 const accountSelector = state => state.account;
 
 const mapStateToProps = createSelector(
-	tokenSelector,
-	userIdSelector,
 	accountSelector,
-	(token, userId, account) => ({
-		token,
-		userId,
-		account
-	})
+	(account) => ({...account, running: account.loading})
 );
 
 const mapActionToProps = (dispatch) => ({
-	getAccount: (token, userId) => {
-		dispatch(getAccountInfo(token, null, userId))
+	load: () => {
+		dispatch(getAccountInfo());
 	}
 });
 
-export default connect(
-	mapStateToProps, mapActionToProps)(LoginAccountBanner);
+export default connect(mapStateToProps, mapActionToProps)(AsyncActionWrapper);
