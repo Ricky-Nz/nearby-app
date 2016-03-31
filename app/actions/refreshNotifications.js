@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const NOTIFICATIONS_COLLECTION_REFRESH = 'NOTIFICATIONS_COLLECTION_REFRESH';
 
-export function refreshNotifications() {
+export function refreshNotifications(size) {
 	return (dispatch, getState) => {
 		const { appState, notifications } = getState();
 	
@@ -10,7 +10,7 @@ export function refreshNotifications() {
 			dispatch,
 			token: appState.token,
 			params: {
-				size: appState.listFetchSize,
+				size: size||appState.listFetchSize,
 				offset: notifications.offset
 			},
 			actionName: NOTIFICATIONS_COLLECTION_REFRESH,

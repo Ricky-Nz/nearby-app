@@ -1,26 +1,24 @@
-import React, { PropTypes, StyleSheet, View, ScrollView, Switch } from 'react-native';
+import React, { PropTypes, StyleSheet, ScrollView, Switch } from 'react-native';
 import { SimpleListItem, ListSeparator, Icon } from '../widgets';
 import { LoginAccountContainer } from '../containers';
 import LoginAccountBanner from './LoginAccountBanner';
 
 let AccountSetting = ({notification, location, toggleNotification, toggleLocation,
-		openRatingPage, openNotificationpage}) => (
-	<View style={styles.container}>
-		<ScrollView style={styles.settingContainer}>
-			<LoginAccountContainer style={styles.accountBanner}>
-				<LoginAccountBanner/>
-			</LoginAccountContainer>
-			<SimpleListItem title='Notifications' rightNode={<Switch value={notification} onValueChange={toggleNotification}/>}
-				description='Enable notification to get informed when someone is delivering to the shops you watched'
-				onPress={openNotificationpage}/>
-			<SimpleListItem title='Location' rightNode={<Switch value={location} onValueChange={toggleLocation}/>}
-				description='Enable location to discover shops nearby wherever you go'/>
-			<ListSeparator/>
-			<SimpleListItem leftNode={<Icon src='feedback' color='gray'/>} title='Feedback'/>
-			<SimpleListItem leftNode={<Icon src='star' color='gray'/>} title='Rate Us'/>
-			<SimpleListItem leftNode={<Icon src='public' color='gray'/>} title='About'/>
-		</ScrollView>
-	</View>
+		openRatingPage, openNotificationPage}) => (
+	<ScrollView style={styles.container}>
+		<LoginAccountContainer style={styles.accountBanner}>
+			<LoginAccountBanner onRatingClicked={openRatingPage}/>
+		</LoginAccountContainer>
+		<SimpleListItem title='Notifications' rightNode={<Switch value={notification} onValueChange={toggleNotification}/>}
+			description='Enable notification to get informed when someone is delivering to the shops you watched'
+			onPress={openNotificationPage}/>
+		<SimpleListItem title='Location' rightNode={<Switch value={location} onValueChange={toggleLocation}/>}
+			description='Enable location to discover shops nearby wherever you go'/>
+		<ListSeparator/>
+		<SimpleListItem leftNode={<Icon src='feedback' color='gray'/>} title='Feedback'/>
+		<SimpleListItem leftNode={<Icon src='star' color='gray'/>} title='Rate Us'/>
+		<SimpleListItem leftNode={<Icon src='public' color='gray'/>} title='About'/>
+	</ScrollView>
 );
 
 AccountSetting.propTypes = {
@@ -29,7 +27,7 @@ AccountSetting.propTypes = {
 	toggleNotification: PropTypes.func.isRequired,
 	toggleLocation: PropTypes.func.isRequired,
 	openRatingPage: PropTypes.func.isRequired,
-	openNotificationpage: PropTypes.func.isRequired
+	openNotificationPage: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

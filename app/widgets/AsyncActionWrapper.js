@@ -3,10 +3,10 @@ import { THEME_COLOR } from './theme';
 
 class AsyncActionWrapper extends Component {
 	componentDidMount() {
-		this.props[this.props.initFucName]();
+		this.props[this.props.initFuncName]();
 	}
 	render() {
-		const {children, running, initFucName, processPos, ...props} = this.props;
+		const {children, running, initFuncName, processPos, ...props} = this.props;
 
 		if (running) {
 			return (
@@ -22,13 +22,13 @@ class AsyncActionWrapper extends Component {
 
 AsyncActionWrapper.propTypes = {
 	running: PropTypes.bool.isRequired,
-	initFucName: PropTypes.string.isRequired,
+	initFuncName: PropTypes.string.isRequired,
 	processPos: PropTypes.oneOf(['center', 'top'])
 };
 
 AsyncActionWrapper.defaultProps = {
 	running: true,
-	initFucName: 'load',
+	initFuncName: 'load',
 	processPos: 'center'
 };
 

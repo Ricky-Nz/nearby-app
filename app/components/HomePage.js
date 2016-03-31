@@ -11,8 +11,8 @@ class HomePage extends Component {
 		this.state = { selectKey: 'shops' };
 	}
 	onMenuSelect(selectKey) {
-		this.refs.navigator.jumpTo(selectKey);
 		this.setState({selectKey});
+		this.refs.navigator.jumpTo(selectKey);
 	}
 	render() {
 		return (
@@ -22,7 +22,7 @@ class HomePage extends Component {
 						onSelect={this.onMenuSelect.bind(this)}/>}
 					rightNode={<IconButton src='power-settings-new'/>}/>
 				<Navigator style={styles.container} ref='navigator' initialRouteStack={['orders', 'shops', 'account']}
-					initialRoute='account' renderScene={this.renderScene.bind(this)}/>
+					initialRoute='shops' renderScene={this.renderScene.bind(this)}/>
 			</Page>
 		);
 	}
@@ -34,14 +34,14 @@ class HomePage extends Component {
 						onBindPager={(index) => {
 							if (index === 0) {
 								return (
-									<CollectionDataContainer processPos='top' stateKey='orders' initFucName='onRefresh'>
+									<CollectionDataContainer processPos='top' stateKey='orders' initFuncName='onRefresh'>
 										<DragableList renderSeparator={() => <VerticalGap/>}
 											renderRow={order => <OrderListItem {...order} onPress={() => console.log(order)}/>}/>
 									</CollectionDataContainer>
 								);
 							} else {
 								return (
-									<CollectionDataContainer processPos='top' stateKey='delivers' initFucName='onRefresh'>
+									<CollectionDataContainer processPos='top' stateKey='delivers' initFuncName='onRefresh'>
 										<DragableList renderSeparator={() => <VerticalGap/>}
 											renderRow={order => <OrderListItem {...order} onPress={() => console.log(order)}/>}/>
 									</CollectionDataContainer>
@@ -51,15 +51,15 @@ class HomePage extends Component {
 				);
 			case 'shops':
 				return (
-					<CollectionDataContainer processPos='top' stateKey='shops' initFucName='onRefresh'>
+					<CollectionDataContainer processPos='top' stateKey='shops' initFuncName='onRefresh'>
 						<DragableList renderSeparator={() => <VerticalGap/>}
 							renderRow={shop => <ShopListItem {...shop} onPress={this.props.openShopPage.bind(this, shop)}/>}/>
 					</CollectionDataContainer>
 				);
 			case 'account':
 				return (
-					<AccountSettingContainer onOpenRating={this.props.openRatingPage}
-						onOpenNotification={this.props.openNotificationpage}/>
+					<AccountSettingContainer openRatingPage={this.props.openRatingPage}
+						openNotificationPage={this.props.openNotificationPage}/>
 				);
 		}
 	}
@@ -68,7 +68,7 @@ class HomePage extends Component {
 HomePage.propTypes = {
 	openShopPage: PropTypes.func.isRequired,
 	openRatingPage: PropTypes.func.isRequired,
-	openNotificationpage: PropTypes.func.isRequired
+	openNotificationPage: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

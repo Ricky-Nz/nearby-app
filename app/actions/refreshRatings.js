@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const RATINGS_COLLECTION_REFRESH = 'RATINGS_COLLECTION_REFRESH';
 
-export function refreshRatings() {
+export function refreshRatings(size) {
 	return (dispatch, getState) => {
 		const { appState, ratings } = getState();
 
@@ -10,7 +10,7 @@ export function refreshRatings() {
 			dispatch,
 			token: appState.token,
 			params: {
-				size: appState.listFetchSize,
+				size: size||appState.listFetchSize,
 				offset: ratings.offset
 			},
 			actionName: RATINGS_COLLECTION_REFRESH,

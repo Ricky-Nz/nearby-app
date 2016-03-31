@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const DELIVERED_COLLECTION_LOAD = 'DELIVERED_COLLECTION_LOAD';
 
-export function loadDelivers() {
+export function loadDelivers(size) {
 	return (dispatch, getState) => {
 		const { appState, delivers } = getState();
 
@@ -10,7 +10,7 @@ export function loadDelivers() {
 			dispatch,
 			token: appState.token,
 			params: {
-				size: appState.listFetchSize,
+				size: size||appState.listFetchSize,
 				offset: delivers.offset
 			},
 			actionName: DELIVERED_COLLECTION_LOAD,

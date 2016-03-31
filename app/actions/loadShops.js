@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const SHOP_COLLECTION_LOAD = 'SHOP_COLLECTION_LOAD';
 
-export function loadShops() {
+export function loadShops(size) {
 	return (dispatch, getState) => {
 		const { appState, shops } = getState();
 
@@ -10,7 +10,7 @@ export function loadShops() {
 			dispatch,
 			token: appState.token,
 			params: {
-				size: appState.listFetchSize,
+				size: size||appState.listFetchSize,
 				longitude: appState.longitude,
 				latitude: appState.latitude,
 				offset: shops.size,

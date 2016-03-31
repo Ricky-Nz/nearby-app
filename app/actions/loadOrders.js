@@ -2,7 +2,7 @@ import runAction from './runAction';
 
 export const ORDERED_COLLECTION_LOAD = 'ORDERED_COLLECTION_LOAD';
 
-export function loadOrders() {
+export function loadOrders(size) {
 	return (dispatch, getState) => {
 		const { appState, orders } = getState();
 
@@ -10,7 +10,7 @@ export function loadOrders() {
 			dispatch,
 			token: appState.token,
 			params: {
-				size: appState.listFetchSize,
+				size: size||appState.listFetchSize,
 				offset: orders.offset
 			},
 			actionName: ORDERED_COLLECTION_LOAD,

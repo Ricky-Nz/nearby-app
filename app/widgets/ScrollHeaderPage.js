@@ -14,11 +14,11 @@ class ScrollHeaderPage extends Component {
 		LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
 	}
 	render() {
-		const { children, title, headerHeight, onBack } = this.props;
+		const { style, children, title, headerHeight, onBack } = this.props;
 		const { headerPos } = this.state;
 
 		return (
-			<Page translucent={true}>
+			<Page style={style}>
 				<View style={styles.container}>
 					<ScrollView style={styles.scrollContainer} scrollEventThrottle={8}
 						onScroll={this.onScrollChange.bind(this)}>

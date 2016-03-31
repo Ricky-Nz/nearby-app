@@ -1,3 +1,5 @@
+export { default as TextW } from './Text';
+
 export { default as StatusBar } from './StatusBar';
 export { default as ActionBar } from './ActionBar';
 export { default as Icon } from './Icon';
@@ -27,7 +29,6 @@ export { default as SimpleListItem } from './SimpleListItem';
 export { default as DragableList } from './DragableList';
 export { default as ScrollHeaderPage } from './ScrollHeaderPage';
 export { default as VerticalGap } from './VerticalGap';
-export { default as IconContent } from './IconContent';
 export { default as AsyncActionWrapper } from './AsyncActionWrapper';
 export { default as ListSeparator } from './ListSeparator';
 export { default as TextInput } from './TextInput';

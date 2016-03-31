@@ -1,20 +1,20 @@
 import React, { PropTypes, View } from 'react-native';
-import { DragableListContainer } from '../containers';
-import { Page, ActionBar, IconButton } from '../widgets';
+import { CollectionDataContainer } from '../containers';
+import { Page, ActionBar, IconButton, DragableList } from '../widgets';
 import RatingListItem from './RatingListItem';
 
-let RatingPage = ({title, token, params, onRefresh, onLoadMore, onBack}) => (
+let RatingPage = ({onBack}) => (
 	<Page>
-		<ActionBar title={title} leftNode={<IconButton src='chevron-left' onPress={onBack}/>}/>
-		<DragableListContainer stateKey='ratings'
-			renderRow={rating => <RatingListItem {...rating}/>}
-			onRefresh={() => onRefresh(token, params)}
-			onLoadMore={() => onLoadMore(token, params)}/>
+		<ActionBar title='My Ratings' leftNode={<IconButton src='chevron-left' onPress={onBack}/>}/>
+		<CollectionDataContainer processPos='top' stateKey='ratings' initFucName='onRefresh'>
+			<DragableList
+				renderRow={rating => <RatingListItem {...rating}/>}/>
+		</CollectionDataContainer>
 	</Page>
 );
 
 RatingPage.propTypes = {
-	title: PropTypes.string.isRequired
+	onBack: PropTypes.func.isRequired
 };
 
 export default RatingPage;
