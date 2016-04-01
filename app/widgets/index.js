@@ -1,4 +1,5 @@
-export { default as TextW } from './Text';
+export { default as Text } from './Text';
+export { default as Button } from './Button';
 
 export { default as StatusBar } from './StatusBar';
 export { default as ActionBar } from './ActionBar';
@@ -14,7 +15,6 @@ export { default as ThemeText } from './ThemeText';
 export { default as SlideTabBar } from './SlideTabBar';
 export { default as SlideTabViewPager } from './SlideTabViewPager';
 export { default as StarMarkingBar } from './StarMarkingBar';
-export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Image } from './Image';
 export { default as HorizontalLine } from './HorizontalLine';

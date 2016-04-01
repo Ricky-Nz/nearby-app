@@ -35,25 +35,25 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	padding: {
-		padding: 20
+		padding: 18
 	},
 	paddingTop: {
-		paddingTop: 20
+		paddingTop: 18
 	},
 	paddingBottom: {
-		paddingBottom: 20
+		paddingBottom: 18
 	},
 	paddingLeft: {
-		paddingLeft: 20
+		paddingLeft: 18
 	},
 	paddingRight: {
-		paddingRight: 20
+		paddingRight: 18
 	},
 	paddingVertical: {
-		paddingVertical: 20
+		paddingVertical: 18
 	},
 	paddingHorizontal: {
-		paddingHorizontal: 20
+		paddingHorizontal: 18
 	}
 })
 
