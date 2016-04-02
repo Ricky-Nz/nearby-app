@@ -8,7 +8,7 @@ const actionStateSelector = state => state.appState.running;
 const mapStateToProps = createSelector(
 	actionStateSelector,
 	(running) => ({
-		finished: !running,
+		running,
 		steps: ['Add Items', 'Add Address', 'Delivery Fee']
 	})
 );

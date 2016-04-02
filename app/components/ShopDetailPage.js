@@ -1,11 +1,12 @@
 import React, { PropTypes, StyleSheet, MapView, View } from 'react-native';
 import { ScrollHeaderPage, ImageGallery, Card, Icon, VerticalGap, SimpleListItem,
-	SubText, AvatarSelectBar, Layout, Button } from '../widgets';
+	SubText } from '../widgets';
 import { CollectionDataContainer } from '../containers';
 import ShopQuickInfoBar from './ShopQuickInfoBar';
+import OrderingPanel from './OrderingPanel';
 
 let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
-		category, tags, popularity, description, onBack}) => (
+		category, tags, popularity, description, onBack, onMakeOrder}) => (
 	<View style={styles.container}>
 		<ScrollHeaderPage style={styles.scrollContiner} title={name} onBack={onBack}>
 			<ImageGallery images={photos.map(photo => photo.url)}/>
@@ -18,20 +19,17 @@ let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
 				<MapView style={styles.map} region={location}/>
 			</Card>
 		</ScrollHeaderPage>
-		<Card elevation={4} style={styles.bottomBar}>
+		<Card elevation={6} style={styles.bottomBar}>
       <CollectionDataContainer stateKey='deliverers' initFuncName='onRefresh' size={5}
         converter={datas => {
-          const avatars = datas.map(data => {
-            return { id: data.id, src: data.avatarUrl };
-          });
+          const avatars = datas.map(data => (
+            { id: data.id, src: data.avatarUrl, name: data.name }
+          ));
           return { avatars };
         }}>
-        <AvatarSelectBar onSelect={userId => console.log(userId)}/>
+        <OrderingPanel onSelect={userId => console.log(userId)}
+        	onMakeOrder={onMakeOrder}/>
       </CollectionDataContainer>
-      <Layout row>
-      	<Button style={styles.button}>ORDER NOW</Button>
-      	<Button style={styles.button}>I AM DELIVERING</Button>
-      </Layout>
 		</Card>
 	</View>
 );
@@ -53,7 +51,8 @@ ShopPage.propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string.isRequired),
 	popularity: PropTypes.number,
 	description: PropTypes.string,
-	onBack: PropTypes.func.isRequired
+	onBack: PropTypes.func.isRequired,
+	onMakeOrder: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		right: 0,
-		height: 150
+		height: 180
 	},
 	map: {
 		height: 200

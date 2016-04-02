@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		margin: 4,
-		elevation: 4
+		margin: 4
 	},
 	progress: {
 		marginRight: 4
@@ -53,12 +52,15 @@ const styles = StyleSheet.create({
 	},
 	primary: {
 		backgroundColor: THEME_COLOR,
+		elevation: 3
 	},
 	default: {
-		backgroundColor: 'white'
+		backgroundColor: 'white',
+		elevation: 3
 	},
 	disabled: {
-		backgroundColor: 'gray'
+		backgroundColor: 'gray',
+		elevation: 3
 	},
 	block: {
 		flex: 1

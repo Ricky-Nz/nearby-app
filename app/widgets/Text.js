@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
 	primary: {
 		color: THEME_COLOR
 	},
+	link: {
+		color: THEME_COLOR
+	},
 	sub: {
 		color: 'gray'
 	},

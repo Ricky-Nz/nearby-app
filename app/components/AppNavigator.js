@@ -3,7 +3,7 @@ import HomePage from './HomePage';
 import RatingPage from './RatingPage';
 import NotificationPage from './NotificationPage';
 import ShopDetailPage from './ShopDetailPage';
-import MakeOrderPage from './MakeOrderPage';
+import OrderCreatePage from './OrderCreatePage';
 import WidgetsDemo from '../widgets/WidgetsDemo';
 import TESTPAGE from './TESTPAGE';
 
@@ -32,11 +32,14 @@ class AppNavigator extends Component {
           openRatingPage={() => navigator.push({name: 'rating'})}
           openNotificationPage={() => navigator.push({name: 'notification'})}/>;
       case 'shop':
-        return <ShopDetailPage {...route.data} onBack={this.onBackPassed.bind(this)}/>;
+        return <ShopDetailPage {...route.data} onBack={this.onBackPassed.bind(this)}
+          onMakeOrder={() => navigator.push({name: 'makeOrder'})}/>;
       case 'rating':
         return <RatingPage onBack={this.onBackPassed.bind(this)}/>;
       case 'notification':
         return <NotificationPage onBack={this.onBackPassed.bind(this)}/>;
+      case 'makeOrder':
+        return <OrderCreatePage onBack={this.onBackPassed.bind(this)}/>;
       default:
         return <TESTPAGE/>;
     }

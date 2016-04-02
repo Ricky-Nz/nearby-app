@@ -28,7 +28,7 @@ class ScrollHeaderPage extends Component {
 						<IconButton src='chevron-left' size='normal' onPress={onBack}/>
 						<TitleText>{title}</TitleText>
 					</Card>
-					{(headerPos<0)&&<IconButton style={styles.backBtn} src='chevron-left' size='normal' onPress={onBack}/>}
+					<IconButton style={styles.backBtn} src='chevron-left' size='normal' onPress={onBack}/>
 				</View>
 			</Page>
 		);
@@ -55,7 +55,7 @@ ScrollHeaderPage.propTypes = {
 };
 
 ScrollHeaderPage.defaultProps = {
-	headerHeight: 80
+	headerHeight: 76
 };
 
 const styles = StyleSheet.create({

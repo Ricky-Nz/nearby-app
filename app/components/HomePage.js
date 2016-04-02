@@ -35,32 +35,32 @@ class HomePage extends Component {
 	renderScene(route, navigator) {
 		switch(route.key) {
 			case 'orders':
-				return (null
-					// <SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
-					// 	onBindPager={(index) => {
-					// 		if (index === 0) {
-					// 			return (
-					// 				<CollectionDataContainer processPos='top' stateKey='orders' initFuncName='onRefresh'>
-					// 					<DragableList renderSeparator={() => <VerticalGap/>}
-					// 						renderRow={order => <OrderListItem {...order} onPress={() => console.log(order)}/>}/>
-					// 				</CollectionDataContainer>
-					// 			);
-					// 		} else {
-					// 			return (
-					// 				<CollectionDataContainer processPos='top' stateKey='delivers' initFuncName='onRefresh'>
-					// 					<DragableList renderSeparator={() => <VerticalGap/>}
-					// 						renderRow={order => <OrderListItem {...order} onPress={() => console.log(order)}/>}/>
-					// 				</CollectionDataContainer>
-					// 			);
-					// 		}
-					// 	}}/>
+				return (
+					<SlideTabViewPager mode='text' tabs={['ORDERED', 'DELIVERED']}
+						onBindPager={(index) => {
+							if (index === 0) {
+								return (
+									<CollectionDataContainer processPos='top' stateKey='orders' initFuncName='onRefresh'>
+										<DragableList renderSeparator={() => <VerticalGap/>}
+											renderRow={order => <OrderListItem {...order} onPress={() => console.log(order)}/>}/>
+									</CollectionDataContainer>
+								);
+							} else {
+								return (
+									<CollectionDataContainer processPos='top' stateKey='delivers' initFuncName='onRefresh'>
+										<DragableList renderSeparator={() => <VerticalGap/>}
+											renderRow={order => <OrderListItem {...order} onPress={() => console.log(order)}/>}/>
+									</CollectionDataContainer>
+								);
+							}
+						}}/>
 				);
 			case 'shops':
-				return (null
-					// <CollectionDataContainer processPos='top' stateKey='shops' initFuncName='onRefresh'>
-					// 	<DragableList renderSeparator={() => <VerticalGap/>}
-					// 		renderRow={shop => <ShopListItem {...shop} onPress={this.props.openShopPage.bind(this, shop)}/>}/>
-					// </CollectionDataContainer>
+				return (
+					<CollectionDataContainer processPos='top' stateKey='shops' initFuncName='onRefresh'>
+						<DragableList renderSeparator={() => <VerticalGap/>}
+							renderRow={shop => <ShopListItem {...shop} onPress={this.props.openShopPage.bind(this, shop)}/>}/>
+					</CollectionDataContainer>
 				);
 			case 'account':
 				return (

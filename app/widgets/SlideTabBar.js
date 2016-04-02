@@ -13,7 +13,7 @@ class SlideTabBar extends Component {
 		};
 	}
 	render() {
-		const { mode, tabs, position, offset, status, onSelect } = this.props;
+		const { mode, tabs, position, onSelect } = this.props;
 		const { sliderWidth } = this.state;
 
 		const tabItems = tabs.map((tab, index) => (
@@ -23,16 +23,13 @@ class SlideTabBar extends Component {
 			</Clickable>
 		));
 
-		const sliderOffset = (status === 'idle') ? {
+		const sliderOffset = {
 			width: sliderWidth,
 			left: position * sliderWidth
-		} : {
-			width: sliderWidth,
-			left: sliderWidth * (offset + position)
 		};
 
 		return (
-			<Card style={styles.container} backgroundColor={THEME_COLOR} elevation={4}>
+			<Card elevation={3} style={styles.container}>
 				<View style={styles.tabsContainer}>
 					{tabItems}
 				</View>
@@ -46,21 +43,17 @@ SlideTabBar.propTypes = {
 	mode: PropTypes.oneOf(['icon', 'text']),
 	tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
 	position: PropTypes.number,
-	offset: PropTypes.number,
-	status: PropTypes.string,
 	onSelect: PropTypes.func.isRequired
 };
 
 SlideTabBar.defaultProps = {
 	mode: 'icon',
-	status: 'idle',
-	position: 0,
-	offset: 0
+	position: 0
 };
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: 'darkturquoise',
+		backgroundColor: THEME_COLOR,
 		position: 'relative'
 	},
 	tabsContainer: {

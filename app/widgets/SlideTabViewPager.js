@@ -5,21 +5,13 @@ class SlideTabViewPager extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			position: props.defaultPosition,
-			offset: 0,
-			status: 'idle'
+			position: props.defaultPosition
 		};
 	}
 	componentDidMount() {
 		this.setState({
 			[this.props.defaultPosition]: this.props.onBindPager(this.props.defaultPosition)
 		});
-	}
-	onPageScroll({nativeEvent}) {
-		this.setState({offset: nativeEvent.offset, position: nativeEvent.position});
-	}
-	onPageScrollStateChanged(state) {
-		this.setState({status: state});
 	}
 	onPageSelected({nativeEvent}) {
 		this.onChangeSelectPage(nativeEvent.position);
@@ -50,8 +42,7 @@ class SlideTabViewPager extends Component {
 			<View style={styles.container}>
 				<SlideTabBar mode={mode} tabs={tabs} {...this.state} onSelect={this.onSelectTab.bind(this)}/>
         <ViewPagerAndroid ref='viewPager' style={styles.container} initialPage={defaultPosition}
-          onPageScroll={this.onPageScroll.bind(this)} onPageSelected={this.onPageSelected.bind(this)}
-          onPageScrollStateChanged={this.onPageScrollStateChanged.bind(this)}>
+          onPageSelected={this.onPageSelected.bind(this)}>
           {slidePages}
         </ViewPagerAndroid>
 			</View>

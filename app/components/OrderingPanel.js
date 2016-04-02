@@ -9,7 +9,7 @@ let OrderingPanel = ({avatars, onSelect, onMakeOrder}) => (
 			</Text>
 			<AvatarSelectBar avatars={avatars} onSelect={onSelect}/>
 		</Layout>
-    <Layout row alignCenter paddingVertical>
+    <Layout row alignCenter paddingBottom>
       {avatars&&<Button wMode='primary' block onPress={onMakeOrder}>ORDER NOW</Button>}
       <Button block>IM ORDERING</Button>
     </Layout>
