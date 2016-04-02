@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { toggleNotification, toggleLocation } from '../actions';
-import AccountSetting from '../components/AccountSetting';
+import SettingPage from '../components/SettingPage';
 
 const notificationSelector = state => state.appState.notification;
 
@@ -22,4 +22,4 @@ const mapActionToProps = (dispatch) => ({
 	}
 });
 
-export default connect(mapStateToProps, mapActionToProps)(AccountSetting);
+export default connect(mapStateToProps, mapActionToProps)(SettingPage);

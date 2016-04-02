@@ -23,11 +23,11 @@ const mapStateToProps = createSelector(
 	refreshingStatusSelector,
 	converterFuncSelector,
 	(datas, loading, refreshing, converter) => {
-		const running = refreshing&&!datas;
-		if (!running&&converter&&datas) {
-			return {...converter(datas), loading, refreshing, running};
+		const finished = (!refreshing&&datas)?true:false;
+		if (finished&&converter) {
+			return {...converter(datas), loading, refreshing, finished};
 		} else {
-			return {datas, loading, refreshing, running};
+			return {datas, loading, refreshing, finished};
 		}
 	}
 );

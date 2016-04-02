@@ -5,7 +5,7 @@ import MainText from './MainText';
 import SubText from './SubText';
 import { THEME_COLOR } from './theme';
 
-let NumberController = ({value, description, onValueUpdate}) => (
+let NumberOperatePanel = ({value, description, onValueUpdate}) => (
 	<Layout row spaceBetween>
 		<IconButton color={THEME_COLOR} src='remove'
 			onPress={() => onValueUpdate(value - 1)}/>
@@ -18,10 +18,10 @@ let NumberController = ({value, description, onValueUpdate}) => (
 	</Layout>
 );
 
-NumberController.propTypes = {
+NumberOperatePanel.propTypes = {
 	value: PropTypes.number.isRequired,
 	description: PropTypes.string.isRequired,
 	onValueUpdate: PropTypes.func.isRequired
 };
 
-export default NumberController;
+export default NumberOperatePanel;

@@ -16,7 +16,7 @@ import Button from './Button';
 import IconMenu from './IconMenu';
 import IconSelectBar from './IconSelectBar';
 import StepsIndicator from './StepsIndicator';
-import NumberController from './NumberController';
+import NumberOperatePanel from './NumberOperatePanel';
 import { LoginAccountContainer } from '../containers';
 
 const IMAGE_URL = 'http://facebook.github.io/origami/public/images/birds.jpg';
@@ -38,7 +38,7 @@ class TestPage extends Component {
 
 				<StepsIndicator steps={['Step 1', 'Step 2', 'Step 3']} currentStep={1}/>
 
-				<NumberController value={33} description='SGD / Order'
+				<NumberOperatePanel value={33} description='SGD / Order'
 					onValueUpdate={newValue => console.log(newValue)}/>
 				
 				<AvatarSelectBar avatars={[

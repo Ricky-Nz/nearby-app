@@ -4,7 +4,7 @@ import Card from './Card';
 import IconButton from './IconButton';
 import { THEME_COLOR } from './theme';
 
-let Dialog = ({loading, closeBtn, title, rightTitleNode, onClose, children, style}) => (
+let Dialog = ({closeBtn, title, rightTitleNode, onClose, children, style}) => (
 	<Card elevation={6} style={[styles.container, style]}>
 		{(closeBtn||title)&&
 			<Layout row alignCenter spaceBetween>
@@ -22,7 +22,6 @@ let Dialog = ({loading, closeBtn, title, rightTitleNode, onClose, children, styl
 );
 
 Dialog.propTypes = {
-	loading: PropTypes.bool,
 	closeBtn: PropTypes.bool,
 	rightTitleNode: PropTypes.element,
 	title: PropTypes.element,

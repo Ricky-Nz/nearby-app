@@ -7,7 +7,9 @@ const accountSelector = state => state.account;
 
 const mapStateToProps = createSelector(
 	accountSelector,
-	(account) => ({...account, running: account.loading})
+	(account) => {
+		return {finished: account.data?true:false, ...account.data};
+	}
 );
 
 const mapActionToProps = (dispatch) => ({

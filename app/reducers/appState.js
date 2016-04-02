@@ -1,4 +1,5 @@
-import { TOGGLE_NOTIFICATION, TOGGLE_LOCATION } from '../actions';
+import { TOGGLE_NOTIFICATION, TOGGLE_LOCATION,
+	CREATE_ORDER } from '../actions';
 
 export default function (appState = {
 		listFetchSize: 10,
@@ -13,6 +14,8 @@ export default function (appState = {
 			return { ...appState, notification: !appState.notification };
 		case TOGGLE_LOCATION:
 			return { ...appState, location: !appState.location };
+		case CREATE_ORDER:
+			return { ...appState, running: action.running };
 		default:
 			return appState;
 	}

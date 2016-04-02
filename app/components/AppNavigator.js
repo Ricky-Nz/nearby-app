@@ -20,7 +20,7 @@ class AppNavigator extends Component {
   }
 	render() {
 		return (
-      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'homeaa'}}
+      <Navigator style={styles.container} ref='navigator' initialRoute={{name: 'home'}}
         renderScene={this.renderScene.bind(this)}/>
 		);
 	}

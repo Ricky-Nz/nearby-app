@@ -1,7 +1,7 @@
 import React, { Component, PropTypes, StyleSheet, View } from 'react-native';
 import { Avatar, StarMarkingBar, TitleText, MoreFooter, THEME_COLOR } from '../widgets';
 
-let LoginAccountBanner = ({ style, name, photo, marking, onRatingClicked }) => (
+let AccountBanner = ({ style, name, photo, marking, onRatingClicked }) => (
 	<View style={[styles.container, style]}>
 		<Avatar src={photo.url} size='normal'/>
 		<View style={styles.centerContent}>
@@ -12,7 +12,7 @@ let LoginAccountBanner = ({ style, name, photo, marking, onRatingClicked }) => (
 	</View>
 );
 
-LoginAccountBanner.propTypes = {
+AccountBanner.propTypes = {
 	photo: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	marking: PropTypes.number.isRequired,
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default LoginAccountBanner;
+export default AccountBanner;

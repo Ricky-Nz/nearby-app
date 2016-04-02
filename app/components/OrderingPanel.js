@@ -1,7 +1,7 @@
 import React, { PropTypes, StyleSheet } from 'react-native';
 import { Layout, Text, Button, AvatarSelectBar } from '../widgets';
 
-let OrderingPanel = ({avatars, onSelect}) => (
+let OrderingPanel = ({avatars, onSelect, onMakeOrder}) => (
 	<Layout style={styles.container}>
 		<Layout style={styles.container} padding cneter alignCenter>
 			<Text wMode='sub' wSize='sm'>
@@ -10,15 +10,16 @@ let OrderingPanel = ({avatars, onSelect}) => (
 			<AvatarSelectBar avatars={avatars} onSelect={onSelect}/>
 		</Layout>
     <Layout row alignCenter paddingVertical>
-      {avatars&&<Button wMode='primary' block>ORDER NOW</Button>}
+      {avatars&&<Button wMode='primary' block onPress={onMakeOrder}>ORDER NOW</Button>}
       <Button block>IM ORDERING</Button>
     </Layout>
 	</Layout>
 );
 
 OrderingPanel.propTypes = {
-	avatars: PropTypes.arrray,
-	onSelect: PropTypes.func.isRequired
+	avatars: PropTypes.arrayOf(PropTypes.object),
+	onSelect: PropTypes.func.isRequired,
+	onMakeOrder: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

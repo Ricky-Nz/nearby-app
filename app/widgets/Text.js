@@ -1,15 +1,16 @@
 import React, { PropTypes, StyleSheet, Text as ReactText } from 'react-native';
 import { THEME_COLOR } from './theme';
 
-let Text = ({children, wSize, wMode, align, style, ...props}) => (
-	<ReactText style={[styles[wSize], styles[wMode], styles[align], style]} {...props}>
+let Text = ({children, wSize, wMode, align, paragraph, style, ...props}) => (
+	<ReactText style={[styles[wSize], styles[wMode], styles[align], paragraph&&styles.paragraph, style]} {...props}>
 		{children}
 	</ReactText>
 );
 
 Text.propTypes = {
 	wSize: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
-	wMode: PropTypes.string
+	wMode: PropTypes.string,
+	paragraph: PropTypes.bool
 };
 
 Text.defaultProps = {
@@ -29,8 +30,11 @@ const styles = StyleSheet.create({
 	lite: {
 		color: 'white'
 	},
+	paragraph: {
+		padding: 12
+	},
 	lg: {
-		fontSize: 22
+		fontSize: 24
 	},
 	md: {
 		fontSize: 18

@@ -2,10 +2,10 @@ import React, { PropTypes, StyleSheet } from 'react-native';
 import IconMenu from './IconMenu';
 import TitleText from './TitleText';
 import Card from './Card';
-import { THEME_COLOR, BAR_HEIGHT, PADDING, HALF_PADDING } from './theme';
+import { THEME_COLOR } from './theme';
 
-let ActionBar = ({title, leftNode, rightNode, style}) => (
-	<Card elevation={6} style={[styles.container, style]}>
+let ActionBar = ({title, leftNode, rightNode, primary, style}) => (
+	<Card elevation={6} style={[styles.container, primary&&styles.primary, style]}>
 		{leftNode}
 		<TitleText style={styles.title}>{title}</TitleText>
 		{rightNode}
@@ -13,6 +13,7 @@ let ActionBar = ({title, leftNode, rightNode, style}) => (
 );
 
 ActionBar.propTypes = {
+	primary: PropTypes.bool,
 	title: PropTypes.string,
 	leftNode: PropTypes.element,
 	rightNode: PropTypes.element,
@@ -22,13 +23,16 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		height: BAR_HEIGHT,
-		padding: PADDING,
+		height: 56,
+		padding: 10,
+		backgroundColor: 'white'
+	},
+	primary: {
 		backgroundColor: THEME_COLOR
 	},
 	title: {
 		color: 'white',
-		marginHorizontal: HALF_PADDING,
+		marginHorizontal: 5,
 		flex: 1
 	}
 });

@@ -4,11 +4,11 @@ export default function (account = {}, action) {
 	switch(action.type) {
 		case GET_ACCOUNT_INFO:
 			if (action.running) {
-				return {...account, loading: true, error: null};
+				return {loading: true};
 			} else if (action.error) {
-				return {...account, loading: false, error: account.error};
+				return {loading: false, error: action.error};
 			} else {
-				return {...action.data, loading: false};
+				return {loading: false, data: action.data};
 			}
 		default:
 			return account;

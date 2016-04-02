@@ -40,7 +40,7 @@ class DragableList extends Component {
 }
 
 DragableList.propTypes = {
-	datas: PropTypes.arrayOf(PropTypes.object).isRequired,
+	datas: PropTypes.arrayOf(PropTypes.object),
 	refreshing: PropTypes.bool,
 	loading: PropTypes.bool,
 	onLoadMore: PropTypes.func,

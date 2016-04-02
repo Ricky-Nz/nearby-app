@@ -1,7 +1,7 @@
 import React, { StyleSheet, View } from 'react-native';
 
-const HorizontalLine = ({padding}) => (
-	<View style={padding? styles.delimiterPadding : styles.delimiter}/>
+const HorizontalLine = ({padding, style}) => (
+	<View style={[padding? styles.delimiterPadding : styles.delimiter, style]}/>
 );
 
 const styles = StyleSheet.create({

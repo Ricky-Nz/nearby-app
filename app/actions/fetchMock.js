@@ -6,13 +6,20 @@ import {
 	DELIVERER_COLLECTION_LOAD, DELIVERER_COLLECTION_REFRESH,
 	ORDERED_COLLECTION_LOAD, ORDERED_COLLECTION_REFRESH,
 	WATCHINGS_COLLECTION_LOAD, WATCHINGS_COLLECTION_REFRESH,
-	GET_ACCOUNT_INFO
+	GET_ACCOUNT_INFO,
+	CREATE_ORDER
 } from './';
 
 export default function (urlPath, token, params, actionName) {
 	return new Promise((resolve, reject) => {
 		setTimeout(function () {
 			switch(actionName) {
+				case CREATE_ORDER:
+					return resolve({
+						data: {
+							success: true
+						}
+					});
 				case GET_ACCOUNT_INFO:
 					return resolve({
 						data: {

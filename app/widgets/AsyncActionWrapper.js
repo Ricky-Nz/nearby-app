@@ -6,28 +6,28 @@ class AsyncActionWrapper extends Component {
 		this.props[this.props.initFuncName]();
 	}
 	render() {
-		const {children, running, initFuncName, processPos, ...props} = this.props;
+		const {children, finished, initFuncName, processPos, ...props} = this.props;
 
-		if (running) {
+		if (finished) {
+			return React.cloneElement(children, props);
+		} else {
 			return (
 				<View style={[styles[processPos], props.style]}>
 					<ProgressBarAndroid styleAttr='Normal' indeterminate={true} color={THEME_COLOR}/>
 				</View>
 			);
-		} else {
-			return React.cloneElement(children, props);
 		}
 	}
 }
 
 AsyncActionWrapper.propTypes = {
-	running: PropTypes.bool.isRequired,
-	initFuncName: PropTypes.string.isRequired,
+	finished: PropTypes.bool,
+	initFuncName: PropTypes.string,
 	processPos: PropTypes.oneOf(['center', 'top'])
 };
 
 AsyncActionWrapper.defaultProps = {
-	running: true,
+	finished: false,
 	initFuncName: 'load',
 	processPos: 'center'
 };

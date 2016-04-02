@@ -1,10 +1,12 @@
-import React, { StyleSheet, PropTypes } from 'react-native';
+import React, { StyleSheet, PropTypes, ProgressBarAndroid } from 'react-native';
 import Clickable from './Clickable';
 import Text from './Text';
 import { THEME_COLOR } from './theme';
 
-let Button = ({wMode, block, wSize, onPress, children, style}) => (
-	<Clickable style={[styles.base, styles[wSize], styles[wMode], block&&styles.block, style]} onPress={onPress}>
+let Button = ({wMode, block, running, wSize, disabled, onPress, children, style}) => (
+	<Clickable style={[styles.base, styles[wSize], styles[wMode],
+			block&&styles.block, disabled&&styles.disabled, style]} onPress={!disabled&&onPress}>
+		{running&&<ProgressBarAndroid style={styles.progress} styleAttr='Small' indeterminate={true} color={wMode==='primary'?'white':THEME_COLOR}/>}
 		<Text align='center' wMode={wMode==='primary'?'lite':wMode} wSize={wSize} numberOfLines={1}>{children}</Text>
 	</Clickable>
 );
@@ -12,7 +14,9 @@ let Button = ({wMode, block, wSize, onPress, children, style}) => (
 Button.propTypes = {
 	wSize: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
 	wMode: PropTypes.string,
-	block: PropTypes.bool
+	block: PropTypes.bool,
+	running: PropTypes.bool,
+	disabled: PropTypes.bool
 };
 
 Button.defaultProps = {
@@ -22,10 +26,14 @@ Button.defaultProps = {
 
 const styles = StyleSheet.create({
 	base: {
+		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
 		margin: 4,
 		elevation: 4
+	},
+	progress: {
+		marginRight: 4
 	},
 	lg: {
 		paddingVertical: 12,
@@ -48,6 +56,9 @@ const styles = StyleSheet.create({
 	},
 	default: {
 		backgroundColor: 'white'
+	},
+	disabled: {
+		backgroundColor: 'gray'
 	},
 	block: {
 		flex: 1

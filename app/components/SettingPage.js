@@ -1,14 +1,14 @@
 import React, { PropTypes, StyleSheet, ScrollView, Switch } from 'react-native';
 import { SimpleListItem, ListSeparator, Icon } from '../widgets';
-import { LoginAccountContainer } from '../containers';
-import LoginAccountBanner from './LoginAccountBanner';
+import { AccountContainer } from '../containers';
+import AccountBanner from './AccountBanner';
 
-let AccountSetting = ({notification, location, toggleNotification, toggleLocation,
+let SettingPage = ({notification, location, toggleNotification, toggleLocation,
 		openRatingPage, openNotificationPage}) => (
 	<ScrollView style={styles.container}>
-		<LoginAccountContainer style={styles.accountBanner}>
-			<LoginAccountBanner onRatingClicked={openRatingPage}/>
-		</LoginAccountContainer>
+		<AccountContainer style={styles.accountBanner}>
+			<AccountBanner onRatingClicked={openRatingPage}/>
+		</AccountContainer>
 		<SimpleListItem title='Notifications' rightNode={<Switch value={notification} onValueChange={toggleNotification}/>}
 			description='Enable notification to get informed when someone is delivering to the shops you watched'
 			onPress={openNotificationPage}/>
@@ -21,7 +21,7 @@ let AccountSetting = ({notification, location, toggleNotification, toggleLocatio
 	</ScrollView>
 );
 
-AccountSetting.propTypes = {
+SettingPage.propTypes = {
 	notification: PropTypes.bool.isRequired,
 	location: PropTypes.bool.isRequired,
 	toggleNotification: PropTypes.func.isRequired,
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default AccountSetting;
+export default SettingPage;
