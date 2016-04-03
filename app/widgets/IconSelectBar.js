@@ -6,7 +6,7 @@ let IconSelectBar = ({items, selectIndex, onSelect, style, ...props}) => (
 	<View style={[styles.container, style]} {...props}>
 		{
 			items.map((item, index) => (<IconMenu key={index} src={item.icon} active={index === selectIndex}
-				onPress={() => onSelect(index, item)} style={styles.item}/>))
+				onPress={() => onSelect(index)} style={styles.item}/>))
 		}
 	</View>
 );

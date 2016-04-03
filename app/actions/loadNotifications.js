@@ -8,13 +8,14 @@ export function loadNotifications(size) {
 
 		runAction({
 			dispatch,
+			actionName: NOTIFICATION_COLLECTION_LOAD,
+			method: 'GET',
+			urlPath: 'users/notifications',
 			token: appState.token,
 			params: {
 				size: size||appState.listFetchSize,
 				offset: notifications.offset
-			},
-			actionName: NOTIFICATION_COLLECTION_LOAD,
-			urlPath: 'users/notifications'
+			}
 		});
 	};
 }

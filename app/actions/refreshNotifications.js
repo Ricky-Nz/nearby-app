@@ -1,6 +1,6 @@
 import runAction from './runAction';
 
-export const NOTIFICATIONS_COLLECTION_REFRESH = 'NOTIFICATIONS_COLLECTION_REFRESH';
+export const NOTIFICATION_COLLECTION_REFRESH = 'NOTIFICATION_COLLECTION_REFRESH';
 
 export function refreshNotifications(size) {
 	return (dispatch, getState) => {
@@ -8,13 +8,14 @@ export function refreshNotifications(size) {
 	
 		runAction({
 			dispatch,
+			actionName: NOTIFICATIONS_COLLECTION_REFRESH,
+			method: 'GET',
+			urlPath: 'users/notifications',
 			token: appState.token,
 			params: {
 				size: size||appState.listFetchSize,
-				offset: notifications.offset
-			},
-			actionName: NOTIFICATIONS_COLLECTION_REFRESH,
-			urlPath: 'users/notifications'
+				offset: 0
+			}
 		});
 	};
 }

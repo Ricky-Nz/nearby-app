@@ -3,18 +3,18 @@ import RoundClickable from './RoundClickable';
 import Icon from './Icon';
 
 let IconMenu = ({onPress, active, style, ...props}) => (
-	<RoundClickable style={style} onPress={onPress} size={props.size}>
+	<RoundClickable style={style} onPress={onPress} wSize={props.wSize}>
 		<Icon {...props} color={active ? 'white' : 'gainsboro'}/>
 	</RoundClickable>
 );
 
 IconMenu.propTypes = {
-	size: PropTypes.string,
+	wSize: PropTypes.string,
 	active: PropTypes.bool
 };
 
 IconMenu.defaultProps = {
-	size: 'small',
+	wSize: 'sm',
 	active: false
 };
 

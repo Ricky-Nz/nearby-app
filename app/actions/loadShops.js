@@ -6,8 +6,11 @@ export function loadShops(size) {
 	return (dispatch, getState) => {
 		const { appState, shops } = getState();
 
-		return runAction({
+		runAction({
 			dispatch,
+			actionName: SHOP_COLLECTION_LOAD,
+			method: 'GET',
+			urlPath: 'shops',
 			token: appState.token,
 			params: {
 				size: size||appState.listFetchSize,
@@ -15,9 +18,7 @@ export function loadShops(size) {
 				latitude: appState.latitude,
 				offset: shops.size,
 				distance: shops.distance
-			},
-			actionName: SHOP_COLLECTION_LOAD,
-			urlPath: 'shops'
+			}
 		});
 	};
 }

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { AsyncActionWrapper } from '../widgets';
-import { loadShops, refreshShops,
-	loadOrders, refreshOrders,
-	loadRatings, refreshRatings,
-	loadNotifications, refreshNotifications,
-	loadDelivers, refreshDelivers,
-	loadDeliverers, refreshDeliverers,
-	loadWatchings, refreshWatchings } from '../actions';
+import {
+	loadShops, refreshShops,
+	loadOrdered, refreshOrdered,
+	loadDelivered, refreshDelivered,
+	loadReviews, refreshReviews,
+	loadNotifications, refreshNotifications
+} from '../actions';
 
 const datasSelector = (state, {stateKey}) => state[stateKey].data;
 
@@ -15,58 +15,39 @@ const loadingStatusSelector = (state, {stateKey}) => state[stateKey].loading;
 
 const refreshingStatusSelector = (state, {stateKey}) => state[stateKey].refreshing;
 
+const completeStatusSelector = (state, {stateKey}) => state[stateKey].complete;
+
 const converterFuncSelector = (state, {stateKey, initFuncName, size, converter}) => converter;
 
 const mapStateToProps = createSelector(
 	datasSelector,
 	loadingStatusSelector,
 	refreshingStatusSelector,
+	completeStatusSelector,
 	converterFuncSelector,
-	(datas, loading, refreshing, converter) => {
+	(datas, loading, refreshing, complete, converter) => {
 		const finished = (!refreshing&&datas)?true:false;
 		if (finished&&converter) {
-			return {...converter(datas), loading, refreshing, finished};
+			return {finished, result: { ...converter(datas), loading, refreshing, complete }};
 		} else {
-			return {datas, loading, refreshing, finished};
+			return {finished, result: { datas, loading, refreshing, complete }};
 		}
 	}
 );
 
-const mapActionToProps = (dispatch, {stateKey, size}) => ({
-	onLoadMore: () => {
+const mapActionToProps = (dispatch, {stateKey, userId, size}) => ({
+	onLoad: (loadMore) => {
 		switch(stateKey) {
 			case 'shops':
-				return dispatch(loadShops(size));
-			case 'orders':
-				return dispatch(loadOrders(size));
-			case 'delivers':
-				return dispatch(loadDelivers(size));
-			case 'deliverers':
-				return dispatch(loadDeliverers(size));
-			case 'ratings':
-				return dispatch(loadRatings(size));
-			case 'watchings':
-				return dispatch(loadWatchings(size));
+				return dispatch(loadMore ? loadShops(size) : refreshShops(size));
+			case 'ordered':
+				return dispatch(loadMore ? loadOrdered(size) : refreshOrdered(size));
+			case 'delivered':
+				return dispatch(loadMore ? loadDelivered(size) : refreshDelivered(size));
+			case 'reviews':
+				return dispatch(loadMore ? loadReviews(size, userId) : refreshReviews(size, userId));
 			case 'notifications':
-				return dispatch(loadNotifications(size));
-		}
-	},
-	onRefresh: () => {
-		switch(stateKey) {
-			case 'shops':
-				return dispatch(refreshShops(size));
-			case 'orders':
-				return dispatch(refreshOrders(size));
-			case 'delivers':
-				return dispatch(refreshDelivers(size));
-			case 'deliverers':
-				return dispatch(refreshDeliverers(size));
-			case 'ratings':
-				return dispatch(refreshRatings(size));
-			case 'watchings':
-				return dispatch(refreshWatchings(size));
-			case 'notifications':
-				return dispatch(refreshNotifications(size));
+				return dispatch(loadMore ? loadNotifications(size) : refreshNotifications(size));
 		}
 	}
 });
@@ -75,3 +56,4 @@ export default connect(
 	mapStateToProps,
 	mapActionToProps
 )(AsyncActionWrapper);
+

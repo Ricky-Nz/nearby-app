@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, StyleSheet, View, ViewPagerAndroid } from 'react-native';
+import React, { Component, PropTypes, StyleSheet, View, ToastAndroid } from 'react-native';
 import { Layout, StepsIndicator, TextInput, Button, Text, NumberOperatePanel } from '../widgets';
 
 class OrderCreatePanel extends Component {
@@ -13,23 +13,23 @@ class OrderCreatePanel extends Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		if (!nextProps.running&&this.props.running) {
-			this.props.onSuccess();
+			if (nextProps.error) {
+				ToastAndroid.show(nextProps.error, ToastAndroid.SHORT);
+			} else {
+				this.props.onSuccess();
+			}
 		}
 	}
 	onNext() {
 		if (this.state.currentStep === (this.props.steps.length - 1)) {
 			this.props.makeOrder(this.state);
 		} else {
-			const newPos = this.state.currentStep + 1;
-			this.setState({ currentStep: newPos });
-			this.refs.viewPager.setPage(newPos);
+			this.setState({ currentStep: this.state.currentStep + 1 });
 		}
 	}
 	onPrevious() {
 		if (this.state.currentStep > 0) {
-			const newPos = this.state.currentStep - 1;
-			this.setState({ currentStep: newPos });
-			this.refs.viewPager.setPage(newPos);
+			this.setState({ currentStep: this.state.currentStep - 1 });
 		}
 	}
 	onInputChange(name, text) {
@@ -39,10 +39,10 @@ class OrderCreatePanel extends Component {
 		const { steps, running, style } = this.props;
 		const { currentStep, items, address, fees } = this.state;
 
-		return (
-			<View style={styles.rootContainer}>
-				<StepsIndicator steps={steps} currentStep={currentStep}/>
-				<ViewPagerAndroid style={styles.container} initialPage={0} ref='viewPager'>
+		let stepView = null;
+		switch(this.state.currentStep) {
+			case 0:
+				stepView = (
 					<View style={styles.container}>
 						<View style={styles.container}>
 							<TextInput multiline autoFocus
@@ -53,9 +53,13 @@ class OrderCreatePanel extends Component {
 							<Button disabled={!items} wMode='primary' wSize='sm' onPress={this.onNext.bind(this)}>Next</Button>
 						</Layout>
 					</View>
+				);
+				break;
+			case 1:
+				stepView = (
 					<View style={styles.container}>
 						<View style={styles.container}>
-							<TextInput multiline
+							<TextInput multiline autoFocus
 								placeholder='Please enter your address'
 								value={address} onChangeText={this.onInputChange.bind(this, 'address')}/>
 						</View>
@@ -64,6 +68,10 @@ class OrderCreatePanel extends Component {
 							<Button disabled={!address} wMode='primary' wSize='sm' onPress={this.onNext.bind(this)}>Next</Button>
 						</Layout>
 					</View>
+				);
+				break;
+			case 2:
+				stepView = (
 					<View style={styles.container}>
 						<Layout cneter alignCenter style={styles.container}>
 							<Text align='center' wMode='sub' wSize='sm'>Pay a small amount of delivery fee on top of the item price to deliverer</Text>
@@ -75,7 +83,14 @@ class OrderCreatePanel extends Component {
 							<Button running={running} disabled={!fees} wMode='primary' wSize='sm' onPress={this.onNext.bind(this)}>Submit</Button>
 						</Layout>
 					</View>
-				</ViewPagerAndroid>
+				);
+				break;
+		}
+
+		return (
+			<View style={styles.rootContainer}>
+				<StepsIndicator steps={steps} currentStep={currentStep}/>
+				{stepView}
 			</View>
 		);
 	}
@@ -84,6 +99,7 @@ class OrderCreatePanel extends Component {
 OrderCreatePanel.propTypes = {
 	steps: PropTypes.arrayOf(PropTypes.string),
 	running: PropTypes.bool,
+	error: PropTypes.string,
 	makeOrder: PropTypes.func.isRequired,
 	onSuccess: PropTypes.func.isRequired
 };

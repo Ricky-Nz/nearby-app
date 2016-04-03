@@ -84,5 +84,4 @@ const styles = StyleSheet.create({
 });
 
 export default ScrollHeaderPage;
-// <IconButton style={styles.backBtn} src='chevron-left' size='normal' onPress={onBack}/>
 

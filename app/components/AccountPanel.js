@@ -1,25 +1,18 @@
-import React, { Component, PropTypes, StyleSheet } from 'react-native';
-import { Dialog, Layout, Avatar, MainText, SubText, StarMarkingBar, Link } from '../widgets';
+import React, { PropTypes } from 'react-native';
+import { Layout, Avatar, Text, StarMarkingBar } from '../widgets';
 
-let AccountPanel = ({avatarUrl, name, marking, deliveredTimes, orderedTimes, ratingCount}) => (
+let AccountPanel = ({avatarUrl, name, rating}) => (
 	<Layout alignCenter>
 		<Avatar src={avatarUrl} size='large'/>
-		<MainText>{name}</MainText>
-		<StarMarkingBar mark={marking} size='small'/>
-		<Layout padding>
-			<SubText>{`Delivered ${deliveredTimes} orders, ordered ${orderedTimes} times`}</SubText>
-		</Layout>
-		<Link>{`${ratingCount} Ratings`}</Link>
+		<Text wSize='lg' wMode='primary'>{name}</Text>
+		<StarMarkingBar mark={rating} wSize='sm'/>
 	</Layout>
 );
 
-AccountDialog.propTypes = {
+AccountPanel.propTypes = {
 	avatarUrl: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	marking: PropTypes.number.isRequired,
-	deliveredTimes: PropTypes.number.isRequired,
-	orderedTimes: PropTypes.number.isRequired,
-	ratingCount: PropTypes.number.isRequired
+	marking: PropTypes.number.isRequired
 };
 
-export default AccountDialog;
+export default AccountPanel;

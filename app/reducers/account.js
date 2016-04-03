@@ -6,7 +6,7 @@ export default function (account = {}, action) {
 			if (action.running) {
 				return {loading: true};
 			} else if (action.error) {
-				return {loading: false, error: action.error};
+				return {loading: false, error: action.error ? action.error.message : null};
 			} else {
 				return {loading: false, data: action.data};
 			}

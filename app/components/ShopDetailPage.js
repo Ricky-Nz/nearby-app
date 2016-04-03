@@ -1,64 +1,55 @@
 import React, { PropTypes, StyleSheet, MapView, View } from 'react-native';
 import { ScrollHeaderPage, ImageGallery, Card, Icon, VerticalGap, SimpleListItem,
-	SubText } from '../widgets';
-import { CollectionDataContainer } from '../containers';
+	SubText, Layout, Text, Button, AvatarSelectBar } from '../widgets';
 import ShopQuickInfoBar from './ShopQuickInfoBar';
-import OrderingPanel from './OrderingPanel';
 
-let ShopPage = ({id, name, address, location, photos, postal_code, price_tier,
-		category, tags, popularity, description, onBack, onMakeOrder}) => (
-	<View style={styles.container}>
-		<ScrollHeaderPage style={styles.scrollContiner} title={name} onBack={onBack}>
-			<ImageGallery images={photos.map(photo => photo.url)}/>
+let ShopPage = ({shop, deliverer_users, watching, onBack, onMakeOrder}) => (
+	<View style={styles.relativeRoot}>
+		<ScrollHeaderPage style={styles.scrollContiner} title={shop.name} onBack={onBack}>
+			{shop.photos&&<ImageGallery images={shop.photos.map(photo => photo.url)}/>}
 			<Card>
-				<SimpleListItem title={name} description={<ShopQuickInfoBar distance={'100m'} category={category} price_tier={price_tier}/>}
-					rightNode={<SubText>{'Watching'}</SubText>}/>
-				<SimpleListItem leftNode={<Icon src='place' color='gray'/>} title={address}/>
-				<SimpleListItem leftNode={<Icon src='info-outline' color='gray'/>} title={description}/>
-				<SimpleListItem leftNode={<Icon src='label' color='gray'/>} title={tags&&tags.join(', ')}/>
-				<MapView style={styles.map} region={location}/>
+				<SimpleListItem title={shop.name}
+					description={<ShopQuickInfoBar distance={shop.distance} category={shop.category} price_tier={shop.price_tier}/>}
+					rightNode={<SubText>{watching?'Watching':'Watch'}</SubText>}/>
+				<SimpleListItem leftNode={<Icon src='place' color='gray'/>} title={shop.address}/>
+				<SimpleListItem leftNode={<Icon src='info-outline' color='gray'/>} title={shop.description}/>
+				<SimpleListItem leftNode={<Icon src='label' color='gray'/>} title={shop.tags&&shop.tags.join(', ')}/>
+				<MapView style={styles.map} region={shop.location}/>
 			</Card>
 		</ScrollHeaderPage>
 		<Card elevation={6} style={styles.bottomBar}>
-      <CollectionDataContainer stateKey='deliverers' initFuncName='onRefresh' size={5}
-        converter={datas => {
-          const avatars = datas.map(data => (
-            { id: data.id, src: data.avatarUrl, name: data.name }
-          ));
-          return { avatars };
-        }}>
-        <OrderingPanel onSelect={userId => console.log(userId)}
-        	onMakeOrder={onMakeOrder}/>
-      </CollectionDataContainer>
+			<Layout style={styles.container}>
+				<Layout style={styles.container} padding cneter alignCenter>
+					<Text wMode='sub' wSize='sm'>
+						{(deliverer_users&&deliverer_users.length)?`${deliverer_users[0].name} ${deliverer_users.length===1?'is':(' and '+deliverer_users.length+' others are')} now delivering`:'Nobody delivering right now :('}
+					</Text>
+					{(deliverer_users&&deliverer_users.length>0)&&<AvatarSelectBar
+						avatars={deliverer_users.map(user => (id: user.id, name: user.name, src: user.photo.url))}/>}
+				</Layout>
+		    <Layout row alignCenter paddingBottom>
+		      <Button wMode='primary' block onPress={onMakeOrder}>ORDER NOW</Button>
+		      <Button block>IM ORDERING</Button>
+		    </Layout>
+			</Layout>
 		</Card>
 	</View>
 );
 
 ShopPage.propTypes = {
-	id: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	address: PropTypes.string.isRequired,
-	location: PropTypes.shape({
-		longtitude: PropTypes.number.isRequired,
-		latitude: PropTypes.number.isRequired,
-	}).isRequired,
-	photos: PropTypes.arrayOf(PropTypes.shape({
-		url: PropTypes.string.isRequired
-	})),
-	postal_code: PropTypes.string.isRequired,
-	price_tier: PropTypes.number.isRequired,
-	category: PropTypes.string.isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string.isRequired),
-	popularity: PropTypes.number,
-	description: PropTypes.string,
+	shop: PropTypes.object.isRequired,
+	deliverer_users: PropTypes.arrayOf(PropTypes.object).isRequired,
+	watching: PropTypes.bool.isRequired,
 	onBack: PropTypes.func.isRequired,
 	onMakeOrder: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
-	container: {
+	relativeRoot: {
 		flex: 1,
 		position: 'relative'
+	},
+	container: {
+		flex: 1
 	},
 	scrollContiner: {
 		paddingBottom: 150
@@ -72,9 +63,6 @@ const styles = StyleSheet.create({
 	},
 	map: {
 		height: 200
-	},
-	button: {
-		flex: 1
 	}
 });
 

@@ -8,16 +8,17 @@ export function refreshShops(size) {
 
 		runAction({
 			dispatch,
+			actionName: SHOP_COLLECTION_REFRESH,
+			method: 'GET',
+			urlPath: 'shops',
 			token: appState.token,
 			params: {
 				size: size||appState.listFetchSize,
 				longitude: appState.longitude,
 				latitude: appState.latitude,
-				offset: shops.offset,
+				offset: 0,
 				distance: shops.distance
-			},
-			actionName: SHOP_COLLECTION_REFRESH,
-			urlPath: 'shops'
+			}
 		});
 	};
 }

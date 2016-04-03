@@ -1,10 +1,10 @@
 import React, { Component, StyleSheet, Navigator, BackAndroid } from 'react-native';
+import { ShopDetailContainer, OrderDetailContainer, ReviewCreateContainer } from '../containers';
 import HomePage from './HomePage';
 import RatingPage from './RatingPage';
 import NotificationPage from './NotificationPage';
 import ShopDetailPage from './ShopDetailPage';
 import OrderCreatePage from './OrderCreatePage';
-import WidgetsDemo from '../widgets/WidgetsDemo';
 import TESTPAGE from './TESTPAGE';
 
 class AppNavigator extends Component {
@@ -28,18 +28,28 @@ class AppNavigator extends Component {
     switch(route.name) {
       case 'home':
         return <HomePage
-          openShopPage={(shop) => navigator.push({name: 'shop', data: shop})}
+          openShopPage={() => navigator.push({name: 'shopDetail'})}
+          openOrderPage={() => navigator.push({name: 'orderDetail'})}
+          openReivewCreatePage={() => navigator.push({name: 'createReivew'})}
           openRatingPage={() => navigator.push({name: 'rating'})}
           openNotificationPage={() => navigator.push({name: 'notification'})}/>;
-      case 'shop':
-        return <ShopDetailPage {...route.data} onBack={this.onBackPassed.bind(this)}
-          onMakeOrder={() => navigator.push({name: 'makeOrder'})}/>;
+      case 'shopDetail':
+        return (
+          <ShopDetailContainer>
+            <ShopDetailPage onBack={this.onBackPassed.bind(this)}
+              onMakeOrder={() => navigator.push({name: 'makeOrder'})}/>
+          </ShopDetailContainer>
+        );
+      case 'orderDetail':
+        return <OrderDetailContainer onBack={this.onBackPassed.bind(this)}/>;
       case 'rating':
         return <RatingPage onBack={this.onBackPassed.bind(this)}/>;
       case 'notification':
         return <NotificationPage onBack={this.onBackPassed.bind(this)}/>;
       case 'makeOrder':
         return <OrderCreatePage onBack={this.onBackPassed.bind(this)}/>;
+      case 'createReivew':
+        return <ReviewCreateContainer onBack={this.onBackPassed.bind(this)}/>
       default:
         return <TESTPAGE/>;
     }

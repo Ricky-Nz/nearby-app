@@ -1,26 +1,26 @@
 import React, { PropTypes } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 const sizes = {
-	tiny: 15,
-	small: 30,
-	normal: 40,
-	large: 50
+	xs: 15,
+	sm: 30,
+	md: 40,
+	lg: 50
 };
 
-let MaterialIcon = ({src, size, color, ...otherProps}) => (
-	<Icon name={src} size={sizes[size]} color={color} {...otherProps}/>
+let Icon = ({src, wSize, color, ...otherProps}) => (
+	<MaterialIcon name={src} size={sizes[wSize]} color={color} {...otherProps}/>
 );
 
-MaterialIcon.propTypes = {
+Icon.propTypes = {
 	src: PropTypes.string.isRequired,
-	size: PropTypes.oneOf(['small', 'normal', 'large']),
+	wSize: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
 	color: PropTypes.string
 };
 
-MaterialIcon.defaultProps = {
-	size: 'small',
+Icon.defaultProps = {
+	wSize: 'sm',
 	color: 'white'
 };
 
-export default MaterialIcon;
+export default Icon;

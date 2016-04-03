@@ -21,7 +21,7 @@ AvatarSelectBar.propTypes = {
 		id: PropTypes.string.isRequired
 	})).isRequired,
 	avatarSize: PropTypes.string,
-	onSelect: PropTypes.func.isRequired
+	onSelect: PropTypes.func
 };
 
 AvatarSelectBar.defaultProps = {

@@ -4,7 +4,7 @@ export { default as Page } from './Page';
 export { default as TransparentPage } from './TransparentPage';
 export { default as Dialog } from './Dialog';
 export { default as StatusBar } from './StatusBar';
-
+export { default as TimeText } from './TimeText';
 
 
 export { default as ActionBar } from './ActionBar';

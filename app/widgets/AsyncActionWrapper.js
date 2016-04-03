@@ -3,13 +3,13 @@ import { THEME_COLOR } from './theme';
 
 class AsyncActionWrapper extends Component {
 	componentDidMount() {
-		this.props[this.props.initFuncName]();
+		this.props.onLoad();
 	}
 	render() {
-		const {children, finished, initFuncName, processPos, ...props} = this.props;
+		const {children, finished, result, onLoad, initFuncName, processPos, ...props} = this.props;
 
 		if (finished) {
-			return React.cloneElement(children, props);
+			return React.cloneElement(children, {...result, onLoad});
 		} else {
 			return (
 				<View style={[styles[processPos], props.style]}>
@@ -22,13 +22,11 @@ class AsyncActionWrapper extends Component {
 
 AsyncActionWrapper.propTypes = {
 	finished: PropTypes.bool,
-	initFuncName: PropTypes.string,
 	processPos: PropTypes.oneOf(['center', 'top'])
 };
 
 AsyncActionWrapper.defaultProps = {
 	finished: false,
-	initFuncName: 'load',
 	processPos: 'center'
 };
 

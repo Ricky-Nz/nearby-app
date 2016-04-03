@@ -15,7 +15,11 @@ export default function (appState = {
 		case TOGGLE_LOCATION:
 			return { ...appState, location: !appState.location };
 		case CREATE_ORDER:
-			return { ...appState, running: action.running };
+			if (action.running) {
+				return { ...appState, running: true, error: null };
+			} else {
+				return { ...appState, running: false, error: action.error ? action.error.message : null };
+			}
 		default:
 			return appState;
 	}

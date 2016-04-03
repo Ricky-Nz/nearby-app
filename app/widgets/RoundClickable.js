@@ -1,8 +1,8 @@
 import React, { PropTypes, StyleSheet } from 'react-native';
 import Clickable from './Clickable';
 
-const RoundClickable = ({onPress, children, size, style}) => (
-	<Clickable style={[styles.base, styles[size], style]} onPress={onPress}>
+const RoundClickable = ({onPress, children, wSize, style}) => (
+	<Clickable style={[styles.base, styles[wSize], style]} onPress={onPress}>
 		{children}
 	</Clickable>
 );
@@ -12,17 +12,22 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
-	small: {
+	xs: {
+		height: 36,
+		width: 36,
+		borderRadius: 18
+	},
+	sm: {
 		height: 46,
 		width: 46,
 		borderRadius: 23
 	},
-	normal: {
+	md: {
 		height: 56,
 		width: 56,
 		borderRadius: 28
 	},
-	large: {
+	lg: {
 		height: 66,
 		width: 66,
 		borderRadius: 33

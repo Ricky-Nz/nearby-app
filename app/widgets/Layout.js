@@ -7,6 +7,9 @@ let Layout = ({children, ...props}) => (
 );
 
 const styles = StyleSheet.create({
+	flex: {
+		flex: 1
+	},
 	row: {
 		flexDirection: 'row'
 	},

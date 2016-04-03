@@ -2,19 +2,20 @@ import runAction from './runAction';
 
 export const DELIVERED_COLLECTION_REFRESH = 'DELIVERED_COLLECTION_REFRESH';
 
-export function refreshDelivers(size) {
+export function refreshDelivered(size) {
 	return (dispatch, getState) => {
-		const { appState, delivers } = getState();
+		const { appState } = getState();
 	
 		runAction({
 			dispatch,
+			actionName: DELIVERED_COLLECTION_REFRESH,
+			method: 'GET',
+			urlPath: 'users/orders/delivered',
 			token: appState.token,
 			params: {
 				size: size||appState.listFetchSize,
-				offset: delivers.offset
-			},
-			actionName: DELIVERED_COLLECTION_REFRESH,
-			urlPath: 'users/orders/delivered'
+				offset: 0
+			}
 		});
 	};
 }

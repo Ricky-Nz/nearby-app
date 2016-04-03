@@ -8,9 +8,10 @@ export function getAccountInfo(userId) {
 
 		runAction({
 			dispatch,
-			token: appState.token,
 			actionName: GET_ACCOUNT_INFO,
-			urlPath: `users/${userId||appState.userId}`
+			method: 'GET',
+			urlPath: `users/${userId||appState.userId}`,
+			token: appState.token
 		});
 	};
 }

@@ -2,19 +2,20 @@ import runAction from './runAction';
 
 export const DELIVERED_COLLECTION_LOAD = 'DELIVERED_COLLECTION_LOAD';
 
-export function loadDelivers(size) {
+export function loadDelivered(size) {
 	return (dispatch, getState) => {
-		const { appState, delivers } = getState();
+		const { appState, delivered } = getState();
 
 		runAction({
 			dispatch,
+			actionName: DELIVERED_COLLECTION_LOAD,
+			method: 'GET',
+			urlPath: 'users/orders/delivered',
 			token: appState.token,
 			params: {
 				size: size||appState.listFetchSize,
-				offset: delivers.offset
-			},
-			actionName: DELIVERED_COLLECTION_LOAD,
-			urlPath: 'users/orders/delivered'
+				offset: delivered.offset
+			}
 		});
 	};
 }

@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { getAccountInfo } from '../actions';
+import { getShopDetail } from '../actions';
 import { AsyncActionWrapper } from '../widgets';
 
-const accountSelector = state => state.account.data;
+const shopSelector = state => state.shop.data;
 
 const mapStateToProps = createSelector(
-	accountSelector,
+	shopSelector,
 	(result) => {
 		return {finished: result?true:false, result};
 	}
@@ -14,7 +14,7 @@ const mapStateToProps = createSelector(
 
 const mapActionToProps = (dispatch) => ({
 	onLoad: () => {
-		dispatch(getAccountInfo());
+		dispatch(getShopDetail());
 	}
 });
 

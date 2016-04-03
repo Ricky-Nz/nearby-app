@@ -3,17 +3,17 @@ import RoundClickable from './RoundClickable';
 import Icon from './Icon';
 
 let IconButton = ({onPress, style, ...props}) => (
-	<RoundClickable style={style} size={props.size} onPress={onPress}>
+	<RoundClickable style={style} size={props.wSize} onPress={onPress}>
 		<Icon {...props}/>
 	</RoundClickable>
 );
 
 IconButton.propTypes = {
-	size: PropTypes.string
+	wSize: PropTypes.string
 };
 
 IconButton.defaultProps = {
-	size: 'small'
+	wSize: 'sm'
 };
 
 export default IconButton;
